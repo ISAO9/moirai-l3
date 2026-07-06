@@ -1,0 +1,12 @@
+# Python 3.12. Install AMBER first (no-deps), then this file.
+#   uv pip install --system --no-deps "amber @ git+https://github.com/kelleuseis/AMBER_Public"
+#   uv pip install --system -r requirements.txt
+# Do NOT downgrade numpy after installing AMBER.
+torch>=2.2
+numpy>=1.26
+h5py>=3.10
+pandas>=2.0
+matplotlib>=3.8
+tqdm>=4.66
+requests>=2.31
+seisbench>=0.7   # off-the-shelf baseline (06) only

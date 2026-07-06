@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite both the software archive and the paper below."
+title: "MOIRAI L3: velocity-free array-level P/S phase picking on real downhole 3-C arrays (AMBER)"
+abstract: >-
+  Code, EMA-best model weights and reproducible figure/table scripts for a
+  leave-one-site-out, confound-free benchmark of array versus per-trace deep
+  learning for borehole microseismic phase picking on the AMBER benchmark.
+type: software
+authors:
+  - family-names: Kurosawa
+    given-names: Isao
+    affiliation: "IVXA, Japan"
+version: 0.1.0
+date-released: "2026-07-06"
+license: MIT
+repository-code: "https://github.com/<user>/moirai-l3"
+# After you reserve/mint the Zenodo DOI, replace the value below and delete this comment.
+doi: "10.5281/zenodo.XXXXXXX"
+keywords:
+  - seismology
+  - phase picking
+  - borehole microseismic
+  - induced seismicity
+  - deep learning
+  - leave-one-site-out
+  - velocity-free
+preferred-citation:
+  type: article
+  title: "When does array moveout help borehole phase picking? A leave-one-site-out, confound-free benchmark of array versus per-trace deep learning"
+  authors:
+    - family-names: Kurosawa
+      given-names: Isao
+      affiliation: "IVXA, Japan"
+  year: 2026
+  journal: "Geophysical Journal International (submitted)"
+  # Preprint (EarthArXiv) DOI — fill in once posted:
+  notes: "Preprint: EarthArXiv, DOI to be assigned."

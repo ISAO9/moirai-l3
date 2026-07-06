@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.uv/
+*.egg-info/
+
+# Large binaries — released via the Zenodo archive / GitHub Release, not git
+*.h5
+*.hdf5
+*.ckpt
+*.pt
+*.pth
+*.npy
+*.npz
+*.segy
+*.sgy
+*.rcd
+
+# Data & trained weights (kept out of git; see data/README.md, model/README.md)
+data/*
+!data/README.md
+model/*
+!model/README.md
+
+# Pipeline outputs
+logs/
+PDF/*
+!PDF/README.md
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+
+# OS
+.DS_Store
+Thumbs.db

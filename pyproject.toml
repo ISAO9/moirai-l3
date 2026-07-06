@@ -1,0 +1,22 @@
+[project]
+name = "moirai-l3"
+version = "0.1.0"
+description = "MOIRAI L3 — velocity-free array-level P/S phase picking on real downhole 3-C arrays (AMBER). IVXA, Japan."
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "numpy<2",
+    "torch>=2.1",
+    "pandas",
+    "h5py",
+    "obspy",
+    "scipy",
+    "omegaconf",
+    "hydra-core",
+    "matplotlib",
+    "tqdm",
+]
+
+[tool.uv]
+# AMBER itself is installed separately from its uploaded source tree:
+#   uv pip install /path/to/AMBER_Public
