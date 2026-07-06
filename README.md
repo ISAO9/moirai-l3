@@ -3,7 +3,7 @@
 Code, trained weights and results accompanying the paper:
 
 > Kurosawa, I. *When does array moveout help borehole phase picking? A leave-one-site-out,
-> confound-free benchmark of array versus per-trace deep learning.* IVXA, Japan.
+> confound-free benchmark of array versus per-trace deep learning.
 > Submitted to *Geophysical Journal International* (GJI).
 > Preprint: EarthArXiv, **DOI: _to be assigned_**. Software archive: Zenodo, **DOI: _to be assigned_**.
 
