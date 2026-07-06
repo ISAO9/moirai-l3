@@ -5,7 +5,7 @@ Code, trained weights and results accompanying the paper:
 > Kurosawa, I. *When does array moveout help borehole phase picking? A leave-one-site-out,
 > confound-free benchmark of array versus per-trace deep learning.
 > Submitted to *Geophysical Journal International* (GJI).
-> Preprint: EarthArXiv, **DOI: _to be assigned_**. Software archive: Zenodo, **DOI: _to be assigned_**.
+> Preprint: EarthArXiv, **DOI: _to be assigned_**. Software archive: Zenodo, DOI: 10.5281/zenodo.21217615
 
 A geometry-invariant 2-D U-Net is trained under a strict **leave-one-site-out (LOSO)**
 protocol on the **AMBER** benchmark and evaluated zero-shot on the held-out site, in two
