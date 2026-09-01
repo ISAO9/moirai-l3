@@ -6,12 +6,12 @@ WHAT THIS SCRIPT DOES
 Defines every tunable constant for MOIRAI L3 in ONE place so that the loader
 (01), model (02), trainer (03), evaluator (04) and figures (05) all import the
 same numbers and never drift. Importing this module also resolves the runtime
-environment (Google Colab + Drive vs. local sandbox) and creates the IVXA
+environment (Google Colab + Drive vs. local sandbox) and creates the project
 standard folder layout (src / data / model / PDF / logs).
 
 PROJECT CONTEXT
 ---------------
-MOIRAI is IVXA's main research pillar: a velocity-free, waveform-direct approach
+MOIRAI is the author's main research line: a velocity-free, waveform-direct approach
 to induced-seismicity monitoring. The ladder is
     L1 (done) 3-C geophone, synthetic, P/S separation, +21 dB SI-SNR
     L2 (done) full-scale synthetic DAS (2000 ch), direct-regression 2-D U-Net
@@ -22,15 +22,15 @@ L3 task = "Plan B" PICKING (not waveform separation): predict per-pixel P / S /
 noise probability for a WHOLE vertical array at once, exploiting the depth-axis
 MOVEOUT (apparent-velocity difference of P vs S) the way L2 used dense-DAS
 spatial coherence. This array-level, moveout-driven design is what distinguishes
-MOIRAI L3 from IVXA's ORACLE picker (which is per-trace).
+MOIRAI L3 from the author's earlier per-trace picker.
 
 DATA = AMBER (Leung et al. 2026, SRL, under review; Bristol). 10 downhole sites,
 all 3-C (NEZ), 2000 Hz. We start with a SINGLE site, mseel_3h (most events:
 1684; train/dev/test = 1163/268/253; 12 stations -> usable with nstation=12).
 Later: train mseel_3h -> transfer-test pnr-1 (0/0/1258, all test) as a strong
-unseen-site generalisation claim; and extend to forge_19/22 (IVXA's own ground).
+unseen-site generalisation claim; and extend to forge_19/22 (the author's own operational setting).
 
-IVXA STANDARDS ENFORCED HERE
+PROJECT STANDARDS ENFORCED HERE
 ----------------------------
 * uv virtual environment; project = MOIRAI_L3; folders src/data/model/PDF/logs.
 * numbered scripts, header docstring stating purpose, full scripts (no excerpts).
@@ -39,7 +39,7 @@ IVXA STANDARDS ENFORCED HERE
 * models saved in model/, best checkpoint kept every epoch.
 * paper-grade data/training volume; honest reporting (median/fail-rate, not just
   mean) — the central L2 lesson.
-* address string is "IVXA, Japan" only; no email addresses stored anywhere.
+* no personal addresses or email addresses are stored anywhere.
 
 SITE REALITY (mseel_3h, confirmed via 01 self-test on metadata.csv)
 -------------------------------------------------------------------
@@ -141,7 +141,7 @@ class DataCfg:
     # --- TaperedLabeller ----------------------------------------------------
     # Triangular taper half-width around each pick (samples). MUST stay well
     # below S-P (median 110) or the P and S labels merge -- the kind of label
-    # collapse that sank ORACLE v1/v2. 30 = +/-15 ms keeps them separated for
+    # collapse seen in earlier per-trace experiments. 30 = +/-15 ms keeps them separated for
     # the majority while still giving the picker a gradient.
     DROPOFF_SAMPLES: int = 30
 

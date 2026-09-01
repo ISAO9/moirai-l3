@@ -1,0 +1,9 @@
+site,dataset,n_stations,vertical_extent_m,aperture_3d_m,median_adjacent_spacing_m
+pnr-1,PNR-1,24,507.7,681.1,30.0
+mseel_3h,MSEEL_3H,12,335.3,335.3,30.5
+mseel_5h,MSEEL_5H,12,335.3,335.3,30.5
+clearfield_mw6,Clearfield_mw6,12,335.2,335.2,30.5
+pnr-2,PNR-2,12,302.7,332.4,30.5
+clearfield_mw4,Clearfield_mw4,12,335.2,335.2,30.5
+aneth,Aneth,18,259.0,259.0,15.2
+forge_19,FORGE_2019,12,335.3,335.3,30.5

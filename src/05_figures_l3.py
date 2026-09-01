@@ -5,7 +5,7 @@ WHAT THIS SCRIPT DOES
 ---------------------
 Produces the paper figures for MOIRAI L3, all to the PDF/ folder, all with:
 WHITE background, ENGLISH labels only, and legends placed in the MARGIN
-(outside the axes, never overlapping the data). IVXA figure standard.
+(outside the axes, never overlapping the data). Project figure standard.
 
   PDF/05_a_probability_example.pdf
       One earthquake test event: Z-component waterfall (station x time) beside

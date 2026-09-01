@@ -1,7 +1,7 @@
 [project]
 name = "moirai-l3"
 version = "0.1.0"
-description = "MOIRAI L3 — velocity-free array-level P/S phase picking on real downhole 3-C arrays (AMBER). IVXA, Japan."
+description = "MOIRAI L3 — velocity-free array-level P/S phase picking on real downhole 3-C arrays (AMBER)."
 readme = "README.md"
 requires-python = ">=3.10,<3.13"
 dependencies = [

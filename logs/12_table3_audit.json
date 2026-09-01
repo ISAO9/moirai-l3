@@ -1,0 +1,178 @@
+{
+  "forge_19": {
+    "array": {
+      "manuscript": [
+        0.178,
+        0.857,
+        0.518
+      ],
+      "logged": [
+        0.1777989065842643,
+        0.8573243014394581,
+        0.5175616040118612
+      ],
+      "manuscript_mean_consistent": true,
+      "status": "OK"
+    },
+    "shuffle": {
+      "manuscript": [
+        0.327,
+        0.813,
+        0.57
+      ],
+      "logged": [
+        0.32688066650330805,
+        0.8127289377289377,
+        0.5698048021161228
+      ],
+      "manuscript_mean_consistent": true,
+      "status": "OK"
+    },
+    "pertrace": {
+      "manuscript": [
+        0.755,
+        0.928,
+        0.842
+      ],
+      "logged": [
+        0.7550335570469798,
+        0.9279717189571366,
+        0.8415026380020583
+      ],
+      "manuscript_mean_consistent": true,
+      "status": "OK"
+    }
+  },
+  "clearfield_mw4": {
+    "array": {
+      "manuscript": [
+        0.86,
+        0.844,
+        0.852
+      ],
+      "logged": [
+        0.860272036742625,
+        0.844414215269512,
+        0.8523431260060685
+      ],
+      "manuscript_mean_consistent": true,
+      "status": "OK"
+    },
+    "shuffle": {
+      "manuscript": [
+        0.878,
+        0.853,
+        0.866
+      ],
+      "logged": [
+        0.8781362007168458,
+        0.8533653846153846,
+        0.8657507926661152
+      ],
+      "manuscript_mean_consistent": true,
+      "status": "OK"
+    },
+    "pertrace": {
+      "manuscript": [
+        0.793,
+        0.756,
+        0.768
+      ],
+      "logged": [
+        0.7927579539462121,
+        0.7556890012642224,
+        0.7742234776052173
+      ],
+      "manuscript_mean_consistent": false,
+      "status": "TRANSCRIPTION ERROR: mean should be 0.7742 (P/S in the manuscript are correct)"
+    }
+  },
+  "pnr-2": {
+    "array": {
+      "manuscript": [
+        0.89,
+        0.871,
+        0.881
+      ],
+      "logged": [
+        0.8903848596468944,
+        0.8707304256437204,
+        0.8805576426453074
+      ],
+      "manuscript_mean_consistent": true,
+      "status": "OK"
+    },
+    "shuffle": {
+      "manuscript": [
+        0.847,
+        0.757,
+        0.827
+      ],
+      "logged": [
+        0.8970133882595261,
+        0.7572602739726026,
+        0.8271368311160644
+      ],
+      "manuscript_mean_consistent": false,
+      "status": "P/S DISAGREE with logs -- manuscript cells must be replaced from the logs"
+    },
+    "pertrace": {
+      "manuscript": [
+        0.887,
+        0.794,
+        0.841
+      ],
+      "logged": [
+        0.8869876133316307,
+        0.7935442220787604,
+        0.8402659177051955
+      ],
+      "manuscript_mean_consistent": true,
+      "status": "TRANSCRIPTION ERROR: mean should be 0.8403 (P/S in the manuscript are correct)"
+    }
+  },
+  "aneth": {
+    "array": {
+      "manuscript": [
+        0.943,
+        0.835,
+        0.889
+      ],
+      "logged": [
+        0.9433849821215733,
+        0.8345259391771019,
+        0.8889554606493376
+      ],
+      "manuscript_mean_consistent": true,
+      "status": "OK"
+    },
+    "shuffle": {
+      "manuscript": [
+        0.922,
+        0.909,
+        0.93
+      ],
+      "logged": [
+        0.9511400651465798,
+        0.9093904448105438,
+        0.9302652549785617
+      ],
+      "manuscript_mean_consistent": false,
+      "status": "P/S DISAGREE with logs -- manuscript cells must be replaced from the logs"
+    },
+    "pertrace": {
+      "manuscript": [
+        0.965,
+        0.916,
+        0.941
+      ],
+      "logged": [
+        0.9647312490374249,
+        0.9156327543424319,
+        0.9401820016899284
+      ],
+      "manuscript_mean_consistent": true,
+      "status": "TRANSCRIPTION ERROR: mean should be 0.9402 (P/S in the manuscript are correct)"
+    }
+  }
+}

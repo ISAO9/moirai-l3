@@ -1,9 +1,9 @@
 {
   "title": "MOIRAI L3: velocity-free array-level P/S phase picking on real downhole 3-C arrays (AMBER)",
-  "description": "Code, EMA-best model weights and reproducible figure/table scripts accompanying the paper 'When does array moveout help borehole phase picking? A leave-one-site-out, confound-free benchmark of array versus per-trace deep learning' (Kurosawa, IVXA, Japan; submitted to Geophysical Journal International). A geometry-invariant 2-D U-Net is trained under a strict leave-one-site-out protocol on the AMBER benchmark and evaluated zero-shot on the held-out site, in array vs per-trace configurations that differ only in whether cross-station moveout is available, with a station-shuffle control.",
+  "description": "Code, EMA-best model weights and reproducible figure/table scripts accompanying the paper 'When does array moveout help borehole phase picking? A leave-one-site-out, confound-free benchmark of array versus per-trace deep learning' (Kurosawa; submitted to Geophysical Journal International). A geometry-invariant 2-D U-Net is trained under a strict leave-one-site-out protocol on the AMBER benchmark and evaluated zero-shot on the held-out site, in array vs per-trace configurations that differ only in whether cross-station moveout is available, with a station-shuffle control.",
   "upload_type": "software",
   "creators": [
-    { "name": "Kurosawa, Isao", "affiliation": "IVXA, Japan" }
+    { "name": "Kurosawa, Isao", "affiliation": "ENEOS Xplora Inc." }
   ],
   "license": "MIT",
   "access_right": "open",

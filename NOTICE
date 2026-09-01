@@ -5,13 +5,13 @@ This repository contains two kinds of material under two different licenses:
 
 1. SOFTWARE (everything under src/, plus configuration and helper files)
    Licensed under the MIT License (see LICENSE).
-   Copyright (c) 2026 Isao Kurosawa (IVXA, Japan).
+   Copyright (c) 2026 Isao Kurosawa.
 
 2. MANUSCRIPT AND FIGURES (everything under paper/, including the preprint PDF
    and the figure images)
    Licensed under the Creative Commons Attribution 4.0 International license
    (CC BY 4.0): https://creativecommons.org/licenses/by/4.0/
-   Copyright (c) 2026 Isao Kurosawa (IVXA, Japan).
+   Copyright (c) 2026 Isao Kurosawa.
 
 Third-party data are NOT redistributed here. The AMBER benchmark is obtained
 separately from its own archive and remains under its own license (CC-BY-4.0;

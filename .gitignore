@@ -39,3 +39,15 @@ PDF/*
 # OS
 .DS_Store
 Thumbs.db
+
+# Exception: GJI-26-0613 revision outputs (scripts 10-14) are part of the
+# public archive cited in the paper's Data Availability statement
+!logs/
+logs/*
+!logs/08_moveout_*.json
+!logs/1[0-4]_*.json
+!logs/1[0-4]_*.csv
+!logs/1[0-4]_*.md
+!PDF/1[0-4]_*.pdf
+!PDF/1[0-4]_*.png
+!PDF/fig8_pub.pdf

@@ -9,7 +9,7 @@ type: software
 authors:
   - family-names: Kurosawa
     given-names: Isao
-    affiliation: "IVXA, Japan"
+    affiliation: "ENEOS Xplora Inc."
 version: 0.1.0
 date-released: "2026-07-06"
 license: MIT
@@ -30,7 +30,7 @@ preferred-citation:
   authors:
     - family-names: Kurosawa
       given-names: Isao
-      affiliation: "IVXA, Japan"
+      affiliation: "ENEOS Xplora Inc."
   year: 2026
   journal: "Geophysical Journal International (submitted)"
   # Preprint (EarthArXiv) DOI — fill in once posted:

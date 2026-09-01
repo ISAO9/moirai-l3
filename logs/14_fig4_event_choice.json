@@ -1,0 +1,24 @@
+{
+  "forge_19": {
+    "site_median_p_moveout_ms": 70.0,
+    "arrivals_within_window_frac": [
+      0.07958984375,
+      0.849609375
+    ],
+    "event_index": 28,
+    "n_p_picks": 11,
+    "p_moveout_ms": 70.0,
+    "late_energy_ratio": 0.6110163927078247
+  },
+  "mseel_5h": {
+    "site_median_p_moveout_ms": 26.5,
+    "arrivals_within_window_frac": [
+      0.07958984375,
+      0.849609375
+    ],
+    "event_index": 1438,
+    "n_p_picks": 12,
+    "p_moveout_ms": 26.5,
+    "late_energy_ratio": 0.04455140605568886
+  }
+}

@@ -49,11 +49,11 @@ OUTPUTS
 * (optional) --seisbench-out DIR      waveforms.hdf5 + metadata.csv in SeisBench
   grouping=event layout (column names AMBER reads): needs `seisbench`.
 
-IVXA STANDARDS
+PROJECT STANDARDS
 --------------
 uv env; project MOIRAI_L3; folders src/data/model/PDF/logs; numbered script with a
 header docstring; full script (no excerpts); figures English + white background +
-legend in the margin, saved as PDF in PDF/; "IVXA, Japan" only; no email addresses.
+legend in the margin, saved as PDF in PDF/; no personal addresses or email addresses.
 Run `python 09_ingest_external_to_amber_l3.py --selftest` to verify end-to-end on
 synthetic data WITHOUT any external dependency (no obspy/seisbench needed).
 

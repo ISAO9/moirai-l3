@@ -56,7 +56,7 @@ mint it.
 
 1. Go to https://eartharxiv.org → **Submit**.
 2. Upload `paper/MOIRAI_L3_preprint.pdf`.
-3. Metadata: title, author (Isao Kurosawa, IVXA, Japan), abstract (the SUMMARY),
+3. Metadata: title, author (Isao Kurosawa), abstract (the SUMMARY),
    subject **Seismology / Geophysics**, license **CC BY 4.0**.
 4. In comments, note: *Author's Original Version, submitted to Geophysical Journal
    International; not peer reviewed.* Add the Zenodo DOI as a linked resource.
