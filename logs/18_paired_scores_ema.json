@@ -1,0 +1,386 @@
+{
+  "pnr-1": {
+    "n_events": 1258,
+    "array": 0.9861449445947285,
+    "pertrace": 0.984729235731908,
+    "array_fa": 0.985349346539874,
+    "pertrace_fa": 0.9842751763729403,
+    "marginal_ci": {
+      "array": {
+        "orig": [
+          0.9781692878192363,
+          0.9944780912718947
+        ],
+        "fa_incl": [
+          0.9773953921766836,
+          0.992880690666237
+        ]
+      },
+      "pertrace": {
+        "orig": [
+          0.9759200299349375,
+          0.9933179087325158
+        ],
+        "fa_incl": [
+          0.9753701516899059,
+          0.9929152877998529
+        ]
+      }
+    },
+    "paired_ci": {
+      "orig": {
+        "median": 0.0015158065196472226,
+        "lo": -0.0008054169965830581,
+        "hi": 0.004227804929968689
+      },
+      "fa_incl": {
+        "median": 0.001176519596006731,
+        "lo": -0.0014102184403371216,
+        "hi": 0.0038308595527100026
+      }
+    },
+    "verdict_marginal": "tie",
+    "verdict_paired": "tie",
+    "verdict_paired_fa": "tie",
+    "submitted_array": 0.9863003107460431,
+    "submitted_pertrace": 0.9859920270150098,
+    "submitted_verdict": "tie",
+    "reversal_vs_submitted": false
+  },
+  "mseel_3h": {
+    "n_events": 1684,
+    "array": 0.8996683016438924,
+    "pertrace": 0.9006608807676029,
+    "array_fa": 0.8996683016438924,
+    "pertrace_fa": 0.8994510631233902,
+    "marginal_ci": {
+      "array": {
+        "orig": [
+          0.8830069234918235,
+          0.9169456409412725
+        ],
+        "fa_incl": [
+          0.8830069234918235,
+          0.9169456409412725
+        ]
+      },
+      "pertrace": {
+        "orig": [
+          0.8844061930980525,
+          0.9182775238720899
+        ],
+        "fa_incl": [
+          0.8831977205808818,
+          0.9169395372255781
+        ]
+      }
+    },
+    "paired_ci": {
+      "orig": {
+        "median": -0.0011212757653456529,
+        "lo": -0.006630362691114128,
+        "hi": 0.003497249889815883
+      },
+      "fa_incl": {
+        "median": 6.951800051813173e-05,
+        "lo": -0.005422555204166082,
+        "hi": 0.004639947142260555
+      }
+    },
+    "verdict_marginal": "tie",
+    "verdict_paired": "tie",
+    "verdict_paired_fa": "tie",
+    "submitted_array": 0.8914383806995134,
+    "submitted_pertrace": 0.8879423404866196,
+    "submitted_verdict": "tie",
+    "reversal_vs_submitted": false
+  },
+  "mseel_5h": {
+    "n_events": 1512,
+    "array": 0.8889421921312191,
+    "pertrace": 0.879500570460626,
+    "array_fa": 0.8889421921312191,
+    "pertrace_fa": 0.8783117513986518,
+    "marginal_ci": {
+      "array": {
+        "orig": [
+          0.8661127878201095,
+          0.9057641819127917
+        ],
+        "fa_incl": [
+          0.8661127878201095,
+          0.9057641819127917
+        ]
+      },
+      "pertrace": {
+        "orig": [
+          0.8587582447037844,
+          0.8976771779308569
+        ],
+        "fa_incl": [
+          0.8575889412069784,
+          0.8966617473533756
+        ]
+      }
+    },
+    "paired_ci": {
+      "orig": {
+        "median": 0.00900696910281834,
+        "lo": 0.0009603603891588819,
+        "hi": 0.01733403745187018
+      },
+      "fa_incl": {
+        "median": 0.01012840469496945,
+        "lo": 0.002082709649438866,
+        "hi": 0.018457927347122094
+      }
+    },
+    "verdict_marginal": "tie",
+    "verdict_paired": "array",
+    "verdict_paired_fa": "array",
+    "submitted_array": 0.8966556389805156,
+    "submitted_pertrace": 0.8805267503981714,
+    "submitted_verdict": "tie",
+    "reversal_vs_submitted": false
+  },
+  "clearfield_mw6": {
+    "n_events": 1612,
+    "array": 0.8699981523065301,
+    "pertrace": 0.8682991870789201,
+    "array_fa": 0.8699981523065301,
+    "pertrace_fa": 0.8652004891760527,
+    "marginal_ci": {
+      "array": {
+        "orig": [
+          0.85132587025635,
+          0.8869759664872724
+        ],
+        "fa_incl": [
+          0.85132587025635,
+          0.8869759664872724
+        ]
+      },
+      "pertrace": {
+        "orig": [
+          0.851788026115451,
+          0.8851945758328623
+        ],
+        "fa_incl": [
+          0.8488684113884789,
+          0.8818533282936091
+        ]
+      }
+    },
+    "paired_ci": {
+      "orig": {
+        "median": 0.0015334140534288832,
+        "lo": -0.005069588159788405,
+        "hi": 0.007701389415484612
+      },
+      "fa_incl": {
+        "median": 0.004816860126347633,
+        "lo": -0.002072993570548423,
+        "hi": 0.010760563979895678
+      }
+    },
+    "verdict_marginal": "tie",
+    "verdict_paired": "tie",
+    "verdict_paired_fa": "tie",
+    "submitted_array": 0.8753387532767343,
+    "submitted_pertrace": 0.8692358779663854,
+    "submitted_verdict": "tie",
+    "reversal_vs_submitted": false
+  },
+  "pnr-2": {
+    "n_events": 972,
+    "array": 0.9400358350279865,
+    "pertrace": 0.9037076107912344,
+    "array_fa": 0.8717193212575576,
+    "pertrace_fa": 0.8277073589749557,
+    "marginal_ci": {
+      "array": {
+        "orig": [
+          0.9227944926901879,
+          0.9575595180032638
+        ],
+        "fa_incl": [
+          0.845982719666114,
+          0.8943192692342438
+        ]
+      },
+      "pertrace": {
+        "orig": [
+          0.8836016675121483,
+          0.9225048338383957
+        ],
+        "fa_incl": [
+          0.8046989001292522,
+          0.85025756072939
+        ]
+      }
+    },
+    "paired_ci": {
+      "orig": {
+        "median": 0.03568847705701911,
+        "lo": 0.026632906698454424,
+        "hi": 0.045639597224064715
+      },
+      "fa_incl": {
+        "median": 0.043544249851580896,
+        "lo": 0.03384647036804959,
+        "hi": 0.054401725518756605
+      }
+    },
+    "verdict_marginal": "array",
+    "verdict_paired": "array",
+    "verdict_paired_fa": "array",
+    "submitted_array": 0.9440352698490009,
+    "submitted_pertrace": 0.9008597349683969,
+    "submitted_verdict": "array",
+    "reversal_vs_submitted": false
+  },
+  "clearfield_mw4": {
+    "n_events": 1254,
+    "array": 0.8581207923973572,
+    "pertrace": 0.83890357484298,
+    "array_fa": 0.8576903732867718,
+    "pertrace_fa": 0.7788722901287599,
+    "marginal_ci": {
+      "array": {
+        "orig": [
+          0.8305088382512458,
+          0.8828888534872062
+        ],
+        "fa_incl": [
+          0.8302611790275072,
+          0.882738238179282
+        ]
+      },
+      "pertrace": {
+        "orig": [
+          0.8129082494743871,
+          0.8611353166518066
+        ],
+        "fa_incl": [
+          0.751878670582054,
+          0.8020769367866799
+        ]
+      }
+    },
+    "paired_ci": {
+      "orig": {
+        "median": 0.019562251706041534,
+        "lo": 0.009322721189231881,
+        "hi": 0.03041638753587896
+      },
+      "fa_incl": {
+        "median": 0.07901546690644456,
+        "lo": 0.06455007673923617,
+        "hi": 0.09431767597058882
+      }
+    },
+    "verdict_marginal": "tie",
+    "verdict_paired": "array",
+    "verdict_paired_fa": "array",
+    "submitted_array": 0.8516397109601058,
+    "submitted_pertrace": 0.8359254185904769,
+    "submitted_verdict": "tie",
+    "reversal_vs_submitted": false
+  },
+  "aneth": {
+    "n_events": 298,
+    "array": 0.8865717076727011,
+    "pertrace": 0.9419322564247652,
+    "array_fa": 0.8865717076727011,
+    "pertrace_fa": 0.9419322564247652,
+    "marginal_ci": {
+      "array": {
+        "orig": [
+          0.872908664308051,
+          0.9000996788617128
+        ],
+        "fa_incl": [
+          0.872908664308051,
+          0.9000996788617128
+        ]
+      },
+      "pertrace": {
+        "orig": [
+          0.9327361751877367,
+          0.950160254953316
+        ],
+        "fa_incl": [
+          0.9327361751877367,
+          0.950160254953316
+        ]
+      }
+    },
+    "paired_ci": {
+      "orig": {
+        "median": -0.05536549821771075,
+        "lo": -0.06451488173166257,
+        "hi": -0.04652947250709768
+      },
+      "fa_incl": {
+        "median": -0.05536549821771075,
+        "lo": -0.06451488173166257,
+        "hi": -0.04652947250709768
+      }
+    },
+    "verdict_marginal": "per-trace",
+    "verdict_paired": "per-trace",
+    "verdict_paired_fa": "per-trace",
+    "submitted_array": 0.8835464431850897,
+    "submitted_pertrace": 0.9406445515946078,
+    "submitted_verdict": "per-trace",
+    "reversal_vs_submitted": false
+  },
+  "forge_19": {
+    "n_events": 1213,
+    "array": 0.5237220186498376,
+    "pertrace": 0.8560468520260704,
+    "array_fa": 0.5220825734039671,
+    "pertrace_fa": 0.8421151534035703,
+    "marginal_ci": {
+      "array": {
+        "orig": [
+          0.5051185954753822,
+          0.5433970377467502
+        ],
+        "fa_incl": [
+          0.503592121237093,
+          0.540875361141017
+        ]
+      },
+      "pertrace": {
+        "orig": [
+          0.8353978999062711,
+          0.876019020643135
+        ],
+        "fa_incl": [
+          0.8217168885945761,
+          0.862660331851735
+        ]
+      }
+    },
+    "paired_ci": {
+      "orig": {
+        "median": -0.3321624046947884,
+        "lo": -0.3549796150567523,
+        "hi": -0.3098244888301939
+      },
+      "fa_incl": {
+        "median": -0.32046342882088263,
+        "lo": -0.3412549611771837,
+        "hi": -0.2970254881234068
+      }
+    },
+    "verdict_marginal": "per-trace",
+    "verdict_paired": "per-trace",
+    "verdict_paired_fa": "per-trace",
+    "submitted_array": 0.5157911478859388,
+    "submitted_pertrace": 0.8555338159068931,
+    "submitted_verdict": "per-trace",
+    "reversal_vs_submitted": false
+  }
+}

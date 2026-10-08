@@ -1,0 +1,658 @@
+{
+  "pnr-1": {
+    "all": {
+      "n_events": 1258,
+      "array": 0.9863003107460431,
+      "pertrace": 0.9859920270150098,
+      "array_fa": 0.9846367101952146,
+      "pertrace_fa": 0.9854992690263314,
+      "ci": {
+        "array": {
+          "orig": [
+            0.9786477721390521,
+            0.9923279373503018
+          ],
+          "fa_incl": [
+            0.9768547898949338,
+            0.991025321816792
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.9773751365129022,
+            0.9926966592304759
+          ],
+          "fa_incl": [
+            0.9769351741792195,
+            0.9921789217231032
+          ]
+        }
+      },
+      "verdict": "tie",
+      "verdict_fa": "tie"
+    },
+    "clean": {
+      "n_events": 1248,
+      "array": 0.9896603657832745,
+      "pertrace": 0.9922784207865012,
+      "array_fa": 0.9879580573394984,
+      "pertrace_fa": 0.9917730573505363,
+      "ci": {
+        "array": {
+          "orig": [
+            0.9836326959131563,
+            0.9951635667724401
+          ],
+          "fa_incl": [
+            0.9821040072177898,
+            0.9934836031733041
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.9869613173177197,
+            0.9970074858728682
+          ],
+          "fa_incl": [
+            0.9863826488457796,
+            0.9966111934580849
+          ]
+        }
+      },
+      "verdict": "tie",
+      "verdict_fa": "tie"
+    },
+    "verdict_survives": true,
+    "verdict_fa_survives": true,
+    "n_dropped": 10,
+    "n_flagged_array": 6,
+    "n_flagged_pertrace": 8,
+    "n_flagged_both": 4,
+    "reproduces_submitted": {
+      "array": {
+        "published": 0.9863003107460431,
+        "recomputed": 0.9863003107460431,
+        "agrees": true
+      },
+      "pertrace": {
+        "published": 0.9859920270150098,
+        "recomputed": 0.9859920270150098,
+        "agrees": true
+      }
+    }
+  },
+  "mseel_3h": {
+    "all": {
+      "n_events": 1684,
+      "array": 0.8914383806995134,
+      "pertrace": 0.8879423404866196,
+      "array_fa": 0.8914383806995134,
+      "pertrace_fa": 0.8868537712220875,
+      "ci": {
+        "array": {
+          "orig": [
+            0.8742170054919634,
+            0.9089745237088288
+          ],
+          "fa_incl": [
+            0.8742170054919634,
+            0.9089745237088288
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.8693017384092052,
+            0.904426499474455
+          ],
+          "fa_incl": [
+            0.8683063928303117,
+            0.9032180299686426
+          ]
+        }
+      },
+      "verdict": "tie",
+      "verdict_fa": "tie"
+    },
+    "clean": {
+      "n_events": 1559,
+      "array": 0.9453660127369627,
+      "pertrace": 0.9413570066467768,
+      "array_fa": 0.9453660127369627,
+      "pertrace_fa": 0.939942654532685,
+      "ci": {
+        "array": {
+          "orig": [
+            0.9324482117888389,
+            0.9592075860595615
+          ],
+          "fa_incl": [
+            0.9324482117888389,
+            0.9592075860595615
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.927544934641364,
+            0.9549395901012314
+          ],
+          "fa_incl": [
+            0.9262611649396573,
+            0.9535017169340254
+          ]
+        }
+      },
+      "verdict": "tie",
+      "verdict_fa": "tie"
+    },
+    "verdict_survives": true,
+    "verdict_fa_survives": true,
+    "n_dropped": 125,
+    "n_flagged_array": 107,
+    "n_flagged_pertrace": 109,
+    "n_flagged_both": 91,
+    "reproduces_submitted": {
+      "array": {
+        "published": 0.8914383806995134,
+        "recomputed": 0.8914383806995134,
+        "agrees": true
+      },
+      "pertrace": {
+        "published": 0.8879423404866196,
+        "recomputed": 0.8879423404866196,
+        "agrees": true
+      }
+    }
+  },
+  "mseel_5h": {
+    "all": {
+      "n_events": 1512,
+      "array": 0.8966556389805156,
+      "pertrace": 0.8805267503981714,
+      "array_fa": 0.8966556389805156,
+      "pertrace_fa": 0.8794434765278856,
+      "ci": {
+        "array": {
+          "orig": [
+            0.8769016493917459,
+            0.9129452228217888
+          ],
+          "fa_incl": [
+            0.8769016493917459,
+            0.9129452228217888
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.8603921447241734,
+            0.8983190246411594
+          ],
+          "fa_incl": [
+            0.8593620948481587,
+            0.8972964536563958
+          ]
+        }
+      },
+      "verdict": "tie",
+      "verdict_fa": "tie"
+    },
+    "clean": {
+      "n_events": 1414,
+      "array": 0.9397131528391662,
+      "pertrace": 0.9282150947064842,
+      "array_fa": 0.9397131528391662,
+      "pertrace_fa": 0.9268032942535105,
+      "ci": {
+        "array": {
+          "orig": [
+            0.9213348281183641,
+            0.9530666694280666
+          ],
+          "fa_incl": [
+            0.9213348281183641,
+            0.9530666694280666
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.9114061539050394,
+            0.9422598675430293
+          ],
+          "fa_incl": [
+            0.9098587621973965,
+            0.9408792201455225
+          ]
+        }
+      },
+      "verdict": "tie",
+      "verdict_fa": "tie"
+    },
+    "verdict_survives": true,
+    "verdict_fa_survives": true,
+    "n_dropped": 98,
+    "n_flagged_array": 90,
+    "n_flagged_pertrace": 90,
+    "n_flagged_both": 82,
+    "reproduces_submitted": {
+      "array": {
+        "published": 0.8966556389805156,
+        "recomputed": 0.8966556389805156,
+        "agrees": true
+      },
+      "pertrace": {
+        "published": 0.8805267503981714,
+        "recomputed": 0.8805267503981714,
+        "agrees": true
+      }
+    }
+  },
+  "clearfield_mw6": {
+    "all": {
+      "n_events": 1612,
+      "array": 0.8753387532767343,
+      "pertrace": 0.8692358779663854,
+      "array_fa": 0.8753387532767343,
+      "pertrace_fa": 0.8658444268029903,
+      "ci": {
+        "array": {
+          "orig": [
+            0.8575449922521428,
+            0.889676486727304
+          ],
+          "fa_incl": [
+            0.8575449922521428,
+            0.889676486727304
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.8504771852247932,
+            0.8850111577765803
+          ],
+          "fa_incl": [
+            0.8476538630079017,
+            0.8817639162861993
+          ]
+        }
+      },
+      "verdict": "tie",
+      "verdict_fa": "tie"
+    },
+    "clean": {
+      "n_events": 1465,
+      "array": 0.9452492779058373,
+      "pertrace": 0.9436703350071551,
+      "array_fa": 0.9452492779058373,
+      "pertrace_fa": 0.9388164610471958,
+      "ci": {
+        "array": {
+          "orig": [
+            0.9352138270831081,
+            0.9557514112247434
+          ],
+          "fa_incl": [
+            0.9352138270831081,
+            0.9557514112247434
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.933148394246882,
+            0.9539657761853306
+          ],
+          "fa_incl": [
+            0.9281436254597109,
+            0.9493301570928614
+          ]
+        }
+      },
+      "verdict": "tie",
+      "verdict_fa": "tie"
+    },
+    "verdict_survives": true,
+    "verdict_fa_survives": true,
+    "n_dropped": 147,
+    "n_flagged_array": 128,
+    "n_flagged_pertrace": 132,
+    "n_flagged_both": 113,
+    "reproduces_submitted": {
+      "array": {
+        "published": 0.8753387532767343,
+        "recomputed": 0.8753387532767343,
+        "agrees": true
+      },
+      "pertrace": {
+        "published": 0.8692358779663854,
+        "recomputed": 0.8692358779663854,
+        "agrees": true
+      }
+    }
+  },
+  "pnr-2": {
+    "all": {
+      "n_events": 972,
+      "array": 0.9440352698490009,
+      "pertrace": 0.9008597349683969,
+      "array_fa": 0.8855812625099492,
+      "pertrace_fa": 0.8310149405407223,
+      "ci": {
+        "array": {
+          "orig": [
+            0.9268593968618148,
+            0.9616939697964476
+          ],
+          "fa_incl": [
+            0.8645571279982437,
+            0.9091452308729773
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.881267779773561,
+            0.9202526899925803
+          ],
+          "fa_incl": [
+            0.8035731760498268,
+            0.8552147017528811
+          ]
+        }
+      },
+      "verdict": "array",
+      "verdict_fa": "array"
+    },
+    "clean": {
+      "n_events": 947,
+      "array": 0.9699225783884247,
+      "pertrace": 0.9290580620278608,
+      "array_fa": 0.9049107367171954,
+      "pertrace_fa": 0.8510852971868743,
+      "ci": {
+        "array": {
+          "orig": [
+            0.9570321807874473,
+            0.9803601656277473
+          ],
+          "fa_incl": [
+            0.8820228122159814,
+            0.925455434236087
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.9136986255819981,
+            0.9430277836197547
+          ],
+          "fa_incl": [
+            0.8289957634548029,
+            0.8756969925821041
+          ]
+        }
+      },
+      "verdict": "array",
+      "verdict_fa": "array"
+    },
+    "verdict_survives": true,
+    "verdict_fa_survives": true,
+    "n_dropped": 25,
+    "n_flagged_array": 18,
+    "n_flagged_pertrace": 17,
+    "n_flagged_both": 10,
+    "reproduces_submitted": {
+      "array": {
+        "published": 0.9440352698490009,
+        "recomputed": 0.9440352698490009,
+        "agrees": true
+      },
+      "pertrace": {
+        "published": 0.9008597349683969,
+        "recomputed": 0.9008597349683969,
+        "agrees": true
+      }
+    }
+  },
+  "clearfield_mw4": {
+    "all": {
+      "n_events": 1254,
+      "array": 0.8516397109601058,
+      "pertrace": 0.8359254185904769,
+      "array_fa": 0.8515685494439772,
+      "pertrace_fa": 0.7732568621916658,
+      "ci": {
+        "array": {
+          "orig": [
+            0.8229652413508385,
+            0.8797412575184226
+          ],
+          "fa_incl": [
+            0.8228940434412215,
+            0.8796595394100503
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.8102826969014963,
+            0.8596884698298632
+          ],
+          "fa_incl": [
+            0.7428715887080407,
+            0.7981239031691336
+          ]
+        }
+      },
+      "verdict": "tie",
+      "verdict_fa": "array"
+    },
+    "clean": {
+      "n_events": 1194,
+      "array": 0.9234658901438377,
+      "pertrace": 0.8944204649690131,
+      "array_fa": 0.9233621799936584,
+      "pertrace_fa": 0.8079846122173389,
+      "ci": {
+        "array": {
+          "orig": [
+            0.9023101978410726,
+            0.9430218076914579
+          ],
+          "fa_incl": [
+            0.9023101978410726,
+            0.9429108266497142
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.8721169869357182,
+            0.9136217366882209
+          ],
+          "fa_incl": [
+            0.7841544859927336,
+            0.8300205637124468
+          ]
+        }
+      },
+      "verdict": "tie",
+      "verdict_fa": "array"
+    },
+    "verdict_survives": true,
+    "verdict_fa_survives": true,
+    "n_dropped": 60,
+    "n_flagged_array": 50,
+    "n_flagged_pertrace": 52,
+    "n_flagged_both": 42,
+    "reproduces_submitted": {
+      "array": {
+        "published": 0.8516397109601058,
+        "recomputed": 0.8516397109601058,
+        "agrees": true
+      },
+      "pertrace": {
+        "published": 0.8359254185904769,
+        "recomputed": 0.8359254185904769,
+        "agrees": true
+      }
+    }
+  },
+  "aneth": {
+    "all": {
+      "n_events": 298,
+      "array": 0.8835464431850897,
+      "pertrace": 0.9406445515946078,
+      "array_fa": 0.8835464431850897,
+      "pertrace_fa": 0.9406445515946078,
+      "ci": {
+        "array": {
+          "orig": [
+            0.8671978136432559,
+            0.8979690392762929
+          ],
+          "fa_incl": [
+            0.8671978136432559,
+            0.8979690392762929
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.9315151220663646,
+            0.9487988947803268
+          ],
+          "fa_incl": [
+            0.9315151220663646,
+            0.9487988947803268
+          ]
+        }
+      },
+      "verdict": "per-trace",
+      "verdict_fa": "per-trace"
+    },
+    "clean": {
+      "n_events": 273,
+      "array": 0.8950490369498689,
+      "pertrace": 0.9483957952613407,
+      "array_fa": 0.8950490369498689,
+      "pertrace_fa": 0.9483957952613407,
+      "ci": {
+        "array": {
+          "orig": [
+            0.8829333732391228,
+            0.9047121363367531
+          ],
+          "fa_incl": [
+            0.8829333732391228,
+            0.9047121363367531
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.941813986458888,
+            0.9548686489382395
+          ],
+          "fa_incl": [
+            0.941813986458888,
+            0.9548686489382395
+          ]
+        }
+      },
+      "verdict": "per-trace",
+      "verdict_fa": "per-trace"
+    },
+    "verdict_survives": true,
+    "verdict_fa_survives": true,
+    "n_dropped": 25,
+    "n_flagged_array": 21,
+    "n_flagged_pertrace": 23,
+    "n_flagged_both": 19,
+    "reproduces_submitted": {
+      "array": {
+        "published": 0.8835464431850897,
+        "recomputed": 0.8835464431850897,
+        "agrees": true
+      },
+      "pertrace": {
+        "published": 0.9406445515946078,
+        "recomputed": 0.9406445515946078,
+        "agrees": true
+      }
+    }
+  },
+  "forge_19": {
+    "all": {
+      "n_events": 1213,
+      "array": 0.5157911478859388,
+      "pertrace": 0.8555338159068931,
+      "array_fa": 0.5142459245386745,
+      "pertrace_fa": 0.8395013733112977,
+      "ci": {
+        "array": {
+          "orig": [
+            0.49747763548254315,
+            0.5332787153428583
+          ],
+          "fa_incl": [
+            0.49588107733433295,
+            0.531143257476708
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.8383993138393898,
+            0.8761930119326219
+          ],
+          "fa_incl": [
+            0.8225784483995157,
+            0.8593333889304299
+          ]
+        }
+      },
+      "verdict": "per-trace",
+      "verdict_fa": "per-trace"
+    },
+    "clean": {
+      "n_events": 1211,
+      "array": 0.5171412830736221,
+      "pertrace": 0.8580082502694326,
+      "array_fa": 0.5155761484728734,
+      "pertrace_fa": 0.8417912298221826,
+      "ci": {
+        "array": {
+          "orig": [
+            0.5002020317139929,
+            0.5349387921841636
+          ],
+          "fa_incl": [
+            0.4986648591010853,
+            0.5336025661161554
+          ]
+        },
+        "pertrace": {
+          "orig": [
+            0.8374210895177953,
+            0.8787195244138108
+          ],
+          "fa_incl": [
+            0.8205795944688851,
+            0.861828636457756
+          ]
+        }
+      },
+      "verdict": "per-trace",
+      "verdict_fa": "per-trace"
+    },
+    "verdict_survives": true,
+    "verdict_fa_survives": true,
+    "n_dropped": 2,
+    "n_flagged_array": 1,
+    "n_flagged_pertrace": 1,
+    "n_flagged_both": 0,
+    "reproduces_submitted": {
+      "array": {
+        "published": 0.5157911478859388,
+        "recomputed": 0.5157911478859388,
+        "agrees": true
+      },
+      "pertrace": {
+        "published": 0.8555338159068931,
+        "recomputed": 0.8555338159068931,
+        "agrees": true
+      }
+    }
+  }
+}

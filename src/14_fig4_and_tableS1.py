@@ -17,7 +17,7 @@ WHAT THIS SCRIPT DOES
 
         row 1  forge_19 : Z-component wiggles | predicted P map | predicted S map
         row 2  mseel_5h : Z-component wiggles | predicted P map | predicted S map
-        row 3  pooled max-probability histograms at true arrivals (P | S)
+        row 3  pooled max-score histograms at true arrivals (P | S)
                with the 0.30 detection threshold marked
 
     Ground-truth picks are overlaid on every panel with a legended marker.
@@ -122,20 +122,35 @@ def _pick_event(labels: np.ndarray, fs: float) -> tuple[int, dict]:
     allts = np.where(gt_s >= 0, gt_s, np.where(gt_p >= 0, gt_p, 0))
     tmax = allts.max(1)
     central = (tmin >= lo) & (tmax <= hi)
-    cand = np.where((npick >= MIN_PICKS) & central)[0]
-    if len(cand) == 0:
-        cand = np.where(npick >= MIN_PICKS)[0]
-    if len(cand) == 0:
-        cand = np.where(npick >= 2)[0]
+    # Fallback order matters. Reviewer 1 (round 2) observed that the mseel_5h
+    # panel of Figure 4 showed an event whose arrivals sat at the very end of
+    # the window, which is unreadable. The earlier order dropped the CENTRED
+    # test first and kept the pick-count test, which is backwards: the figure
+    # exists to be read, so stations are given up before centring is. The
+    # stage actually used is recorded, so the choice is auditable.
+    stages = [(">=MIN_PICKS and centred", (npick >= MIN_PICKS) & central),
+              (">=6 and centred", (npick >= 6) & central),
+              (">=2 and centred", (npick >= 2) & central),
+              (">=MIN_PICKS, not centred", npick >= MIN_PICKS),
+              (">=2, not centred", npick >= 2)]
+    cand, stage = np.array([], dtype=int), "none"
+    for name, mask in stages:
+        hit = np.where(mask)[0]
+        if len(hit):
+            cand, stage = hit, name
+            break
+    if not len(cand):
+        raise SystemExit("[fig4] no event carries >= 2 catalogued P picks")
     order = cand[np.argsort(np.abs(mo[cand] - med))]
     info = dict(site_median_p_moveout_ms=med,
-                arrivals_within_window_frac=[lo / T, hi / T])
+                arrivals_within_window_frac=[lo / T, hi / T],
+                selection_stage=stage, n_candidates=int(len(cand)))
     return order, npick, mo, info
 
 
 def _windowed_max(prob: np.ndarray, gt: np.ndarray,
                   half: int = 40) -> np.ndarray:
-    """Max probability within +/-half samples of the true arrival, for every
+    """Max score within +/-half samples of the true arrival, for every
     (event, station) that carries a catalogue pick. `half`=40 samples matches
     the paper's +/-20 ms scoring tolerance, so this is the quantity the pick
     rule actually thresholds when detection at the arrival is at stake."""
@@ -186,7 +201,8 @@ def _infer_site(site: str):
         ds, batch_size=TRAIN.BATCH_SIZE, shuffle=False,
         num_workers=TRAIN.NUM_WORKERS)
     preds, labels = bc.predict_grouped(model, loader, device, False, False)
-    return ds, np.asarray(preds), np.asarray(labels)
+    ctx = dict(model=model, device=device, model_mod=model_mod)
+    return ds, np.asarray(preds), np.asarray(labels), ctx
 
 
 def _gt_times(labels: np.ndarray) -> np.ndarray:
@@ -248,10 +264,89 @@ def _hist_panel(ax, vals: dict, title: str):
                 color=colors[site], label=f"{site} (held out)")
     ax.axvline(THRESHOLD, color="k", ls="--", lw=1.2,
                label=f"pick threshold = {THRESHOLD:.2f}")
-    ax.set_xlabel(r"max probability within $\pm$20 ms of the true arrival")
+    ax.set_xlabel(r"max score within $\pm$20 ms of the true arrival")
     ax.set_ylabel("density")
     ax.set_title(title, fontsize=10)
 
+
+
+def consistent_draw(ctx, ds, j: int, fs: float, tries: int = 4):
+    """Waveform, labels and prediction from ONE window draw of event j.
+
+    WHY THIS EXISTS. AMBER re-crops the analysis window on every access: its
+    __getitem__ builds `sample_rng` from (torch.initial_seed() in the main
+    process, or the worker seed inside a DataLoader) plus the index, and passes
+    it to extract_window. A waveform fetched with `ds[j][0]` AFTER a DataLoader
+    pass therefore belongs to a different window than the labels and
+    predictions that pass returned, and overlaying them puts the catalogued
+    pick markers away from the arrivals they mark. Reviewer 1 reported exactly
+    that for Figure 4 (R1-5).
+
+    So the panel must be built from a single access, with the prediction
+    computed on that access. Several draws are tried and the first one whose
+    arrivals sit inside the window and whose later energy does not swamp the
+    event is kept; otherwise the best seen is used. What was kept is reported.
+    """
+    import torch
+    best, tried = None, 0
+    for _ in range(tries):
+        tried += 1
+        x, y = ds[int(j)]
+        xn = x.numpy() if hasattr(x, "numpy") else np.asarray(x)
+        yn = y.numpy() if hasattr(y, "numpy") else np.asarray(y)
+        gt = _gt_times(yn[None])[0]
+        T = xn.shape[-1]
+        ts = gt[gt >= 0]
+        if len(ts) == 0:
+            continue
+        centred = bool(ts.min() >= 0.08 * T and ts.max() <= 0.85 * T)
+        r = _late_energy_ratio(xn[2], gt.ravel(), fs)
+        key = (0 if centred else 1, float(r))
+        if best is None or key < best[0]:
+            best = (key, xn, gt, centred, float(r))
+        if centred and r < 0.8:
+            break
+    if best is None:
+        raise SystemExit(f"[fig4] event {j}: no draw carried a catalogued arrival")
+    _, xn, gt, centred, r = best
+    with torch.no_grad():
+        t = torch.as_tensor(xn)[None].to(ctx["device"])
+        prob = ctx["model_mod"].MoiraiPickerL3.activate(ctx["model"](t))
+    prob = prob[0].detach().cpu().numpy()
+    info = dict(draws_tried=tried, draw_centred=centred,
+                late_energy_ratio=float(r))
+    return xn[2], prob, gt, info
+
+
+def pick_panel(ctx, ds, order, fs, n_events: int = 40, draws: int = 4):
+    """Choose the event AND the window draw that the panel will show.
+
+    Two things must hold at once. The panel must be self-consistent — waveform,
+    labels and prediction from ONE access (consistent_draw) — and it must be
+    readable: the labelled arrivals inside the window, and no later arrival
+    swamping them under per-station normalisation.
+
+    Those are different failure modes and need different remedies. A badly
+    placed window is cured by drawing again; a neighbouring event that is
+    simply larger is not, and needs a different event. So this searches over
+    candidate events, nearest the site median first, and over a few draws of
+    each, and stops at the first that satisfies both. If none does, the best
+    seen is used and the reason is recorded rather than hidden.
+    """
+    best = None
+    for n, j in enumerate(order[:n_events], 1):
+        wz, prob, gt, dinfo = consistent_draw(ctx, ds, int(j), fs, tries=draws)
+        key = (0 if dinfo["draw_centred"] else 1, dinfo["late_energy_ratio"])
+        if best is None or key < best[0]:
+            best = (key, int(j), wz, prob, gt, dinfo, n)
+        if dinfo["draw_centred"] and dinfo["late_energy_ratio"] < 0.8:
+            dinfo["events_tried"] = n
+            dinfo["panel_ok"] = True
+            return int(j), wz, prob, gt, dinfo
+    _, j, wz, prob, gt, dinfo, n = best
+    dinfo["events_tried"] = min(len(order), n_events)
+    dinfo["panel_ok"] = False
+    return j, wz, prob, gt, dinfo
 
 def make_fig4(payload: dict, out_pdf: Path):
     """payload[site] = dict(waves_z=(S,T), prob=(3,S,T), gt=(2,S),
@@ -271,15 +366,15 @@ def make_fig4(payload: dict, out_pdf: Path):
         axes[i, 0].set_title(f"{site} — Z-component waveforms", fontsize=10)
         imP, hG = _prob_panel(axes[i, 1], d["prob"][0], d["gt"][0], d["fs"], "Blues")
         handles.setdefault("catalogued pick (ground truth)", hG)
-        axes[i, 1].set_title(f"{site} — predicted P probability", fontsize=10)
+        axes[i, 1].set_title(f"{site} — predicted P score", fontsize=10)
         imS, _ = _prob_panel(axes[i, 2], d["prob"][1], d["gt"][1], d["fs"], "Reds")
-        axes[i, 2].set_title(f"{site} — predicted S probability", fontsize=10)
+        axes[i, 2].set_title(f"{site} — predicted S score", fontsize=10)
         fig.colorbar(imP, ax=axes[i, 1], fraction=0.045, pad=0.02)
         fig.colorbar(imS, ax=axes[i, 2], fraction=0.045, pad=0.02)
     _hist_panel(axes[2, 0], {s: payload[s]["hist_P"] for s in SITES_FIG4},
-                "Max P probability where a true P exists")
+                "Max P score where a true P exists")
     _hist_panel(axes[2, 1], {s: payload[s]["hist_S"] for s in SITES_FIG4},
-                "Max S probability where a true S exists")
+                "Max S score where a true S exists")
     # dedicated legend axis (right cell of the bottom row): nothing overlaps
     axL = axes[2, 2]
     axL.axis("off")
@@ -289,7 +384,7 @@ def make_fig4(payload: dict, out_pdf: Path):
                             handles.get("catalogued pick (ground truth)")) if h]
     marker_l = [l for l, h in (("P pick (catalogue)", handles.get("P pick (catalogue)")),
                                ("S pick (catalogue)", handles.get("S pick (catalogue)")),
-                               ("catalogued pick on probability maps",
+                               ("catalogued pick on score maps",
                                 handles.get("catalogued pick (ground truth)"))) if h]
     axL.legend(marker_h + hh, marker_l + ll, loc="center left", frameon=True,
                framealpha=0.95, edgecolor="0.8", fontsize=9,
@@ -307,33 +402,27 @@ def run_fig4():
     fs = float(getattr(DATA, "SAMPLE_RATE", 2000.0))
     payload, choice = {}, {}
     for site in SITES_FIG4:
-        ds, preds, labels = _infer_site(site)
+        ds, preds, labels, ctx = _infer_site(site)
         gt_all = _gt_times(labels)                       # (E,2,S)
         order, npick, mo, info = _pick_event(labels, fs)
-        idx, waves, best = None, None, (np.inf, None, None)
-        for j in order[:40]:                             # nearest-median first
-            w = ds[int(j)][0]
-            w = w.numpy() if hasattr(w, "numpy") else np.asarray(w)
-            r = _late_energy_ratio(w[2], gt_all[int(j)].ravel(), fs)
-            if r < best[0]:
-                best = (r, int(j), w)
-            if r < 0.8:                                  # primary dominates
-                idx, waves = int(j), w
-                break
-        if idx is None:                                  # fallback: cleanest seen
-            _, idx, waves = best
-            r = best[0]
+        # Search candidate events AND window draws: one access per panel keeps
+        # the markers on the arrivals (R1-5), and the event search keeps a
+        # larger neighbouring arrival out of the panel.
+        idx, waves_z, prob, gt, dinfo = pick_panel(ctx, ds, order, fs)
         info.update(event_index=idx, n_p_picks=int(npick[idx]),
-                    p_moveout_ms=float(mo[idx]),
-                    late_energy_ratio=float(r))
+                    p_moveout_ms=float(mo[idx]), **dinfo)
         choice[site] = info
         hist_P = _windowed_max(preds[:, 0], gt_all[:, 0])
         hist_S = _windowed_max(preds[:, 1], gt_all[:, 1])
-        payload[site] = dict(waves_z=waves[2], prob=preds[idx], gt=gt_all[idx],
+        payload[site] = dict(waves_z=waves_z, prob=prob, gt=gt,
                              hist_P=hist_P, hist_S=hist_S, fs=fs)
         print(f"[fig4] {site}: event {idx} "
               f"(P picks {info['n_p_picks']}, moveout {info['p_moveout_ms']:.1f} ms; "
-              f"site median {info['site_median_p_moveout_ms']:.1f} ms)")
+              f"site median {info['site_median_p_moveout_ms']:.1f} ms; "
+              f"events {dinfo['events_tried']}, draws {dinfo['draws_tried']}, "
+              f"centred {dinfo['draw_centred']}, "
+              f"late-energy {dinfo['late_energy_ratio']:.2f}, "
+              f"ok {dinfo['panel_ok']})")
     make_fig4(payload, cfg.PDF_DIR / "14_a_fig4_diagnosis.pdf")
     out = cfg.LOGS_DIR / "14_fig4_event_choice.json"
     out.write_text(json.dumps(choice, indent=2))
@@ -480,7 +569,7 @@ def selftest():
     z2 = z.copy(); z2[:, 1400:1600] = 5.0        # later, larger burst
     assert _late_energy_ratio(z2, gt2, fs) > 3.0
 
-    # windowed max: probability peak away from the arrival must NOT count
+    # windowed max: score peak away from the arrival must NOT count
     pr = np.zeros((1, 1, 2048), np.float32)
     pr[0, 0, 1500] = 0.9                    # spurious late ridge
     pr[0, 0, 400] = 0.2                     # weak response at the arrival
@@ -495,6 +584,132 @@ def selftest():
     assert abs(g["vertical_extent_m"] - 330.0) < 1e-6
     assert abs(g["aperture_3d_m"] - 330.0) < 1e-6
     assert abs(g["median_spacing_m"] - 30.0) < 1e-6
+    # consistent_draw: a dataset that re-crops on EVERY access must not be
+    # able to desynchronise the waveform from the labels drawn over it. This is
+    # the R1-5 defect: AMBER redraws the window per access, the waveform was
+    # fetched separately from the labels, and the markers landed on quiet
+    # traces. The fake dataset below reproduces that behaviour exactly.
+    import sys as _sys, types as _types, importlib.util as _ilu
+
+    class _RedrawDS:
+        """Every access crops the same event at a NEW random offset."""
+        def __init__(self, S=12, T=2048, seed=0):
+            self.S, self.T, self.rng, self.calls = S, T, np.random.default_rng(seed), 0
+
+        def __getitem__(self, i):
+            self.calls += 1
+            off = int(self.rng.integers(int(0.10 * self.T), int(0.55 * self.T)))
+            x = np.zeros((3, self.S, self.T), np.float32)
+            y = np.zeros((3, self.S, self.T), np.float32)
+            for st in range(self.S):
+                tp, ts = off + 6 * st, off + 300 + 10 * st
+                x[2, st, tp:tp + 40] = 1.0            # burst exactly at the P time
+                y[0, st, tp] = 1.0                    # label peaks ON the onset
+                y[1, st, ts] = 1.0
+            return x, y
+
+    if _ilu.find_spec("torch") is None:               # sandbox: stand in for torch
+        class _T(np.ndarray):
+            def to(self, d): return self
+            def detach(self): return self
+            def cpu(self): return self
+            def numpy(self): return np.asarray(self)
+        class _NG:
+            def __enter__(self): return None
+            def __exit__(self, *a): return False
+        _fake = _types.ModuleType("torch")
+        _fake.no_grad = lambda: _NG()
+        _fake.as_tensor = lambda a: np.asarray(a).view(_T)
+        _sys.modules["torch"] = _fake
+
+    _ctx = dict(model=lambda t: t, device="cpu",
+                model_mod=_types.SimpleNamespace(
+                    MoiraiPickerL3=_types.SimpleNamespace(activate=lambda z: z)))
+    _ds = _RedrawDS()
+    wz, prob, gt, dinfo = consistent_draw(_ctx, _ds, 0, 2000.0)
+    assert wz.shape == (12, 2048), wz.shape
+    assert prob.shape == (3, 12, 2048), prob.shape
+    # every catalogued P must sit on a burst of the waveform ACTUALLY returned
+    for st in range(12):
+        tp = int(gt[0, st])
+        assert wz[st, tp] > 0.5, (
+            f"station {st}: marker at {tp} is not on the waveform returned "
+            f"with it — the draw is not self-consistent")
+    assert dinfo["draw_centred"] is True, dinfo
+    # and the prediction must belong to the SAME draw as the waveform
+    assert np.allclose(prob[2], wz), "prediction is not from the returned draw"
+
+    # pick_panel: when the nearest-median event is PERMANENTLY swamped by a
+    # later arrival, no amount of redrawing helps and another event must be
+    # taken. Dropping that search is what left clearfield_mw4 with a bigger
+    # neighbouring arrival filling its panel.
+    class _TwoEventDS:
+        """Event 0 always carries a huge later burst; event 1 never does."""
+        def __init__(self, S=12, T=2048, seed=1):
+            self.S, self.T, self.rng = S, T, np.random.default_rng(seed)
+            self.seen = []
+
+        def __getitem__(self, i):
+            self.seen.append(int(i))
+            off = int(self.rng.integers(int(0.15 * self.T), int(0.40 * self.T)))
+            x = np.zeros((3, self.S, self.T), np.float32)
+            y = np.zeros((3, self.S, self.T), np.float32)
+            for st in range(self.S):
+                tp, ts = off + 6 * st, off + 200 + 8 * st
+                x[2, st, tp:tp + 40] = 1.0
+                y[0, st, tp] = 1.0
+                y[1, st, ts] = 1.0
+                if int(i) == 0:                       # a much larger later event
+                    x[2, st, int(0.80 * self.T):int(0.80 * self.T) + 60] = 9.0
+            return x, y
+
+    _ds2 = _TwoEventDS()
+    j, wz2, _, gt2, info2 = pick_panel(_ctx, _ds2, np.array([0, 1]), 2000.0)
+    assert j == 1, f"swamped event {j} was kept instead of moving on"
+    assert info2["panel_ok"] is True, info2
+    assert info2["late_energy_ratio"] < 0.8, info2
+    assert info2["events_tried"] == 2, info2
+    assert 0 in _ds2.seen, "the first candidate was never tried"
+    for st in range(12):                              # still self-consistent
+        assert wz2[st, int(gt2[0, st])] > 0.5, st
+
+    # and when the first candidate is already good, it is kept
+    class _GoodDS(_TwoEventDS):
+        def __getitem__(self, i):
+            x, y = super().__getitem__(1)             # never swamped
+            return x, y
+    _ds3 = _GoodDS()
+    j3, _, _, _, info3 = pick_panel(_ctx, _ds3, np.array([0, 1]), 2000.0)
+    assert j3 == 0 and info3["events_tried"] == 1, (j3, info3)
+
+    # a second, independent access must give a DIFFERENT window — i.e. the
+    # fake dataset really does reproduce the behaviour this guards against
+    x2, _ = _ds[0]
+    assert not np.allclose(x2[2], wz), "the fake dataset did not redraw"
+
+    # _pick_event: a centred event with FEWER picks must beat a full-pick
+    # event jammed against the end of the window (reviewer 1, R1-5).
+    T = 2048
+    labels = np.zeros((2, 3, 12, T), np.float32)
+    # event 0: all 12 stations, but arrivals at 0.90-0.96 T  (not centred)
+    for st in range(12):
+        labels[0, 0, st, int(0.90 * T) + st] = 1.0
+        labels[0, 1, st, int(0.95 * T) + st] = 1.0
+    # event 1: only 7 stations, arrivals near the middle       (centred)
+    for st in range(7):
+        labels[1, 0, st, int(0.35 * T) + st] = 1.0
+        labels[1, 1, st, int(0.45 * T) + st] = 1.0
+    order, npick, mo, info = _pick_event(labels, 2000.0)
+    assert npick[0] == 12 and npick[1] == 7, (npick[0], npick[1])
+    assert order[0] == 1, f"centred event not preferred: order={order}"
+    assert info["selection_stage"] == ">=6 and centred", info["selection_stage"]
+    # and when a centred event DOES carry enough picks, it wins at stage 1
+    labels2 = labels.copy()
+    for st in range(7, 12):
+        labels2[1, 0, st, int(0.35 * T) + st] = 1.0
+    _, _, _, info2 = _pick_event(labels2, 2000.0)
+    assert info2["selection_stage"] == ">=MIN_PICKS and centred", info2
+
     # alias matching
     assert _match_site("FORGE_Geothermal_2019") == "forge_19"
     assert _match_site("PNR-1") == "pnr-1"

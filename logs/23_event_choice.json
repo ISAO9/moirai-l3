@@ -1,0 +1,104 @@
+{
+  "pnr-1": {
+    "site_median_p_moveout_ms": 62.0,
+    "arrivals_within_window_frac": [
+      0.07958984375,
+      0.849609375
+    ],
+    "selection_stage": ">=MIN_PICKS and centred",
+    "n_candidates": 425,
+    "event_index": 1254,
+    "n_p_picks": 12,
+    "p_moveout_ms": 62.0,
+    "draws_tried": 1,
+    "draw_centred": true,
+    "late_energy_ratio": 0.28456518054008484,
+    "events_tried": 1,
+    "panel_ok": true
+  },
+  "mseel_3h": {
+    "site_median_p_moveout_ms": 31.5,
+    "arrivals_within_window_frac": [
+      0.07958984375,
+      0.849609375
+    ],
+    "selection_stage": ">=MIN_PICKS and centred",
+    "n_candidates": 481,
+    "event_index": 74,
+    "n_p_picks": 12,
+    "p_moveout_ms": 31.5,
+    "draws_tried": 1,
+    "draw_centred": true,
+    "late_energy_ratio": 0.5836732983589172,
+    "events_tried": 2,
+    "panel_ok": true
+  },
+  "clearfield_mw6": {
+    "site_median_p_moveout_ms": 25.0,
+    "arrivals_within_window_frac": [
+      0.07958984375,
+      0.849609375
+    ],
+    "selection_stage": ">=MIN_PICKS and centred",
+    "n_candidates": 429,
+    "event_index": 128,
+    "n_p_picks": 12,
+    "p_moveout_ms": 25.0,
+    "draws_tried": 1,
+    "draw_centred": true,
+    "late_energy_ratio": 0.3855036795139313,
+    "events_tried": 1,
+    "panel_ok": true
+  },
+  "pnr-2": {
+    "site_median_p_moveout_ms": 35.0,
+    "arrivals_within_window_frac": [
+      0.07958984375,
+      0.849609375
+    ],
+    "selection_stage": ">=MIN_PICKS and centred",
+    "n_candidates": 230,
+    "event_index": 1,
+    "n_p_picks": 12,
+    "p_moveout_ms": 35.0,
+    "draws_tried": 1,
+    "draw_centred": true,
+    "late_energy_ratio": 0.202626571059227,
+    "events_tried": 1,
+    "panel_ok": true
+  },
+  "clearfield_mw4": {
+    "site_median_p_moveout_ms": 25.0,
+    "arrivals_within_window_frac": [
+      0.07958984375,
+      0.849609375
+    ],
+    "selection_stage": ">=MIN_PICKS and centred",
+    "n_candidates": 184,
+    "event_index": 1242,
+    "n_p_picks": 12,
+    "p_moveout_ms": 24.5,
+    "draws_tried": 1,
+    "draw_centred": true,
+    "late_energy_ratio": 0.15802116692066193,
+    "events_tried": 6,
+    "panel_ok": true
+  },
+  "aneth": {
+    "site_median_p_moveout_ms": 6.0,
+    "arrivals_within_window_frac": [
+      0.07958984375,
+      0.849609375
+    ],
+    "selection_stage": ">=MIN_PICKS and centred",
+    "n_candidates": 285,
+    "event_index": 15,
+    "n_p_picks": 11,
+    "p_moveout_ms": 6.5,
+    "draws_tried": 1,
+    "draw_centred": true,
+    "late_energy_ratio": 0.7658198475837708,
+    "events_tried": 39,
+    "panel_ok": true
+  }
+}

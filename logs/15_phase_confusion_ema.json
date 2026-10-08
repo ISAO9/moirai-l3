@@ -1,0 +1,962 @@
+{
+  "aneth__array": {
+    "site": "aneth",
+    "config": "array",
+    "P": {
+      "n_picks": 3434,
+      "on_phase": 3132,
+      "cross": 16,
+      "elsewhere": 286,
+      "frac_on_phase": 0.9120559114735003,
+      "frac_cross": 0.004659289458357601,
+      "frac_elsewhere": 0.08328479906814211,
+      "frac_cross_of_missed": 0.052980132450331126,
+      "n_missed": 302,
+      "n_missed_with_other_arrival": 102,
+      "other_phase": "S",
+      "residuals": {
+        "n": 3126,
+        "own_ms_q25_med_q75": [
+          0.5,
+          2.0,
+          4.5
+        ],
+        "other_ms_q25_med_q75": [
+          -213.5,
+          -196.5,
+          -181.0
+        ],
+        "frac_between_phases": 0.005758157389635317,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 3483,
+      "on_phase": 2785,
+      "cross": 2,
+      "elsewhere": 696,
+      "frac_on_phase": 0.7995980476600631,
+      "frac_cross": 0.0005742176284811944,
+      "frac_elsewhere": 0.19982773471145565,
+      "frac_cross_of_missed": 0.0028653295128939827,
+      "n_missed": 698,
+      "n_missed_with_other_arrival": 440,
+      "other_phase": "P",
+      "residuals": {
+        "n": 3114,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          1.5,
+          7.5
+        ],
+        "other_ms_q25_med_q75": [
+          186.5,
+          202.25,
+          222.5
+        ],
+        "frac_between_phases": 0.018625561978163133,
+        "other_phase": "P"
+      }
+    }
+  },
+  "aneth__pertrace": {
+    "site": "aneth",
+    "config": "pertrace",
+    "P": {
+      "n_picks": 3251,
+      "on_phase": 3149,
+      "cross": 13,
+      "elsewhere": 89,
+      "frac_on_phase": 0.9686250384497078,
+      "frac_cross": 0.003998769609350969,
+      "frac_elsewhere": 0.02737619194094125,
+      "frac_cross_of_missed": 0.12745098039215685,
+      "n_missed": 102,
+      "n_missed_with_other_arrival": 58,
+      "other_phase": "S",
+      "residuals": {
+        "n": 3142,
+        "own_ms_q25_med_q75": [
+          -0.5,
+          0.5,
+          2.0
+        ],
+        "other_ms_q25_med_q75": [
+          -214.5,
+          -199.5,
+          -185.0
+        ],
+        "frac_between_phases": 0.003182686187141948,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 3251,
+      "on_phase": 2957,
+      "cross": 2,
+      "elsewhere": 292,
+      "frac_on_phase": 0.9095662872962166,
+      "frac_cross": 0.0006151953245155337,
+      "frac_elsewhere": 0.08981851737926792,
+      "frac_cross_of_missed": 0.006802721088435374,
+      "n_missed": 294,
+      "n_missed_with_other_arrival": 231,
+      "other_phase": "P",
+      "residuals": {
+        "n": 3128,
+        "own_ms_q25_med_q75": [
+          -4.0,
+          -2.0,
+          0.5
+        ],
+        "other_ms_q25_med_q75": [
+          183.0,
+          198.0,
+          215.0
+        ],
+        "frac_between_phases": 0.026854219948849106,
+        "other_phase": "P"
+      }
+    }
+  },
+  "clearfield_mw4__array": {
+    "site": "clearfield_mw4",
+    "config": "array",
+    "P": {
+      "n_picks": 2962,
+      "on_phase": 2448,
+      "cross": 7,
+      "elsewhere": 507,
+      "frac_on_phase": 0.8264686022957461,
+      "frac_cross": 0.002363268062120189,
+      "frac_elsewhere": 0.17116812964213368,
+      "frac_cross_of_missed": 0.013618677042801557,
+      "n_missed": 514,
+      "n_missed_with_other_arrival": 440,
+      "other_phase": "S",
+      "residuals": {
+        "n": 2583,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          0.0,
+          1.5
+        ],
+        "other_ms_q25_med_q75": [
+          -64.5,
+          -51.5,
+          -33.5
+        ],
+        "frac_between_phases": 0.004645760743321719,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 3041,
+      "on_phase": 2470,
+      "cross": 15,
+      "elsewhere": 556,
+      "frac_on_phase": 0.8122328181519237,
+      "frac_cross": 0.004932587964485367,
+      "frac_elsewhere": 0.1828345938835909,
+      "frac_cross_of_missed": 0.02626970227670753,
+      "n_missed": 571,
+      "n_missed_with_other_arrival": 464,
+      "other_phase": "P",
+      "residuals": {
+        "n": 2596,
+        "own_ms_q25_med_q75": [
+          -1.5,
+          0.0,
+          2.0
+        ],
+        "other_ms_q25_med_q75": [
+          45.5,
+          56.5,
+          69.0
+        ],
+        "frac_between_phases": 0.001926040061633282,
+        "other_phase": "P"
+      }
+    }
+  },
+  "clearfield_mw4__pertrace": {
+    "site": "clearfield_mw4",
+    "config": "pertrace",
+    "P": {
+      "n_picks": 2724,
+      "on_phase": 2252,
+      "cross": 45,
+      "elsewhere": 427,
+      "frac_on_phase": 0.8267254038179148,
+      "frac_cross": 0.016519823788546256,
+      "frac_elsewhere": 0.1567547723935389,
+      "frac_cross_of_missed": 0.09533898305084745,
+      "n_missed": 472,
+      "n_missed_with_other_arrival": 448,
+      "other_phase": "S",
+      "residuals": {
+        "n": 2481,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          0.0,
+          1.0
+        ],
+        "other_ms_q25_med_q75": [
+          -65.0,
+          -51.5,
+          -31.0
+        ],
+        "frac_between_phases": 0.006449012494961709,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 2907,
+      "on_phase": 2420,
+      "cross": 31,
+      "elsewhere": 456,
+      "frac_on_phase": 0.8324733402132783,
+      "frac_cross": 0.010663914688682491,
+      "frac_elsewhere": 0.1568627450980392,
+      "frac_cross_of_missed": 0.06365503080082136,
+      "n_missed": 487,
+      "n_missed_with_other_arrival": 424,
+      "other_phase": "P",
+      "residuals": {
+        "n": 2567,
+        "own_ms_q25_med_q75": [
+          -1.5,
+          0.0,
+          1.5
+        ],
+        "other_ms_q25_med_q75": [
+          43.5,
+          54.5,
+          68.5
+        ],
+        "frac_between_phases": 0.006622516556291391,
+        "other_phase": "P"
+      }
+    }
+  },
+  "clearfield_mw6__array": {
+    "site": "clearfield_mw6",
+    "config": "array",
+    "P": {
+      "n_picks": 6978,
+      "on_phase": 5974,
+      "cross": 54,
+      "elsewhere": 950,
+      "frac_on_phase": 0.8561192318715964,
+      "frac_cross": 0.007738607050730868,
+      "frac_elsewhere": 0.13614216107767269,
+      "frac_cross_of_missed": 0.053784860557768925,
+      "n_missed": 1004,
+      "n_missed_with_other_arrival": 920,
+      "other_phase": "S",
+      "residuals": {
+        "n": 6483,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          0.0,
+          1.5
+        ],
+        "other_ms_q25_med_q75": [
+          -75.0,
+          -56.5,
+          -42.0
+        ],
+        "frac_between_phases": 0.010334721579515656,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 7288,
+      "on_phase": 6274,
+      "cross": 4,
+      "elsewhere": 1010,
+      "frac_on_phase": 0.860867178924259,
+      "frac_cross": 0.0005488474204171241,
+      "frac_elsewhere": 0.13858397365532382,
+      "frac_cross_of_missed": 0.0039447731755424065,
+      "n_missed": 1014,
+      "n_missed_with_other_arrival": 819,
+      "other_phase": "P",
+      "residuals": {
+        "n": 6573,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          0.0,
+          2.0
+        ],
+        "other_ms_q25_med_q75": [
+          49.0,
+          64.0,
+          81.5
+        ],
+        "frac_between_phases": 0.00243420051726761,
+        "other_phase": "P"
+      }
+    }
+  },
+  "clearfield_mw6__pertrace": {
+    "site": "clearfield_mw6",
+    "config": "pertrace",
+    "P": {
+      "n_picks": 6957,
+      "on_phase": 5937,
+      "cross": 52,
+      "elsewhere": 968,
+      "frac_on_phase": 0.8533850797757654,
+      "frac_cross": 0.007474486129078626,
+      "frac_elsewhere": 0.13914043409515595,
+      "frac_cross_of_missed": 0.050980392156862744,
+      "n_missed": 1020,
+      "n_missed_with_other_arrival": 956,
+      "other_phase": "S",
+      "residuals": {
+        "n": 6504,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          0.0,
+          1.0
+        ],
+        "other_ms_q25_med_q75": [
+          -75.5,
+          -56.5,
+          -42.0
+        ],
+        "frac_between_phases": 0.016297662976629768,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 7177,
+      "on_phase": 6169,
+      "cross": 5,
+      "elsewhere": 1003,
+      "frac_on_phase": 0.8595513445729414,
+      "frac_cross": 0.0006966699177929497,
+      "frac_elsewhere": 0.1397519855092657,
+      "frac_cross_of_missed": 0.00496031746031746,
+      "n_missed": 1008,
+      "n_missed_with_other_arrival": 871,
+      "other_phase": "P",
+      "residuals": {
+        "n": 6558,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          0.0,
+          1.0
+        ],
+        "other_ms_q25_med_q75": [
+          48.5,
+          63.5,
+          80.5
+        ],
+        "frac_between_phases": 0.006099420555047271,
+        "other_phase": "P"
+      }
+    }
+  },
+  "forge_19__array": {
+    "site": "forge_19",
+    "config": "array",
+    "P": {
+      "n_picks": 2023,
+      "on_phase": 367,
+      "cross": 463,
+      "elsewhere": 1193,
+      "frac_on_phase": 0.1814137419673752,
+      "frac_cross": 0.22886801779535343,
+      "frac_elsewhere": 0.5897182402372714,
+      "frac_cross_of_missed": 0.27958937198067635,
+      "n_missed": 1656,
+      "n_missed_with_other_arrival": 1478,
+      "other_phase": "S",
+      "residuals": {
+        "n": 1767,
+        "own_ms_q25_med_q75": [
+          11.5,
+          146.0,
+          158.0
+        ],
+        "other_ms_q25_med_q75": [
+          -145.5,
+          -43.5,
+          -18.0
+        ],
+        "frac_between_phases": 0.48217317487266553,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 2448,
+      "on_phase": 2016,
+      "cross": 130,
+      "elsewhere": 302,
+      "frac_on_phase": 0.8235294117647058,
+      "frac_cross": 0.05310457516339869,
+      "frac_elsewhere": 0.12336601307189543,
+      "frac_cross_of_missed": 0.30092592592592593,
+      "n_missed": 432,
+      "n_missed_with_other_arrival": 203,
+      "other_phase": "P",
+      "residuals": {
+        "n": 2086,
+        "own_ms_q25_med_q75": [
+          -2.0,
+          0.5,
+          2.0
+        ],
+        "other_ms_q25_med_q75": [
+          167.5,
+          184.0,
+          199.5
+        ],
+        "frac_between_phases": 0.0009587727708533077,
+        "other_phase": "P"
+      }
+    }
+  },
+  "forge_19__pertrace": {
+    "site": "forge_19",
+    "config": "pertrace",
+    "P": {
+      "n_picks": 1873,
+      "on_phase": 1544,
+      "cross": 10,
+      "elsewhere": 319,
+      "frac_on_phase": 0.8243459690336359,
+      "frac_cross": 0.005339028296849973,
+      "frac_elsewhere": 0.17031500266951416,
+      "frac_cross_of_missed": 0.030395136778115502,
+      "n_missed": 329,
+      "n_missed_with_other_arrival": 319,
+      "other_phase": "S",
+      "residuals": {
+        "n": 1821,
+        "own_ms_q25_med_q75": [
+          -1.5,
+          0.0,
+          1.5
+        ],
+        "other_ms_q25_med_q75": [
+          -198.5,
+          -180.0,
+          -162.0
+        ],
+        "frac_between_phases": 0.14991762767710048,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 2171,
+      "on_phase": 2107,
+      "cross": 0,
+      "elsewhere": 64,
+      "frac_on_phase": 0.9705204974666053,
+      "frac_cross": 0.0,
+      "frac_elsewhere": 0.02947950253339475,
+      "frac_cross_of_missed": 0.0,
+      "n_missed": 64,
+      "n_missed_with_other_arrival": 43,
+      "other_phase": "P",
+      "residuals": {
+        "n": 2068,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          0.0,
+          1.5
+        ],
+        "other_ms_q25_med_q75": [
+          168.5,
+          184.5,
+          200.5
+        ],
+        "frac_between_phases": 0.005802707930367505,
+        "other_phase": "P"
+      }
+    }
+  },
+  "mseel_3h__array": {
+    "site": "mseel_3h",
+    "config": "array",
+    "P": {
+      "n_picks": 8144,
+      "on_phase": 7294,
+      "cross": 44,
+      "elsewhere": 806,
+      "frac_on_phase": 0.8956286836935167,
+      "frac_cross": 0.0054027504911591355,
+      "frac_elsewhere": 0.09896856581532416,
+      "frac_cross_of_missed": 0.05176470588235294,
+      "n_missed": 850,
+      "n_missed_with_other_arrival": 841,
+      "other_phase": "S",
+      "residuals": {
+        "n": 7921,
+        "own_ms_q25_med_q75": [
+          -0.5,
+          0.0,
+          1.0
+        ],
+        "other_ms_q25_med_q75": [
+          -65.5,
+          -52.5,
+          -37.5
+        ],
+        "frac_between_phases": 0.009089761393763414,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 8198,
+      "on_phase": 7189,
+      "cross": 5,
+      "elsewhere": 1004,
+      "frac_on_phase": 0.8769212002927543,
+      "frac_cross": 0.0006099048548426446,
+      "frac_elsewhere": 0.12246889485240303,
+      "frac_cross_of_missed": 0.004955401387512388,
+      "n_missed": 1009,
+      "n_missed_with_other_arrival": 987,
+      "other_phase": "P",
+      "residuals": {
+        "n": 7951,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          0.0,
+          1.5
+        ],
+        "other_ms_q25_med_q75": [
+          44.0,
+          57.5,
+          71.0
+        ],
+        "frac_between_phases": 0.0036473399572380834,
+        "other_phase": "P"
+      }
+    }
+  },
+  "mseel_3h__pertrace": {
+    "site": "mseel_3h",
+    "config": "pertrace",
+    "P": {
+      "n_picks": 8163,
+      "on_phase": 7289,
+      "cross": 58,
+      "elsewhere": 816,
+      "frac_on_phase": 0.8929315202744089,
+      "frac_cross": 0.0071052309200049,
+      "frac_elsewhere": 0.09996324880558619,
+      "frac_cross_of_missed": 0.06636155606407322,
+      "n_missed": 874,
+      "n_missed_with_other_arrival": 864,
+      "other_phase": "S",
+      "residuals": {
+        "n": 7943,
+        "own_ms_q25_med_q75": [
+          -0.5,
+          0.0,
+          1.0
+        ],
+        "other_ms_q25_med_q75": [
+          -65.5,
+          -52.5,
+          -37.5
+        ],
+        "frac_between_phases": 0.011330731461664358,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 8189,
+      "on_phase": 7143,
+      "cross": 13,
+      "elsewhere": 1033,
+      "frac_on_phase": 0.8722676761509341,
+      "frac_cross": 0.0015874954206862866,
+      "frac_elsewhere": 0.12614482842837954,
+      "frac_cross_of_missed": 0.0124282982791587,
+      "n_missed": 1046,
+      "n_missed_with_other_arrival": 1025,
+      "other_phase": "P",
+      "residuals": {
+        "n": 7956,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          0.0,
+          1.5
+        ],
+        "other_ms_q25_med_q75": [
+          44.0,
+          57.5,
+          71.0
+        ],
+        "frac_between_phases": 0.0016339869281045752,
+        "other_phase": "P"
+      }
+    }
+  },
+  "mseel_5h__array": {
+    "site": "mseel_5h",
+    "config": "array",
+    "P": {
+      "n_picks": 6024,
+      "on_phase": 5499,
+      "cross": 133,
+      "elsewhere": 392,
+      "frac_on_phase": 0.9128486055776892,
+      "frac_cross": 0.02207835325365206,
+      "frac_elsewhere": 0.0650730411686587,
+      "frac_cross_of_missed": 0.25333333333333335,
+      "n_missed": 525,
+      "n_missed_with_other_arrival": 517,
+      "other_phase": "S",
+      "residuals": {
+        "n": 5907,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          0.0,
+          1.0
+        ],
+        "other_ms_q25_med_q75": [
+          -77.5,
+          -60.0,
+          -42.0
+        ],
+        "frac_between_phases": 0.01303538175046555,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 6023,
+      "on_phase": 5340,
+      "cross": 74,
+      "elsewhere": 609,
+      "frac_on_phase": 0.8866013614477835,
+      "frac_cross": 0.012286236094969285,
+      "frac_elsewhere": 0.10111240245724722,
+      "frac_cross_of_missed": 0.10834553440702782,
+      "n_missed": 683,
+      "n_missed_with_other_arrival": 671,
+      "other_phase": "P",
+      "residuals": {
+        "n": 5891,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          0.0,
+          2.0
+        ],
+        "other_ms_q25_med_q75": [
+          48.0,
+          66.0,
+          82.5
+        ],
+        "frac_between_phases": 0.004413512137158377,
+        "other_phase": "P"
+      }
+    }
+  },
+  "mseel_5h__pertrace": {
+    "site": "mseel_5h",
+    "config": "pertrace",
+    "P": {
+      "n_picks": 6071,
+      "on_phase": 5373,
+      "cross": 175,
+      "elsewhere": 523,
+      "frac_on_phase": 0.8850271783890628,
+      "frac_cross": 0.028825564157469938,
+      "frac_elsewhere": 0.08614725745346731,
+      "frac_cross_of_missed": 0.2507163323782235,
+      "n_missed": 698,
+      "n_missed_with_other_arrival": 687,
+      "other_phase": "S",
+      "residuals": {
+        "n": 5930,
+        "own_ms_q25_med_q75": [
+          -0.5,
+          0.0,
+          1.5
+        ],
+        "other_ms_q25_med_q75": [
+          -77.0,
+          -59.5,
+          -40.5
+        ],
+        "frac_between_phases": 0.023777403035413154,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 6125,
+      "on_phase": 5333,
+      "cross": 54,
+      "elsewhere": 738,
+      "frac_on_phase": 0.8706938775510205,
+      "frac_cross": 0.008816326530612244,
+      "frac_elsewhere": 0.12048979591836735,
+      "frac_cross_of_missed": 0.06818181818181818,
+      "n_missed": 792,
+      "n_missed_with_other_arrival": 774,
+      "other_phase": "P",
+      "residuals": {
+        "n": 5971,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          0.0,
+          2.0
+        ],
+        "other_ms_q25_med_q75": [
+          48.5,
+          66.0,
+          83.5
+        ],
+        "frac_between_phases": 0.0068665215206833025,
+        "other_phase": "P"
+      }
+    }
+  },
+  "pnr-1__array": {
+    "site": "pnr-1",
+    "config": "array",
+    "P": {
+      "n_picks": 6489,
+      "on_phase": 6447,
+      "cross": 0,
+      "elsewhere": 42,
+      "frac_on_phase": 0.9935275080906149,
+      "frac_cross": 0.0,
+      "frac_elsewhere": 0.006472491909385114,
+      "frac_cross_of_missed": 0.0,
+      "n_missed": 42,
+      "n_missed_with_other_arrival": 42,
+      "other_phase": "S",
+      "residuals": {
+        "n": 6459,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          0.0,
+          0.5
+        ],
+        "other_ms_q25_med_q75": [
+          -117.5,
+          -97.5,
+          -76.0
+        ],
+        "frac_between_phases": 0.0003096454559529339,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 6453,
+      "on_phase": 6345,
+      "cross": 11,
+      "elsewhere": 97,
+      "frac_on_phase": 0.9832635983263598,
+      "frac_cross": 0.0017046335037966837,
+      "frac_elsewhere": 0.015031768169843484,
+      "frac_cross_of_missed": 0.10185185185185185,
+      "n_missed": 108,
+      "n_missed_with_other_arrival": 108,
+      "other_phase": "P",
+      "residuals": {
+        "n": 6424,
+        "own_ms_q25_med_q75": [
+          -3.5,
+          -2.5,
+          -1.5
+        ],
+        "other_ms_q25_med_q75": [
+          74.0,
+          95.0,
+          115.0
+        ],
+        "frac_between_phases": 0.0,
+        "other_phase": "P"
+      }
+    }
+  },
+  "pnr-1__pertrace": {
+    "site": "pnr-1",
+    "config": "pertrace",
+    "P": {
+      "n_picks": 6490,
+      "on_phase": 6423,
+      "cross": 0,
+      "elsewhere": 67,
+      "frac_on_phase": 0.9896764252696456,
+      "frac_cross": 0.0,
+      "frac_elsewhere": 0.010323574730354392,
+      "frac_cross_of_missed": 0.0,
+      "n_missed": 67,
+      "n_missed_with_other_arrival": 67,
+      "other_phase": "S",
+      "residuals": {
+        "n": 6470,
+        "own_ms_q25_med_q75": [
+          -0.5,
+          0.0,
+          0.5
+        ],
+        "other_ms_q25_med_q75": [
+          -118.0,
+          -97.5,
+          -76.5
+        ],
+        "frac_between_phases": 0.0012364760432766616,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 6490,
+      "on_phase": 6389,
+      "cross": 1,
+      "elsewhere": 100,
+      "frac_on_phase": 0.9844375963020031,
+      "frac_cross": 0.00015408320493066256,
+      "frac_elsewhere": 0.015408320493066256,
+      "frac_cross_of_missed": 0.009900990099009901,
+      "n_missed": 101,
+      "n_missed_with_other_arrival": 101,
+      "other_phase": "P",
+      "residuals": {
+        "n": 6471,
+        "own_ms_q25_med_q75": [
+          -4.0,
+          -2.5,
+          -1.5
+        ],
+        "other_ms_q25_med_q75": [
+          75.0,
+          95.5,
+          116.0
+        ],
+        "frac_between_phases": 0.0004636068613815484,
+        "other_phase": "P"
+      }
+    }
+  },
+  "pnr-2__array": {
+    "site": "pnr-2",
+    "config": "array",
+    "P": {
+      "n_picks": 3660,
+      "on_phase": 3517,
+      "cross": 10,
+      "elsewhere": 133,
+      "frac_on_phase": 0.9609289617486338,
+      "frac_cross": 0.00273224043715847,
+      "frac_elsewhere": 0.03633879781420765,
+      "frac_cross_of_missed": 0.06993006993006994,
+      "n_missed": 143,
+      "n_missed_with_other_arrival": 143,
+      "other_phase": "S",
+      "residuals": {
+        "n": 3565,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          -0.5,
+          0.0
+        ],
+        "other_ms_q25_med_q75": [
+          -133.0,
+          -123.5,
+          -113.5
+        ],
+        "frac_between_phases": 0.01093969144460028,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 3599,
+      "on_phase": 3321,
+      "cross": 2,
+      "elsewhere": 276,
+      "frac_on_phase": 0.9227563212003335,
+      "frac_cross": 0.0005557099194220616,
+      "frac_elsewhere": 0.07668796888024451,
+      "frac_cross_of_missed": 0.007194244604316547,
+      "n_missed": 278,
+      "n_missed_with_other_arrival": 278,
+      "other_phase": "P",
+      "residuals": {
+        "n": 3522,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          0.0,
+          1.0
+        ],
+        "other_ms_q25_med_q75": [
+          114.0,
+          124.0,
+          135.0
+        ],
+        "frac_between_phases": 0.012776831345826235,
+        "other_phase": "P"
+      }
+    }
+  },
+  "pnr-2__pertrace": {
+    "site": "pnr-2",
+    "config": "pertrace",
+    "P": {
+      "n_picks": 3648,
+      "on_phase": 3443,
+      "cross": 19,
+      "elsewhere": 186,
+      "frac_on_phase": 0.9438048245614035,
+      "frac_cross": 0.005208333333333333,
+      "frac_elsewhere": 0.05098684210526316,
+      "frac_cross_of_missed": 0.09268292682926829,
+      "n_missed": 205,
+      "n_missed_with_other_arrival": 202,
+      "other_phase": "S",
+      "residuals": {
+        "n": 3554,
+        "own_ms_q25_med_q75": [
+          -1.0,
+          -0.5,
+          0.0
+        ],
+        "other_ms_q25_med_q75": [
+          -133.0,
+          -122.5,
+          -112.0
+        ],
+        "frac_between_phases": 0.0061902082160945416,
+        "other_phase": "S"
+      }
+    },
+    "S": {
+      "n_picks": 3522,
+      "on_phase": 3045,
+      "cross": 151,
+      "elsewhere": 326,
+      "frac_on_phase": 0.8645655877342419,
+      "frac_cross": 0.04287336740488359,
+      "frac_elsewhere": 0.0925610448608745,
+      "frac_cross_of_missed": 0.3165618448637317,
+      "n_missed": 477,
+      "n_missed_with_other_arrival": 477,
+      "other_phase": "P",
+      "residuals": {
+        "n": 3444,
+        "own_ms_q25_med_q75": [
+          -1.5,
+          -0.5,
+          0.5
+        ],
+        "other_ms_q25_med_q75": [
+          112.875,
+          122.0,
+          132.5
+        ],
+        "frac_between_phases": 0.009001161440185831,
+        "other_phase": "P"
+      }
+    }
+  }
+}

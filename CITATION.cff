@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software or its results, please cite both the software archive and the paper below."
-title: "MOIRAI L3: velocity-free array-level P/S phase picking on real downhole 3-C arrays (AMBER)"
+title: "MOIRAI L3: array-level versus per-trace P/S phase picking on real downhole 3-C arrays (AMBER)"
 abstract: >-
   Code, EMA-best model weights and reproducible figure/table scripts for a
   leave-one-site-out, confound-free benchmark of array versus per-trace deep
@@ -10,12 +10,12 @@ authors:
   - family-names: Kurosawa
     given-names: Isao
     affiliation: "ENEOS Xplora Inc."
-version: 0.1.0
-date-released: "2026-07-06"
+version: 0.3.0
+date-released: "2026-10-08"
 license: MIT
-repository-code: "https://github.com/<user>/moirai-l3"
-# After you reserve/mint the Zenodo DOI, replace the value below and delete this comment.
-doi: "10.5281/zenodo.XXXXXXX"
+repository-code: "https://github.com/ISAO9/moirai-l3"
+# Concept DOI: always resolves to the latest version.
+doi: "10.5281/zenodo.21217614"
 keywords:
   - seismology
   - phase picking
@@ -23,15 +23,14 @@ keywords:
   - induced seismicity
   - deep learning
   - leave-one-site-out
-  - velocity-free
+  - array moveout
 preferred-citation:
   type: article
-  title: "When does array moveout help borehole phase picking? A leave-one-site-out, confound-free benchmark of array versus per-trace deep learning"
+  title: "When does array moveout help borehole phase picking?"
   authors:
     - family-names: Kurosawa
       given-names: Isao
       affiliation: "ENEOS Xplora Inc."
   year: 2026
   journal: "Geophysical Journal International (submitted)"
-  # Preprint (EarthArXiv) DOI — fill in once posted:
-  notes: "Preprint: EarthArXiv, DOI to be assigned."
+  notes: "Preprint (Author's Original Version): EarthArXiv, doi:10.31223/X5121S"

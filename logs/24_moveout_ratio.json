@@ -1,0 +1,428 @@
+{
+  "pnr-1": {
+    "n": 543,
+    "p05": 1.5941463414634147,
+    "q25": 1.6639327731092437,
+    "median": 1.696,
+    "q75": 1.731925087108014,
+    "p95": 1.7998319327731092,
+    "stratified": {
+      "bins": [
+        {
+          "bin": "1-5 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": "5-10 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": "10-20 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": "20-40 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": ">=40 ms",
+          "n": 543,
+          "median": 1.696,
+          "p_moveout_median": 62.0
+        }
+      ],
+      "well_resolved": {
+        "threshold_ms": 20.0,
+        "n": 543,
+        "median": 1.696
+      }
+    },
+    "vpvs_string": 1.645503442402911,
+    "vpvs_model": 1.691987618551597,
+    "string_depth_m": [
+      1561.2,
+      2068.9
+    ],
+    "verdict": "CONSISTENT (+3% of the model Vp/Vs)"
+  },
+  "mseel_3h": {
+    "n": 684,
+    "p05": 1.011193552889666,
+    "q25": 1.5,
+    "median": 1.6181818181818182,
+    "q75": 1.7364083285135918,
+    "p95": 2.245614035087719,
+    "stratified": {
+      "bins": [
+        {
+          "bin": "1-5 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": "5-10 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": "10-20 ms",
+          "n": 63,
+          "median": 1.903225806451613,
+          "p_moveout_median": 17.5
+        },
+        {
+          "bin": "20-40 ms",
+          "n": 479,
+          "median": 1.6229508196721312,
+          "p_moveout_median": 30.5
+        },
+        {
+          "bin": ">=40 ms",
+          "n": 142,
+          "median": 1.472794117647059,
+          "p_moveout_median": 47.5
+        }
+      ],
+      "well_resolved": {
+        "threshold_ms": 20.0,
+        "n": 621,
+        "median": 1.6
+      }
+    },
+    "vpvs_string": 1.5659302174391396,
+    "vpvs_model": 1.620402289311876,
+    "string_depth_m": [
+      1841.0,
+      2176.3
+    ],
+    "verdict": "CONSISTENT (+3% of the model Vp/Vs)"
+  },
+  "mseel_5h": {
+    "n": 512,
+    "p05": 1.006711235771472,
+    "q25": 1.4494402985074626,
+    "median": 1.5838744588744589,
+    "q75": 1.7407407407407407,
+    "p95": 2.150862068965517,
+    "stratified": {
+      "bins": [
+        {
+          "bin": "1-5 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": "5-10 ms",
+          "n": 4,
+          "median": 3.1,
+          "p_moveout_median": 8.0
+        },
+        {
+          "bin": "10-20 ms",
+          "n": 121,
+          "median": 1.7,
+          "p_moveout_median": 15.5
+        },
+        {
+          "bin": "20-40 ms",
+          "n": 282,
+          "median": 1.5454545454545454,
+          "p_moveout_median": 27.5
+        },
+        {
+          "bin": ">=40 ms",
+          "n": 105,
+          "median": 1.5777777777777777,
+          "p_moveout_median": 48.0
+        }
+      ],
+      "well_resolved": {
+        "threshold_ms": 20.0,
+        "n": 387,
+        "median": 1.553191489361702
+      }
+    },
+    "verdict": "NO DATA"
+  },
+  "clearfield_mw6": {
+    "n": 612,
+    "p05": 0.977035072207486,
+    "q25": 1.3744703389830508,
+    "median": 1.6104336043360434,
+    "q75": 1.8934951901053596,
+    "p95": 3.0958333333333314,
+    "stratified": {
+      "bins": [
+        {
+          "bin": "1-5 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": "5-10 ms",
+          "n": 8,
+          "median": 2.166666666666667,
+          "p_moveout_median": 8.25
+        },
+        {
+          "bin": "10-20 ms",
+          "n": 172,
+          "median": 1.8518181818181818,
+          "p_moveout_median": 17.0
+        },
+        {
+          "bin": "20-40 ms",
+          "n": 323,
+          "median": 1.6027397260273972,
+          "p_moveout_median": 27.5
+        },
+        {
+          "bin": ">=40 ms",
+          "n": 109,
+          "median": 1.101153504880213,
+          "p_moveout_median": 88.0
+        }
+      ],
+      "well_resolved": {
+        "threshold_ms": 20.0,
+        "n": 432,
+        "median": 1.5570524412296565
+      }
+    },
+    "vpvs_string": 1.6472871514502394,
+    "vpvs_model": 1.769183201498404,
+    "string_depth_m": [
+      1889.8,
+      2225.0
+    ],
+    "verdict": "CONSISTENT (-2% of the model Vp/Vs)"
+  },
+  "pnr-2": {
+    "n": 305,
+    "p05": 1.275039745627981,
+    "q25": 1.5217391304347827,
+    "median": 1.5769230769230769,
+    "q75": 1.625,
+    "p95": 1.7242424242424244,
+    "stratified": {
+      "bins": [
+        {
+          "bin": "1-5 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": "5-10 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": "10-20 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": "20-40 ms",
+          "n": 273,
+          "median": 1.5866666666666667,
+          "p_moveout_median": 34.5
+        },
+        {
+          "bin": ">=40 ms",
+          "n": 32,
+          "median": 1.5025612193903048,
+          "p_moveout_median": 45.75
+        }
+      ],
+      "well_resolved": {
+        "threshold_ms": 20.0,
+        "n": 305,
+        "median": 1.5769230769230769
+      }
+    },
+    "vpvs_string": 1.6650337925283518,
+    "vpvs_model": 1.691987618551597,
+    "string_depth_m": [
+      1840.2,
+      2142.9
+    ],
+    "verdict": "CONSISTENT (-5% of the model Vp/Vs)"
+  },
+  "clearfield_mw4": {
+    "n": 254,
+    "p05": 0.8856897735072066,
+    "q25": 1.2837775735294117,
+    "median": 1.5361918604651164,
+    "q75": 1.8200280112044818,
+    "p95": 2.598529411764706,
+    "stratified": {
+      "bins": [
+        {
+          "bin": "1-5 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": "5-10 ms",
+          "n": 6,
+          "median": 2.4520123839009287,
+          "p_moveout_median": 8.5
+        },
+        {
+          "bin": "10-20 ms",
+          "n": 65,
+          "median": 1.9411764705882353,
+          "p_moveout_median": 17.0
+        },
+        {
+          "bin": "20-40 ms",
+          "n": 118,
+          "median": 1.540169133192389,
+          "p_moveout_median": 25.5
+        },
+        {
+          "bin": ">=40 ms",
+          "n": 65,
+          "median": 1.3047619047619048,
+          "p_moveout_median": 52.0
+        }
+      ],
+      "well_resolved": {
+        "threshold_ms": 20.0,
+        "n": 183,
+        "median": 1.4655172413793103
+      }
+    },
+    "vpvs_string": 1.6472871514502394,
+    "vpvs_model": 1.769183201498404,
+    "string_depth_m": [
+      1889.8,
+      2225.0
+    ],
+    "verdict": "CONSISTENT (-7% of the model Vp/Vs)"
+  },
+  "aneth": {
+    "n": 298,
+    "p05": 1.0339118198874298,
+    "q25": 1.9325396825396826,
+    "median": 2.7142857142857144,
+    "q75": 3.710714285714286,
+    "p95": 6.732142857142854,
+    "stratified": {
+      "bins": [
+        {
+          "bin": "1-5 ms",
+          "n": 61,
+          "median": 4.25,
+          "p_moveout_median": 4.0
+        },
+        {
+          "bin": "5-10 ms",
+          "n": 197,
+          "median": 2.6842105263157894,
+          "p_moveout_median": 6.0
+        },
+        {
+          "bin": "10-20 ms",
+          "n": 29,
+          "median": 1.5909090909090908,
+          "p_moveout_median": 11.5
+        },
+        {
+          "bin": "20-40 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": ">=40 ms",
+          "n": 11,
+          "median": 0.5015197568389058,
+          "p_moveout_median": 163.0
+        }
+      ],
+      "well_resolved": {
+        "threshold_ms": 20.0,
+        "n": 11,
+        "median": 0.5015197568389058
+      }
+    },
+    "vpvs_string": 1.7000520969002344,
+    "vpvs_model": 1.7000211648701335,
+    "string_depth_m": [
+      1445.4,
+      1704.4
+    ],
+    "verdict": "S MOVEOUT TOO LARGE (+60%): the catalogued S spread exceeds what this site's velocity model allows for the same ray geometry"
+  },
+  "forge_19": {
+    "n": 213,
+    "p05": 1.7155830753353973,
+    "q25": 1.792857142857143,
+    "median": 1.8357142857142856,
+    "q75": 1.8865248226950355,
+    "p95": 2.394072577250147,
+    "stratified": {
+      "bins": [
+        {
+          "bin": "1-5 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": "5-10 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": "10-20 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": "20-40 ms",
+          "n": 0,
+          "median": null,
+          "p_moveout_median": null
+        },
+        {
+          "bin": ">=40 ms",
+          "n": 213,
+          "median": 1.8357142857142856,
+          "p_moveout_median": 70.0
+        }
+      ],
+      "well_resolved": {
+        "threshold_ms": 20.0,
+        "n": 213,
+        "median": 1.8357142857142856
+      }
+    },
+    "vpvs_string": 1.8780442116525684,
+    "vpvs_model": 1.762091531184168,
+    "string_depth_m": [
+      698.7,
+      1034.0
+    ],
+    "verdict": "CONSISTENT (-2% of the model Vp/Vs)"
+  }
+}

@@ -11,8 +11,8 @@ standard folder layout (src / data / model / PDF / logs).
 
 PROJECT CONTEXT
 ---------------
-MOIRAI is the author's main research line: a velocity-free, waveform-direct approach
-to induced-seismicity monitoring. The ladder is
+MOIRAI is the author's main research line: a waveform-direct approach that needs
+no velocity model, applied to induced-seismicity monitoring. The ladder is
     L1 (done) 3-C geophone, synthetic, P/S separation, +21 dB SI-SNR
     L2 (done) full-scale synthetic DAS (2000 ch), direct-regression 2-D U-Net
     L3 (HERE)  real 3-C downhole vertical arrays (AMBER), P/S PICKING

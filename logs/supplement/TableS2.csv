@@ -1,0 +1,9 @@
+Site,Earthquakes,Flagged,Flagged %,Gap step (samples),Reversal test,All: array,All: per-trace,Clean: array,Clean: per-trace,Dropped,Verdict (all),Verdict (clean),Verdict survives
+pnr-1,543,6,1.1,11.3,applied,0.986,0.986,0.990,0.992,10,tie,tie,yes
+mseel_3h,684,107,15.6,5.8,applied,0.891,0.888,0.945,0.941,125,tie,tie,yes
+mseel_5h,512,90,17.6,5.0,applied,0.897,0.881,0.940,0.928,98,tie,tie,yes
+clearfield_mw6,612,128,20.9,5.0,applied,0.875,0.869,0.945,0.944,147,tie,tie,yes
+pnr-2,305,18,5.9,6.4,applied,0.944,0.901,0.970,0.929,25,array,array,yes
+clearfield_mw4,254,50,19.7,5.4,applied,0.852,0.836,0.923,0.894,60,tie,tie,yes
+aneth,298,21,7.0,1.2,disabled,0.884,0.941,0.895,0.948,25,per-trace,per-trace,yes
+forge_19,213,1,0.5,14.3,applied,0.516,0.856,0.517,0.858,2,per-trace,per-trace,yes

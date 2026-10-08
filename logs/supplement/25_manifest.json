@@ -1,0 +1,97 @@
+{
+  "tables": {
+    "1": {
+      "built": true,
+      "rows": 8,
+      "columns": 5,
+      "csv": "TableS1.csv"
+    },
+    "2": {
+      "built": true,
+      "rows": 8,
+      "columns": 14,
+      "csv": "TableS2.csv"
+    },
+    "3": {
+      "built": true,
+      "rows": 8,
+      "columns": 12,
+      "csv": "TableS3.csv"
+    },
+    "4": {
+      "built": true,
+      "rows": 44,
+      "columns": 14,
+      "csv": "TableS4.csv"
+    },
+    "5": {
+      "built": true,
+      "rows": 8,
+      "columns": 10,
+      "csv": "TableS5.csv"
+    },
+    "6": {
+      "built": true,
+      "rows": 16,
+      "columns": 8,
+      "csv": "TableS6.csv"
+    },
+    "7": {
+      "built": true,
+      "rows": 8,
+      "columns": 8,
+      "csv": "TableS7.csv"
+    }
+  },
+  "figures": {
+    "1": {
+      "built": true,
+      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/05_a_probability_example.pdf"
+    },
+    "2": {
+      "built": true,
+      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/19_a_training_curves.pdf"
+    },
+    "3": {
+      "built": true,
+      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/05_c_metrics_summary.pdf"
+    },
+    "4": {
+      "built": true,
+      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/05_f_baseline_phasenet.pdf"
+    },
+    "5": {
+      "built": true,
+      "source": "src/figures/13_a_station_subset.pdf"
+    },
+    "6": {
+      "built": true,
+      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/16_a_arrival_audit.pdf"
+    },
+    "7": {
+      "built": true,
+      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/18_a_paired_vs_unpaired.pdf"
+    },
+    "8": {
+      "built": true,
+      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/20_a_within_vs_loso.pdf"
+    },
+    "9": {
+      "built": true,
+      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/15_a_phase_residuals.pdf"
+    },
+    "10": {
+      "built": true,
+      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/23_a_fig4_style_sites.pdf"
+    }
+  },
+  "missing": [],
+  "output": "/content/drive/MyDrive/MOIRAI_L3/PDF/Supplement_MOIRAI_L3.pdf",
+  "complete": true,
+  "pages": 23,
+  "number_checks": {
+    "total": 90,
+    "failed": 0
+  },
+  "manuscript_index_lines": 23
+}

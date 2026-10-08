@@ -39,15 +39,44 @@ PDF/*
 # OS
 .DS_Store
 Thumbs.db
-
-# Exception: GJI-26-0613 revision outputs (scripts 10-14) are part of the
-# public archive cited in the paper's Data Availability statement
+# Exception: GJI-26-0613 revision outputs are part of the public archive cited
+# in the paper's Data Availability statement (scripts 10-14, first round;
+# scripts 15-25, second round).
 !logs/
 logs/*
 !logs/08_moveout_*.json
 !logs/1[0-4]_*.json
 !logs/1[0-4]_*.csv
 !logs/1[0-4]_*.md
+!logs/1[5-9]_*.json
+!logs/1[5-9]_*.csv
+!logs/1[5-9]_*.md
+!logs/2[0-5]_*.json
+!logs/2[0-5]_*.csv
+!logs/2[0-5]_*.md
+!logs/supplement/
+logs/supplement/*
+!logs/supplement/*.json
+!logs/supplement/*.md
+!logs/supplement/*.csv
+!logs/supplement/*.txt
 !PDF/1[0-4]_*.pdf
 !PDF/1[0-4]_*.png
+!PDF/1[5-9]_*.pdf
+!PDF/1[5-9]_*.png
+!PDF/2[0-5]_*.pdf
+!PDF/2[0-5]_*.png
 !PDF/fig8_pub.pdf
+
+# ...but never the self-test artefacts (synthetic inputs, no scientific content).
+# Both forms are needed: the plain one for logs/ and PDF/ themselves, the **
+# one for subdirectories such as logs/supplement/.
+logs/*selftest*
+PDF/*selftest*
+logs/**/*selftest*
+PDF/**/*selftest*
+
+# Figure assets the supplement builder (25) embeds are source, not output
+!src/figures/
+!src/figures/*.png
+!src/figures/*.pdf

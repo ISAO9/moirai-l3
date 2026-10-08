@@ -1,0 +1,723 @@
+{
+  "pnr-1": {
+    "table": {
+      "csv_columns": [
+        "trace_name",
+        "split",
+        "station",
+        "dataset",
+        "event_id",
+        "trace_sampling_rate_hz",
+        "trace_category",
+        "trace_start_time",
+        "trace_p_arrival_sample",
+        "trace_s_arrival_sample",
+        "trace_p_length",
+        "trace_s_length",
+        "trace_component_order",
+        "dimension_order",
+        "trace_p2_arrival_sample",
+        "trace_s2_arrival_sample",
+        "trace_p3_arrival_sample",
+        "trace_s3_arrival_sample",
+        "trace_p4_arrival_sample",
+        "trace_s4_arrival_sample"
+      ],
+      "split_col": "split",
+      "noise_col": "trace_category",
+      "event_col": "event_id",
+      "rows_total": 30192,
+      "rows_by_split": {
+        "test": 30192
+      },
+      "dataset_len_by_split": "unavailable: ModuleNotFoundError: No module named 'amber'",
+      "unique_events_total": 1258,
+      "unique_events_by_split": {
+        "test": 1258
+      },
+      "trace_category_value_counts": {
+        "noise": 17160,
+        "earthquake": 13032
+      },
+      "noise_rows_total": 17160,
+      "noise_rows_by_split": {
+        "test": 17160
+      }
+    },
+    "cache": {
+      "cache_file": "10_cache_pnr-1_ema_loso_pnr-1.npz",
+      "keys": [
+        "gt_time",
+        "is_noise",
+        "pr_max",
+        "pr_time"
+      ],
+      "rows": 1258
+    },
+    "audit_n_events": 543,
+    "script20_test_events": null,
+    "checks": [
+      [
+        "R1 train+dev+test == rows",
+        "PASS",
+        "30192 vs 30192"
+      ],
+      [
+        "R2 script20 test == test split",
+        "SKIP",
+        ""
+      ],
+      [
+        "R3 audit n_events == cache rows",
+        "INFO",
+        "cache rows 1258"
+      ],
+      [
+        "R5 index is dense (max+1 == count)",
+        "SKIP",
+        "cache has no event-index key; keys=['gt_time', 'is_noise', 'pr_max', 'pr_time']"
+      ],
+      [
+        "R4 cache covers the whole site",
+        "PASS",
+        "cache 1258 vs site total 1258"
+      ]
+    ]
+  },
+  "mseel_3h": {
+    "table": {
+      "csv_columns": [
+        "trace_name",
+        "split",
+        "station",
+        "dataset",
+        "event_id",
+        "trace_sampling_rate_hz",
+        "trace_category",
+        "trace_start_time",
+        "trace_p_arrival_sample",
+        "trace_s_arrival_sample",
+        "trace_p_length",
+        "trace_s_length",
+        "trace_component_order",
+        "dimension_order",
+        "trace_p2_arrival_sample",
+        "trace_s2_arrival_sample",
+        "trace_p3_arrival_sample",
+        "trace_s3_arrival_sample",
+        "trace_p4_arrival_sample",
+        "trace_s4_arrival_sample"
+      ],
+      "split_col": "split",
+      "noise_col": "trace_category",
+      "event_col": "event_id",
+      "rows_total": 20208,
+      "rows_by_split": {
+        "train": 13956,
+        "dev": 3216,
+        "test": 3036
+      },
+      "dataset_len_by_split": "unavailable: ModuleNotFoundError: No module named 'amber'",
+      "unique_events_total": 1684,
+      "unique_events_by_split": {
+        "dev": 268,
+        "test": 253,
+        "train": 1163
+      },
+      "trace_category_value_counts": {
+        "noise": 12000,
+        "earthquake": 8208
+      },
+      "noise_rows_total": 12000,
+      "noise_rows_by_split": {
+        "dev": 1908,
+        "test": 1836,
+        "train": 8256
+      }
+    },
+    "cache": {
+      "cache_file": "10_cache_mseel_3h_ema_loso_mseel_3h.npz",
+      "keys": [
+        "gt_time",
+        "is_noise",
+        "pr_max",
+        "pr_time"
+      ],
+      "rows": 1684
+    },
+    "audit_n_events": 684,
+    "script20_test_events": null,
+    "checks": [
+      [
+        "R1 train+dev+test == rows",
+        "PASS",
+        "20208 vs 20208"
+      ],
+      [
+        "R2 script20 test == test split",
+        "SKIP",
+        ""
+      ],
+      [
+        "R3 audit n_events == cache rows",
+        "INFO",
+        "cache rows 1684"
+      ],
+      [
+        "R5 index is dense (max+1 == count)",
+        "SKIP",
+        "cache has no event-index key; keys=['gt_time', 'is_noise', 'pr_max', 'pr_time']"
+      ],
+      [
+        "R4 cache covers the whole site",
+        "PASS",
+        "cache 1684 vs site total 1684"
+      ]
+    ]
+  },
+  "mseel_5h": {
+    "table": {
+      "csv_columns": [
+        "trace_name",
+        "split",
+        "station",
+        "dataset",
+        "event_id",
+        "trace_sampling_rate_hz",
+        "trace_category",
+        "trace_start_time",
+        "trace_p_arrival_sample",
+        "trace_s_arrival_sample",
+        "trace_p_length",
+        "trace_s_length",
+        "trace_component_order",
+        "dimension_order",
+        "trace_p2_arrival_sample",
+        "trace_s2_arrival_sample",
+        "trace_p3_arrival_sample",
+        "trace_s3_arrival_sample",
+        "trace_p4_arrival_sample",
+        "trace_s4_arrival_sample"
+      ],
+      "split_col": "split",
+      "noise_col": "trace_category",
+      "event_col": "event_id",
+      "rows_total": 18144,
+      "rows_by_split": {
+        "train": 12516,
+        "dev": 2976,
+        "test": 2652
+      },
+      "dataset_len_by_split": "unavailable: ModuleNotFoundError: No module named 'amber'",
+      "unique_events_total": 1512,
+      "unique_events_by_split": {
+        "dev": 248,
+        "test": 221,
+        "train": 1043
+      },
+      "trace_category_value_counts": {
+        "noise": 12000,
+        "earthquake": 6144
+      },
+      "noise_rows_total": 12000,
+      "noise_rows_by_split": {
+        "dev": 2064,
+        "test": 1788,
+        "train": 8148
+      }
+    },
+    "cache": {
+      "cache_file": "10_cache_mseel_5h_ema_loso_mseel_5h.npz",
+      "keys": [
+        "gt_time",
+        "is_noise",
+        "pr_max",
+        "pr_time"
+      ],
+      "rows": 1512
+    },
+    "audit_n_events": 512,
+    "script20_test_events": null,
+    "checks": [
+      [
+        "R1 train+dev+test == rows",
+        "PASS",
+        "18144 vs 18144"
+      ],
+      [
+        "R2 script20 test == test split",
+        "SKIP",
+        ""
+      ],
+      [
+        "R3 audit n_events == cache rows",
+        "INFO",
+        "cache rows 1512"
+      ],
+      [
+        "R5 index is dense (max+1 == count)",
+        "SKIP",
+        "cache has no event-index key; keys=['gt_time', 'is_noise', 'pr_max', 'pr_time']"
+      ],
+      [
+        "R4 cache covers the whole site",
+        "PASS",
+        "cache 1512 vs site total 1512"
+      ]
+    ]
+  },
+  "clearfield_mw6": {
+    "table": {
+      "csv_columns": [
+        "trace_name",
+        "split",
+        "station",
+        "dataset",
+        "event_id",
+        "trace_sampling_rate_hz",
+        "trace_category",
+        "trace_start_time",
+        "trace_p_arrival_sample",
+        "trace_s_arrival_sample",
+        "trace_p_length",
+        "trace_s_length",
+        "trace_component_order",
+        "dimension_order",
+        "trace_p2_arrival_sample",
+        "trace_s2_arrival_sample",
+        "trace_p3_arrival_sample",
+        "trace_s3_arrival_sample",
+        "trace_p4_arrival_sample",
+        "trace_s4_arrival_sample"
+      ],
+      "split_col": "split",
+      "noise_col": "trace_category",
+      "event_col": "event_id",
+      "rows_total": 19344,
+      "rows_by_split": {
+        "train": 13776,
+        "dev": 2832,
+        "test": 2736
+      },
+      "dataset_len_by_split": "unavailable: ModuleNotFoundError: No module named 'amber'",
+      "unique_events_total": 1612,
+      "unique_events_by_split": {
+        "dev": 236,
+        "test": 228,
+        "train": 1148
+      },
+      "trace_category_value_counts": {
+        "noise": 12000,
+        "earthquake": 7344
+      },
+      "noise_rows_total": 12000,
+      "noise_rows_by_split": {
+        "dev": 1788,
+        "test": 1608,
+        "train": 8604
+      }
+    },
+    "cache": {
+      "cache_file": "10_cache_clearfield_mw6_ema_loso_clearfield_mw6.npz",
+      "keys": [
+        "gt_time",
+        "is_noise",
+        "pr_max",
+        "pr_time"
+      ],
+      "rows": 1612
+    },
+    "audit_n_events": 612,
+    "script20_test_events": null,
+    "checks": [
+      [
+        "R1 train+dev+test == rows",
+        "PASS",
+        "19344 vs 19344"
+      ],
+      [
+        "R2 script20 test == test split",
+        "SKIP",
+        ""
+      ],
+      [
+        "R3 audit n_events == cache rows",
+        "INFO",
+        "cache rows 1612"
+      ],
+      [
+        "R5 index is dense (max+1 == count)",
+        "SKIP",
+        "cache has no event-index key; keys=['gt_time', 'is_noise', 'pr_max', 'pr_time']"
+      ],
+      [
+        "R4 cache covers the whole site",
+        "PASS",
+        "cache 1612 vs site total 1612"
+      ]
+    ]
+  },
+  "pnr-2": {
+    "table": {
+      "csv_columns": [
+        "trace_name",
+        "split",
+        "station",
+        "dataset",
+        "event_id",
+        "trace_sampling_rate_hz",
+        "trace_category",
+        "trace_start_time",
+        "trace_p_arrival_sample",
+        "trace_s_arrival_sample",
+        "trace_p_length",
+        "trace_s_length",
+        "trace_component_order",
+        "dimension_order",
+        "trace_p2_arrival_sample",
+        "trace_s2_arrival_sample",
+        "trace_p3_arrival_sample",
+        "trace_s3_arrival_sample",
+        "trace_p4_arrival_sample",
+        "trace_s4_arrival_sample"
+      ],
+      "split_col": "split",
+      "noise_col": "trace_category",
+      "event_col": "event_id",
+      "rows_total": 11664,
+      "rows_by_split": {
+        "train": 7836,
+        "dev": 1920,
+        "test": 1908
+      },
+      "dataset_len_by_split": "unavailable: ModuleNotFoundError: No module named 'amber'",
+      "unique_events_total": 972,
+      "unique_events_by_split": {
+        "dev": 160,
+        "test": 159,
+        "train": 653
+      },
+      "trace_category_value_counts": {
+        "noise": 8004,
+        "earthquake": 3660
+      },
+      "noise_rows_total": 8004,
+      "noise_rows_by_split": {
+        "dev": 1368,
+        "test": 1284,
+        "train": 5352
+      }
+    },
+    "cache": {
+      "cache_file": "10_cache_pnr-2_ema_loso_pnr-2.npz",
+      "keys": [
+        "gt_time",
+        "is_noise",
+        "pr_max",
+        "pr_time"
+      ],
+      "rows": 972
+    },
+    "audit_n_events": 305,
+    "script20_test_events": null,
+    "checks": [
+      [
+        "R1 train+dev+test == rows",
+        "PASS",
+        "11664 vs 11664"
+      ],
+      [
+        "R2 script20 test == test split",
+        "SKIP",
+        ""
+      ],
+      [
+        "R3 audit n_events == cache rows",
+        "INFO",
+        "cache rows 972"
+      ],
+      [
+        "R5 index is dense (max+1 == count)",
+        "SKIP",
+        "cache has no event-index key; keys=['gt_time', 'is_noise', 'pr_max', 'pr_time']"
+      ],
+      [
+        "R4 cache covers the whole site",
+        "PASS",
+        "cache 972 vs site total 972"
+      ]
+    ]
+  },
+  "clearfield_mw4": {
+    "table": {
+      "csv_columns": [
+        "trace_name",
+        "split",
+        "station",
+        "dataset",
+        "event_id",
+        "trace_sampling_rate_hz",
+        "trace_category",
+        "trace_start_time",
+        "trace_p_arrival_sample",
+        "trace_s_arrival_sample",
+        "trace_p_length",
+        "trace_s_length",
+        "trace_component_order",
+        "dimension_order",
+        "trace_p2_arrival_sample",
+        "trace_s2_arrival_sample",
+        "trace_p3_arrival_sample",
+        "trace_s3_arrival_sample",
+        "trace_p4_arrival_sample",
+        "trace_s4_arrival_sample"
+      ],
+      "split_col": "split",
+      "noise_col": "trace_category",
+      "event_col": "event_id",
+      "rows_total": 15048,
+      "rows_by_split": {
+        "train": 10632,
+        "dev": 2364,
+        "test": 2052
+      },
+      "dataset_len_by_split": "unavailable: ModuleNotFoundError: No module named 'amber'",
+      "unique_events_total": 1254,
+      "unique_events_by_split": {
+        "dev": 197,
+        "test": 171,
+        "train": 886
+      },
+      "trace_category_value_counts": {
+        "noise": 12000,
+        "earthquake": 3048
+      },
+      "noise_rows_total": 12000,
+      "noise_rows_by_split": {
+        "dev": 1932,
+        "test": 1524,
+        "train": 8544
+      }
+    },
+    "cache": {
+      "cache_file": "10_cache_clearfield_mw4_ema_loso_clearfield_mw4.npz",
+      "keys": [
+        "gt_time",
+        "is_noise",
+        "pr_max",
+        "pr_time"
+      ],
+      "rows": 1254
+    },
+    "audit_n_events": 254,
+    "script20_test_events": null,
+    "checks": [
+      [
+        "R1 train+dev+test == rows",
+        "PASS",
+        "15048 vs 15048"
+      ],
+      [
+        "R2 script20 test == test split",
+        "SKIP",
+        ""
+      ],
+      [
+        "R3 audit n_events == cache rows",
+        "INFO",
+        "cache rows 1254"
+      ],
+      [
+        "R5 index is dense (max+1 == count)",
+        "SKIP",
+        "cache has no event-index key; keys=['gt_time', 'is_noise', 'pr_max', 'pr_time']"
+      ],
+      [
+        "R4 cache covers the whole site",
+        "PASS",
+        "cache 1254 vs site total 1254"
+      ]
+    ]
+  },
+  "aneth": {
+    "table": {
+      "csv_columns": [
+        "trace_name",
+        "split",
+        "station",
+        "dataset",
+        "event_id",
+        "trace_sampling_rate_hz",
+        "trace_category",
+        "trace_start_time",
+        "trace_p_arrival_sample",
+        "trace_s_arrival_sample",
+        "trace_p_length",
+        "trace_s_length",
+        "trace_component_order",
+        "dimension_order",
+        "trace_p2_arrival_sample",
+        "trace_s2_arrival_sample",
+        "trace_p3_arrival_sample",
+        "trace_s3_arrival_sample",
+        "trace_p4_arrival_sample",
+        "trace_s4_arrival_sample"
+      ],
+      "split_col": "split",
+      "noise_col": "trace_category",
+      "event_col": "event_id",
+      "rows_total": 5364,
+      "rows_by_split": {
+        "train": 3708,
+        "test": 846,
+        "dev": 810
+      },
+      "dataset_len_by_split": "unavailable: ModuleNotFoundError: No module named 'amber'",
+      "unique_events_total": 298,
+      "unique_events_by_split": {
+        "dev": 45,
+        "test": 47,
+        "train": 206
+      },
+      "trace_category_value_counts": {
+        "earthquake": 5364
+      },
+      "noise_rows_total": 0,
+      "noise_rows_by_split": {
+        "dev": 0,
+        "test": 0,
+        "train": 0
+      }
+    },
+    "cache": {
+      "cache_file": "10_cache_aneth_ema_loso_aneth.npz",
+      "keys": [
+        "gt_time",
+        "is_noise",
+        "pr_max",
+        "pr_time"
+      ],
+      "rows": 298
+    },
+    "audit_n_events": 298,
+    "script20_test_events": null,
+    "checks": [
+      [
+        "R1 train+dev+test == rows",
+        "PASS",
+        "5364 vs 5364"
+      ],
+      [
+        "R2 script20 test == test split",
+        "SKIP",
+        ""
+      ],
+      [
+        "R3 audit n_events == cache rows",
+        "INFO",
+        "cache rows 298"
+      ],
+      [
+        "R5 index is dense (max+1 == count)",
+        "SKIP",
+        "cache has no event-index key; keys=['gt_time', 'is_noise', 'pr_max', 'pr_time']"
+      ],
+      [
+        "R4 cache covers the whole site",
+        "PASS",
+        "cache 298 vs site total 298"
+      ]
+    ]
+  },
+  "forge_19": {
+    "table": {
+      "csv_columns": [
+        "trace_name",
+        "split",
+        "station",
+        "dataset",
+        "event_id",
+        "trace_sampling_rate_hz",
+        "trace_category",
+        "trace_start_time",
+        "trace_p_arrival_sample",
+        "trace_s_arrival_sample",
+        "trace_p_length",
+        "trace_s_length",
+        "trace_component_order",
+        "dimension_order",
+        "trace_p2_arrival_sample",
+        "trace_s2_arrival_sample",
+        "trace_p3_arrival_sample",
+        "trace_s3_arrival_sample",
+        "trace_p4_arrival_sample",
+        "trace_s4_arrival_sample"
+      ],
+      "split_col": "split",
+      "noise_col": "trace_category",
+      "event_col": "event_id",
+      "rows_total": 14556,
+      "rows_by_split": {
+        "train": 9996,
+        "test": 2316,
+        "dev": 2244
+      },
+      "dataset_len_by_split": "unavailable: ModuleNotFoundError: No module named 'amber'",
+      "unique_events_total": 1213,
+      "unique_events_by_split": {
+        "dev": 187,
+        "test": 193,
+        "train": 833
+      },
+      "trace_category_value_counts": {
+        "noise": 12000,
+        "earthquake": 2556
+      },
+      "noise_rows_total": 12000,
+      "noise_rows_by_split": {
+        "dev": 1812,
+        "test": 1932,
+        "train": 8256
+      }
+    },
+    "cache": {
+      "cache_file": "10_cache_forge_19_ema_loso_forge_19.npz",
+      "keys": [
+        "gt_time",
+        "is_noise",
+        "pr_max",
+        "pr_time"
+      ],
+      "rows": 1213
+    },
+    "audit_n_events": 213,
+    "script20_test_events": null,
+    "checks": [
+      [
+        "R1 train+dev+test == rows",
+        "PASS",
+        "14556 vs 14556"
+      ],
+      [
+        "R2 script20 test == test split",
+        "SKIP",
+        ""
+      ],
+      [
+        "R3 audit n_events == cache rows",
+        "INFO",
+        "cache rows 1213"
+      ],
+      [
+        "R5 index is dense (max+1 == count)",
+        "SKIP",
+        "cache has no event-index key; keys=['gt_time', 'is_noise', 'pr_max', 'pr_time']"
+      ],
+      [
+        "R4 cache covers the whole site",
+        "PASS",
+        "cache 1213 vs site total 1213"
+      ]
+    ]
+  }
+}

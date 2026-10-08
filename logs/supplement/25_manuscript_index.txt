@@ -1,0 +1,23 @@
+Section S1. Quality of the catalogued arrivals, and whether the results depend on it.
+Section S2. Evaluation of the two configurations on identical inputs.
+Section S3. Model capacity and overfitting.
+Section S4. Training with the held-out arrays represented.
+Section S5. Where the declared picks land: P/S assignment.
+Section S6. How much moveout each site actually carries.
+Figure S1. Example per-station P/S/noise score panel for a representative event.
+Figure S2. Training and development curves for all 44 runs.
+Figure S3. Summary of held-out metrics.
+Figure S4. Off-the-shelf surface-trained baseline applied to a borehole site.
+Figure S5. Zero-shot transfer of the trained array picker to decimated arrays.
+Figure S6. Physical audit of the catalogued arrivals.
+Figure S7. The two configurations evaluated on identical inputs.
+Figure S8. Picking performance when the held-out arrays are represented in training.
+Figure S9. Where the declared picks land, against both catalogued phases.
+Figure S10. Waveforms and predicted scores at the remaining held-out sites.
+Table S1. Per-site array geometry.
+Table S2. Catalogued-arrival audit and re-scoring on the surviving events.
+Table S3. Site-level scores under the submitted and the paired evaluation.
+Table S4. Per-run training summary.
+Table S5. Site-level scores under the leave-one-site-out and within-array protocols.
+Table S6. Where the declared P-channel picks land, by site and configuration.
+Table S7. Distribution of the catalogued P moveout across events, by site.
