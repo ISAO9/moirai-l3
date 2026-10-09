@@ -209,8 +209,9 @@ parameters. The benchmark figure needs one correction, and it makes the
 reviewer's point stronger rather than weaker. The eight usable sites hold 9,803
 records, but 6,382 of those are noise windows; the catalogued earthquakes
 number 3,421. Each leave-one-site-out run therefore trains on 4,769 to 5,932
-records, of which 1,527 to 2,002 are earthquakes. The ratio is larger than the
-reviewer supposed. The question it raises is whether the model overfits. That
+records, of which 1,527 to 2,002 are earthquakes. pnr-1 contributes none of
+them: the benchmark assigns its entire catalogue to the test split, so no fold
+trains on pnr-1. The ratio is larger than the reviewer supposed. The question it raises is whether the model overfits. That
 question is answered here from the training histories rather than argued from
 the ratio.
 
@@ -1198,7 +1199,11 @@ INDEX = [
     "Section S6. How much moveout each site actually carries.",
     "Figure S1. Example per-station P/S/noise score panel for a representative "
     "event.",
-    "Figure S2. Training and development curves for all 44 runs.",
+    "Figure S2. Training and development curves for the 44 runs that "
+        "record a training history: the sixteen leave-one-site-out runs, "
+        "the twenty-four seed repeats and the four station-shuffle "
+        "controls. The two within-array runs of Section S4 follow a "
+        "different protocol and are not shown.",
     "Figure S3. Summary of held-out metrics.",
     "Figure S4. Off-the-shelf surface-trained baseline applied to a borehole "
     "site.",

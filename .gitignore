@@ -41,7 +41,7 @@ PDF/*
 Thumbs.db
 # Exception: GJI-26-0613 revision outputs are part of the public archive cited
 # in the paper's Data Availability statement (scripts 10-14, first round;
-# scripts 15-25, second round).
+# scripts 15-26, second round).
 !logs/
 logs/*
 !logs/08_moveout_*.json
@@ -51,9 +51,9 @@ logs/*
 !logs/1[5-9]_*.json
 !logs/1[5-9]_*.csv
 !logs/1[5-9]_*.md
-!logs/2[0-5]_*.json
-!logs/2[0-5]_*.csv
-!logs/2[0-5]_*.md
+!logs/2[0-6]_*.json
+!logs/2[0-6]_*.csv
+!logs/2[0-6]_*.md
 !logs/supplement/
 logs/supplement/*
 !logs/supplement/*.json
@@ -80,3 +80,6 @@ PDF/**/*selftest*
 !src/figures/
 !src/figures/*.png
 !src/figures/*.pdf
+
+# Colab upload lands in the repo cwd; never commit the update payloads
+GJI_R2_archive_update*.zip

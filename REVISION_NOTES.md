@@ -61,7 +61,7 @@ pip install remotezip && python src/14_fig4_and_tableS1.py --table-s1
 
 ---
 
-## Second revision round (scripts 15–25)
+## Second revision round (scripts 15–26)
 
 | Script | Purpose | Reviewer point |
 |---|---|---|
@@ -76,6 +76,7 @@ pip install remotezip && python src/14_fig4_and_tableS1.py --table-s1
 | `src/23_fig4_style_supplement.py` | Applies the rebuilt diagnosis-figure treatment to the remaining sites. Asserts that script 14 is the patched (R1-5) version. | R1-5 follow-up |
 | `src/24_moveout_ratio_check.py` | Per-site moveout distributions, the share of events below the ±10 ms tolerance, and the S/P moveout ratio against the catalogued V<sub>p</sub>/V<sub>s</sub>. | R2 (round 2) |
 | `src/25_build_supplement.py` | Assembles the Supporting Information as **one** document (Sections S1–S6, Tables S1–S7, Figures S1–S10) from the logs and figures, and checks every number in its prose against those logs. | GJI §2.8 |
+| `src/26_train_split_overlap.py` | The Section 5.2 training-support figures recomputed on the population the model was trained on. Script 16 defines its "training set" as every audited earthquake of the other seven sites, **all splits**; the model trains on the **train split** only (supplement S3: 1,527–2,002 earthquakes), and pnr-1 contributes no training record in any fold because AMBER assigns its whole catalogue to the test split. The script reproduces the script-16 figures exactly as a regression gate, then restricts the population. Reads only the script-10 caches, the script-16 audit and `metadata.csv`. | Pre-submission audit A-1 (2026-10-09) |
 
 ### Reproducing
 
@@ -86,6 +87,7 @@ python src/25_build_supplement.py --build --figdir src/figures
 
 # logs + AMBER metadata
 python src/22_sampling_rates.py --csv /path/to/metadata.csv
+AMBER_CSV=/path/to/metadata.csv python src/26_train_split_overlap.py --all
 
 # AMBER waveforms + checkpoints (GPU)
 AMBER_H5=$H5 python src/15_phase_confusion.py --all
@@ -118,6 +120,7 @@ AMBER_H5=$H5 python src/20_within_array.py --heldout forge_19
 * `logs/22_sampling_rates.json` / `.md` — native sampling rates
 * `logs/23_event_choice.json` — events shown in the supplementary diagnosis panels
 * `logs/24_moveout_ratio.json` / `.md` — moveout distributions and S/P ratio
+* `logs/26_train_split_overlap_ema.json` — training support per held-out site on three nested populations (script-16 population; train split; train+dev), each after the arrival audit, with the supplier breakdown. The manuscript quotes the train-split values: forge_19 7 / 1,553 (0.45 %), pnr-1 137 / 1,697 (8.07 %, 129 from forge_19)
 
 The Supporting Information document and its machine-readable parts:
 
@@ -157,3 +160,12 @@ Pass the directory with `--figdir src/figures`.
 The eight `logs/08_moveout_<site>.json` files carry the per-site moveout
 medians and inter-quartile ranges quoted in Table 1, including the S-phase
 IQRs restored during the first revision.
+
+> **Reproducibility note (2026-10-09).** AMBER draws a random window and a
+> random 12-station block per event (`amber/dataloaders.py`, seeded from
+> `torch.initial_seed() + index`), and `08_moveout_features.py` does not seed
+> torch. The published medians are therefore one unseeded draw; re-measuring
+> under three fixed seeds moved every median by at most 1.5 samples (0.75 ms)
+> and no event count. Event counts, which the support figures depend on, are
+> independent of the draw. Script 26 uses the catalogued arrival samples in
+> the script-10 caches, not a new draw.

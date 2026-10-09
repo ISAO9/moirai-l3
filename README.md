@@ -22,7 +22,7 @@ the safer operational default.
 
 ## Repository layout
 
-    src/          numbered pipeline (00–25), each with a header docstring
+    src/          numbered pipeline (00–26), each with a header docstring
     src/figures/  published figure assets that the supplement builder (25) embeds
     paper/        preprint PDF + figures/ (05_a … 05_k)
     data/         how to obtain AMBER (data are NOT redistributed here)
@@ -77,7 +77,7 @@ Do not downgrade NumPy after installing AMBER.
 - `13_station_subset_eval.py` — zero-shot evaluation on decimated arrays (4/6/8 stations)
 - `14_fig4_and_tableS1.py` — rebuilt diagnosis figure and the array-geometry table
 
-### Second revision round (15–25)
+### Second revision round (15–26)
 
 - `15_phase_confusion.py` — every declared pick compared with the catalogued arrivals of **both** phases; phase-confusion matrices and residual distributions
 - `16_arrival_audit.py` — physical audit of the catalogued arrivals (S before P, implausible V<sub>p</sub>/V<sub>s</sub>, arrivals outside the window), plus re-scoring on the surviving events
@@ -90,8 +90,9 @@ Do not downgrade NumPy after installing AMBER.
 - `23_fig4_style_supplement.py` — the diagnosis-figure treatment applied to the remaining sites
 - `24_moveout_ratio_check.py` — per-site moveout distributions and the S/P moveout ratio
 - `25_build_supplement.py` — assembles the Supporting Information as one document (Sections S1–S6, Tables S1–S7, Figures S1–S10) from the logs and figures, and checks every number in its prose against those logs
+- `26_train_split_overlap.py` — the Section 5.2 training-support figures (share of training earthquakes reaching the held-out site's median moveout) recomputed on the population the model was trained on: the LOSO **train split** after the arrival audit of script 16. Reproduces the script-16 figures first, then restricts the population. No HDF5, no GPU
 
-Every script in 10–25 accepts `--selftest`, which validates its logic on synthetic inputs
+Every script in 10–26 accepts `--selftest`, which validates its logic on synthetic inputs
 without AMBER, checkpoints or network access.
 
 ## Reproducing the paper

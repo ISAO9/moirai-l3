@@ -5,7 +5,7 @@ Section S4. Training with the held-out arrays represented.
 Section S5. Where the declared picks land: P/S assignment.
 Section S6. How much moveout each site actually carries.
 Figure S1. Example per-station P/S/noise score panel for a representative event.
-Figure S2. Training and development curves for all 44 runs.
+Figure S2. Training and development curves for the 44 runs that record a training history: the sixteen leave-one-site-out runs, the twenty-four seed repeats and the four station-shuffle controls. The two within-array runs of Section S4 follow a different protocol and are not shown.
 Figure S3. Summary of held-out metrics.
 Figure S4. Off-the-shelf surface-trained baseline applied to a borehole site.
 Figure S5. Zero-shot transfer of the trained array picker to decimated arrays.

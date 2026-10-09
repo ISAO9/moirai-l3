@@ -1,0 +1,1003 @@
+{
+  "threshold_ms": {
+    "pnr-1": 62.0,
+    "mseel_3h": 31.5,
+    "mseel_5h": 27.5,
+    "clearfield_mw6": 24.0,
+    "pnr-2": 35.0,
+    "clearfield_mw4": 24.0,
+    "aneth": 6.0,
+    "forge_19": 70.0
+  },
+  "clean_by_split": {
+    "pnr-1": {
+      "train": 0,
+      "dev": 0,
+      "test": 537
+    },
+    "mseel_3h": {
+      "train": 397,
+      "dev": 93,
+      "test": 87
+    },
+    "mseel_5h": {
+      "train": 296,
+      "dev": 65,
+      "test": 61
+    },
+    "clearfield_mw6": {
+      "train": 340,
+      "dev": 71,
+      "test": 73
+    },
+    "pnr-2": {
+      "train": 195,
+      "dev": 41,
+      "test": 51
+    },
+    "clearfield_mw4": {
+      "train": 136,
+      "dev": 31,
+      "test": 37
+    },
+    "aneth": {
+      "train": 189,
+      "dev": 44,
+      "test": 44
+    },
+    "forge_19": {
+      "train": 144,
+      "dev": 36,
+      "test": 32
+    }
+  },
+  "populations": {
+    "P16  clean, all splits  (= script 16 = manuscript)": {
+      "pnr-1": {
+        "heldout": "pnr-1",
+        "threshold_ms": 62.0,
+        "n_train": 2463,
+        "n_train_ge_median": 202,
+        "frac_ge_median": 0.08201380430369468,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "forge_19": 192,
+          "clearfield_mw6": 6,
+          "mseel_5h": 2,
+          "mseel_3h": 1,
+          "clearfield_mw4": 1,
+          "pnr-2": 0,
+          "aneth": 0
+        },
+        "top_supplier": "forge_19",
+        "top_supplier_events": 192,
+        "top_supplier_share": 0.9504950495049505,
+        "n_by_site": {
+          "mseel_3h": 577,
+          "mseel_5h": 422,
+          "clearfield_mw6": 484,
+          "pnr-2": 287,
+          "clearfield_mw4": 204,
+          "aneth": 277,
+          "forge_19": 212
+        },
+        "wording": "under-represented in training"
+      },
+      "mseel_3h": {
+        "heldout": "mseel_3h",
+        "threshold_ms": 31.5,
+        "n_train": 2423,
+        "n_train_ge_median": 1413,
+        "frac_ge_median": 0.5831613702022287,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "pnr-1": 537,
+          "pnr-2": 282,
+          "forge_19": 212,
+          "clearfield_mw6": 164,
+          "mseel_5h": 156,
+          "clearfield_mw4": 61,
+          "aneth": 1
+        },
+        "top_supplier": "pnr-1",
+        "top_supplier_events": 537,
+        "top_supplier_share": 0.38004246284501064,
+        "n_by_site": {
+          "pnr-1": 537,
+          "mseel_5h": 422,
+          "clearfield_mw6": 484,
+          "pnr-2": 287,
+          "clearfield_mw4": 204,
+          "aneth": 277,
+          "forge_19": 212
+        },
+        "wording": "well represented in training"
+      },
+      "mseel_5h": {
+        "heldout": "mseel_5h",
+        "threshold_ms": 27.5,
+        "n_train": 2578,
+        "n_train_ge_median": 1719,
+        "frac_ge_median": 0.6667959658650117,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "pnr-1": 537,
+          "mseel_3h": 404,
+          "pnr-2": 286,
+          "forge_19": 212,
+          "clearfield_mw6": 199,
+          "clearfield_mw4": 80,
+          "aneth": 1
+        },
+        "top_supplier": "pnr-1",
+        "top_supplier_events": 537,
+        "top_supplier_share": 0.31239092495637,
+        "n_by_site": {
+          "pnr-1": 537,
+          "mseel_3h": 577,
+          "clearfield_mw6": 484,
+          "pnr-2": 287,
+          "clearfield_mw4": 204,
+          "aneth": 277,
+          "forge_19": 212
+        },
+        "wording": "well represented in training"
+      },
+      "clearfield_mw6": {
+        "heldout": "clearfield_mw6",
+        "threshold_ms": 24.0,
+        "n_train": 2516,
+        "n_train_ge_median": 1879,
+        "frac_ge_median": 0.7468203497615262,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "pnr-1": 537,
+          "mseel_3h": 464,
+          "pnr-2": 287,
+          "mseel_5h": 273,
+          "forge_19": 212,
+          "clearfield_mw4": 105,
+          "aneth": 1
+        },
+        "top_supplier": "pnr-1",
+        "top_supplier_events": 537,
+        "top_supplier_share": 0.2857903139968068,
+        "n_by_site": {
+          "pnr-1": 537,
+          "mseel_3h": 577,
+          "mseel_5h": 422,
+          "pnr-2": 287,
+          "clearfield_mw4": 204,
+          "aneth": 277,
+          "forge_19": 212
+        },
+        "wording": "well represented in training"
+      },
+      "pnr-2": {
+        "heldout": "pnr-2",
+        "threshold_ms": 35.0,
+        "n_train": 2713,
+        "n_train_ge_median": 1235,
+        "frac_ge_median": 0.4552156284555842,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "pnr-1": 537,
+          "forge_19": 212,
+          "mseel_3h": 200,
+          "mseel_5h": 119,
+          "clearfield_mw6": 119,
+          "clearfield_mw4": 47,
+          "aneth": 1
+        },
+        "top_supplier": "pnr-1",
+        "top_supplier_events": 537,
+        "top_supplier_share": 0.4348178137651822,
+        "n_by_site": {
+          "pnr-1": 537,
+          "mseel_3h": 577,
+          "mseel_5h": 422,
+          "clearfield_mw6": 484,
+          "clearfield_mw4": 204,
+          "aneth": 277,
+          "forge_19": 212
+        },
+        "wording": "well represented in training"
+      },
+      "clearfield_mw4": {
+        "heldout": "clearfield_mw4",
+        "threshold_ms": 24.0,
+        "n_train": 2796,
+        "n_train_ge_median": 2018,
+        "frac_ge_median": 0.7217453505007153,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "pnr-1": 537,
+          "mseel_3h": 464,
+          "pnr-2": 287,
+          "mseel_5h": 273,
+          "clearfield_mw6": 244,
+          "forge_19": 212,
+          "aneth": 1
+        },
+        "top_supplier": "pnr-1",
+        "top_supplier_events": 537,
+        "top_supplier_share": 0.26610505450941524,
+        "n_by_site": {
+          "pnr-1": 537,
+          "mseel_3h": 577,
+          "mseel_5h": 422,
+          "clearfield_mw6": 484,
+          "pnr-2": 287,
+          "aneth": 277,
+          "forge_19": 212
+        },
+        "wording": "well represented in training"
+      },
+      "aneth": {
+        "heldout": "aneth",
+        "threshold_ms": 6.0,
+        "n_train": 2723,
+        "n_train_ge_median": 2723,
+        "frac_ge_median": 1.0,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "mseel_3h": 577,
+          "pnr-1": 537,
+          "clearfield_mw6": 484,
+          "mseel_5h": 422,
+          "pnr-2": 287,
+          "forge_19": 212,
+          "clearfield_mw4": 204
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 577,
+        "top_supplier_share": 0.2118986412045538,
+        "n_by_site": {
+          "pnr-1": 537,
+          "mseel_3h": 577,
+          "mseel_5h": 422,
+          "clearfield_mw6": 484,
+          "pnr-2": 287,
+          "clearfield_mw4": 204,
+          "forge_19": 212
+        },
+        "wording": "well represented in training"
+      },
+      "forge_19": {
+        "heldout": "forge_19",
+        "threshold_ms": 70.0,
+        "n_train": 2788,
+        "n_train_ge_median": 9,
+        "frac_ge_median": 0.0032281205164992827,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "clearfield_mw6": 6,
+          "mseel_5h": 2,
+          "mseel_3h": 1,
+          "pnr-1": 0,
+          "pnr-2": 0,
+          "clearfield_mw4": 0,
+          "aneth": 0
+        },
+        "top_supplier": "clearfield_mw6",
+        "top_supplier_events": 6,
+        "top_supplier_share": 0.6666666666666666,
+        "n_by_site": {
+          "pnr-1": 537,
+          "mseel_3h": 577,
+          "mseel_5h": 422,
+          "clearfield_mw6": 484,
+          "pnr-2": 287,
+          "clearfield_mw4": 204,
+          "aneth": 277
+        },
+        "wording": "in the extreme tail of the training range"
+      }
+    },
+    "B    clean, train only  (= what the model trained on)": {
+      "pnr-1": {
+        "heldout": "pnr-1",
+        "threshold_ms": 62.0,
+        "n_train": 1697,
+        "n_train_ge_median": 137,
+        "frac_ge_median": 0.0807307012374779,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "forge_19": 129,
+          "clearfield_mw6": 6,
+          "mseel_3h": 1,
+          "clearfield_mw4": 1,
+          "mseel_5h": 0,
+          "pnr-2": 0,
+          "aneth": 0
+        },
+        "top_supplier": "forge_19",
+        "top_supplier_events": 129,
+        "top_supplier_share": 0.9416058394160584,
+        "n_by_site": {
+          "mseel_3h": 397,
+          "mseel_5h": 296,
+          "clearfield_mw6": 340,
+          "pnr-2": 195,
+          "clearfield_mw4": 136,
+          "aneth": 189,
+          "forge_19": 144
+        },
+        "wording": "under-represented in training"
+      },
+      "mseel_3h": {
+        "heldout": "mseel_3h",
+        "threshold_ms": 31.5,
+        "n_train": 1300,
+        "n_train_ge_median": 618,
+        "frac_ge_median": 0.4753846153846154,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "pnr-2": 194,
+          "forge_19": 144,
+          "clearfield_mw6": 124,
+          "mseel_5h": 114,
+          "clearfield_mw4": 41,
+          "aneth": 1
+        },
+        "top_supplier": "pnr-2",
+        "top_supplier_events": 194,
+        "top_supplier_share": 0.313915857605178,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_5h": 296,
+          "clearfield_mw6": 340,
+          "pnr-2": 195,
+          "clearfield_mw4": 136,
+          "aneth": 189,
+          "forge_19": 144
+        },
+        "wording": "well represented in training"
+      },
+      "mseel_5h": {
+        "heldout": "mseel_5h",
+        "threshold_ms": 27.5,
+        "n_train": 1401,
+        "n_train_ge_median": 825,
+        "frac_ge_median": 0.588865096359743,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "mseel_3h": 283,
+          "pnr-2": 195,
+          "clearfield_mw6": 149,
+          "forge_19": 144,
+          "clearfield_mw4": 53,
+          "aneth": 1
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 283,
+        "top_supplier_share": 0.343030303030303,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 397,
+          "clearfield_mw6": 340,
+          "pnr-2": 195,
+          "clearfield_mw4": 136,
+          "aneth": 189,
+          "forge_19": 144
+        },
+        "wording": "well represented in training"
+      },
+      "clearfield_mw6": {
+        "heldout": "clearfield_mw6",
+        "threshold_ms": 24.0,
+        "n_train": 1357,
+        "n_train_ge_median": 924,
+        "frac_ge_median": 0.6809137803979366,
+        "train_max_ms": 98.0,
+        "supply_by_site": {
+          "mseel_3h": 325,
+          "pnr-2": 195,
+          "mseel_5h": 189,
+          "forge_19": 144,
+          "clearfield_mw4": 70,
+          "aneth": 1
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 325,
+        "top_supplier_share": 0.35173160173160173,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 397,
+          "mseel_5h": 296,
+          "pnr-2": 195,
+          "clearfield_mw4": 136,
+          "aneth": 189,
+          "forge_19": 144
+        },
+        "wording": "well represented in training"
+      },
+      "pnr-2": {
+        "heldout": "pnr-2",
+        "threshold_ms": 35.0,
+        "n_train": 1502,
+        "n_train_ge_median": 499,
+        "frac_ge_median": 0.3322237017310253,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "mseel_3h": 146,
+          "forge_19": 144,
+          "clearfield_mw6": 90,
+          "mseel_5h": 86,
+          "clearfield_mw4": 32,
+          "aneth": 1
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 146,
+        "top_supplier_share": 0.2925851703406814,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 397,
+          "mseel_5h": 296,
+          "clearfield_mw6": 340,
+          "clearfield_mw4": 136,
+          "aneth": 189,
+          "forge_19": 144
+        },
+        "wording": "well represented in training"
+      },
+      "clearfield_mw4": {
+        "heldout": "clearfield_mw4",
+        "threshold_ms": 24.0,
+        "n_train": 1561,
+        "n_train_ge_median": 1038,
+        "frac_ge_median": 0.6649583600256246,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "mseel_3h": 325,
+          "pnr-2": 195,
+          "mseel_5h": 189,
+          "clearfield_mw6": 184,
+          "forge_19": 144,
+          "aneth": 1
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 325,
+        "top_supplier_share": 0.313102119460501,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 397,
+          "mseel_5h": 296,
+          "clearfield_mw6": 340,
+          "pnr-2": 195,
+          "aneth": 189,
+          "forge_19": 144
+        },
+        "wording": "well represented in training"
+      },
+      "aneth": {
+        "heldout": "aneth",
+        "threshold_ms": 6.0,
+        "n_train": 1508,
+        "n_train_ge_median": 1508,
+        "frac_ge_median": 1.0,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "mseel_3h": 397,
+          "clearfield_mw6": 340,
+          "mseel_5h": 296,
+          "pnr-2": 195,
+          "forge_19": 144,
+          "clearfield_mw4": 136
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 397,
+        "top_supplier_share": 0.26326259946949604,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 397,
+          "mseel_5h": 296,
+          "clearfield_mw6": 340,
+          "pnr-2": 195,
+          "clearfield_mw4": 136,
+          "forge_19": 144
+        },
+        "wording": "well represented in training"
+      },
+      "forge_19": {
+        "heldout": "forge_19",
+        "threshold_ms": 70.0,
+        "n_train": 1553,
+        "n_train_ge_median": 7,
+        "frac_ge_median": 0.004507405022537025,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "clearfield_mw6": 6,
+          "mseel_3h": 1,
+          "mseel_5h": 0,
+          "pnr-2": 0,
+          "clearfield_mw4": 0,
+          "aneth": 0
+        },
+        "top_supplier": "clearfield_mw6",
+        "top_supplier_events": 6,
+        "top_supplier_share": 0.8571428571428571,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 397,
+          "mseel_5h": 296,
+          "clearfield_mw6": 340,
+          "pnr-2": 195,
+          "clearfield_mw4": 136,
+          "aneth": 189
+        },
+        "wording": "in the extreme tail of the training range"
+      }
+    },
+    "B+   clean, train + dev": {
+      "pnr-1": {
+        "heldout": "pnr-1",
+        "threshold_ms": 62.0,
+        "n_train": 2078,
+        "n_train_ge_median": 174,
+        "frac_ge_median": 0.08373435996150144,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "forge_19": 164,
+          "clearfield_mw6": 6,
+          "mseel_5h": 2,
+          "mseel_3h": 1,
+          "clearfield_mw4": 1,
+          "pnr-2": 0,
+          "aneth": 0
+        },
+        "top_supplier": "forge_19",
+        "top_supplier_events": 164,
+        "top_supplier_share": 0.9425287356321839,
+        "n_by_site": {
+          "mseel_3h": 490,
+          "mseel_5h": 361,
+          "clearfield_mw6": 411,
+          "pnr-2": 236,
+          "clearfield_mw4": 167,
+          "aneth": 233,
+          "forge_19": 180
+        },
+        "wording": "under-represented in training"
+      },
+      "mseel_3h": {
+        "heldout": "mseel_3h",
+        "threshold_ms": 31.5,
+        "n_train": 1588,
+        "n_train_ge_median": 744,
+        "frac_ge_median": 0.46851385390428213,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "pnr-2": 233,
+          "forge_19": 180,
+          "clearfield_mw6": 146,
+          "mseel_5h": 135,
+          "clearfield_mw4": 49,
+          "aneth": 1
+        },
+        "top_supplier": "pnr-2",
+        "top_supplier_events": 233,
+        "top_supplier_share": 0.3131720430107527,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_5h": 361,
+          "clearfield_mw6": 411,
+          "pnr-2": 236,
+          "clearfield_mw4": 167,
+          "aneth": 233,
+          "forge_19": 180
+        },
+        "wording": "well represented in training"
+      },
+      "mseel_5h": {
+        "heldout": "mseel_5h",
+        "threshold_ms": 27.5,
+        "n_train": 1717,
+        "n_train_ge_median": 1003,
+        "frac_ge_median": 0.5841584158415841,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "mseel_3h": 347,
+          "pnr-2": 236,
+          "forge_19": 180,
+          "clearfield_mw6": 175,
+          "clearfield_mw4": 64,
+          "aneth": 1
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 347,
+        "top_supplier_share": 0.3459621136590229,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 490,
+          "clearfield_mw6": 411,
+          "pnr-2": 236,
+          "clearfield_mw4": 167,
+          "aneth": 233,
+          "forge_19": 180
+        },
+        "wording": "well represented in training"
+      },
+      "clearfield_mw6": {
+        "heldout": "clearfield_mw6",
+        "threshold_ms": 24.0,
+        "n_train": 1667,
+        "n_train_ge_median": 1131,
+        "frac_ge_median": 0.6784643071385723,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "mseel_3h": 399,
+          "pnr-2": 236,
+          "mseel_5h": 231,
+          "forge_19": 180,
+          "clearfield_mw4": 84,
+          "aneth": 1
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 399,
+        "top_supplier_share": 0.35278514588859416,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 490,
+          "mseel_5h": 361,
+          "pnr-2": 236,
+          "clearfield_mw4": 167,
+          "aneth": 233,
+          "forge_19": 180
+        },
+        "wording": "well represented in training"
+      },
+      "pnr-2": {
+        "heldout": "pnr-2",
+        "threshold_ms": 35.0,
+        "n_train": 1842,
+        "n_train_ge_median": 603,
+        "frac_ge_median": 0.3273615635179153,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "forge_19": 180,
+          "mseel_3h": 177,
+          "mseel_5h": 105,
+          "clearfield_mw6": 102,
+          "clearfield_mw4": 38,
+          "aneth": 1
+        },
+        "top_supplier": "forge_19",
+        "top_supplier_events": 180,
+        "top_supplier_share": 0.29850746268656714,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 490,
+          "mseel_5h": 361,
+          "clearfield_mw6": 411,
+          "clearfield_mw4": 167,
+          "aneth": 233,
+          "forge_19": 180
+        },
+        "wording": "well represented in training"
+      },
+      "clearfield_mw4": {
+        "heldout": "clearfield_mw4",
+        "threshold_ms": 24.0,
+        "n_train": 1911,
+        "n_train_ge_median": 1261,
+        "frac_ge_median": 0.6598639455782312,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "mseel_3h": 399,
+          "pnr-2": 236,
+          "mseel_5h": 231,
+          "clearfield_mw6": 214,
+          "forge_19": 180,
+          "aneth": 1
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 399,
+        "top_supplier_share": 0.3164155432196669,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 490,
+          "mseel_5h": 361,
+          "clearfield_mw6": 411,
+          "pnr-2": 236,
+          "aneth": 233,
+          "forge_19": 180
+        },
+        "wording": "well represented in training"
+      },
+      "aneth": {
+        "heldout": "aneth",
+        "threshold_ms": 6.0,
+        "n_train": 1845,
+        "n_train_ge_median": 1845,
+        "frac_ge_median": 1.0,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "mseel_3h": 490,
+          "clearfield_mw6": 411,
+          "mseel_5h": 361,
+          "pnr-2": 236,
+          "forge_19": 180,
+          "clearfield_mw4": 167
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 490,
+        "top_supplier_share": 0.26558265582655827,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 490,
+          "mseel_5h": 361,
+          "clearfield_mw6": 411,
+          "pnr-2": 236,
+          "clearfield_mw4": 167,
+          "forge_19": 180
+        },
+        "wording": "well represented in training"
+      },
+      "forge_19": {
+        "heldout": "forge_19",
+        "threshold_ms": 70.0,
+        "n_train": 1898,
+        "n_train_ge_median": 9,
+        "frac_ge_median": 0.004741833508956797,
+        "train_max_ms": 103.5,
+        "supply_by_site": {
+          "clearfield_mw6": 6,
+          "mseel_5h": 2,
+          "mseel_3h": 1,
+          "pnr-2": 0,
+          "clearfield_mw4": 0,
+          "aneth": 0
+        },
+        "top_supplier": "clearfield_mw6",
+        "top_supplier_events": 6,
+        "top_supplier_share": 0.6666666666666666,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 490,
+          "mseel_5h": 361,
+          "clearfield_mw6": 411,
+          "pnr-2": 236,
+          "clearfield_mw4": 167,
+          "aneth": 233
+        },
+        "wording": "in the extreme tail of the training range"
+      }
+    },
+    "RAW  train only, before the audit": {
+      "pnr-1": {
+        "heldout": "pnr-1",
+        "threshold_ms": 62.0,
+        "n_train": 2002,
+        "n_train_ge_median": 267,
+        "frac_ge_median": 0.13336663336663337,
+        "train_max_ms": 909.0,
+        "supply_by_site": {
+          "forge_19": 130,
+          "clearfield_mw6": 48,
+          "mseel_3h": 35,
+          "mseel_5h": 23,
+          "clearfield_mw4": 21,
+          "pnr-2": 5,
+          "aneth": 5
+        },
+        "top_supplier": "forge_19",
+        "top_supplier_events": 130,
+        "top_supplier_share": 0.4868913857677903,
+        "n_by_site": {
+          "mseel_3h": 475,
+          "mseel_5h": 364,
+          "clearfield_mw6": 431,
+          "pnr-2": 207,
+          "clearfield_mw4": 174,
+          "aneth": 206,
+          "forge_19": 145
+        },
+        "wording": "well represented in training"
+      },
+      "mseel_3h": {
+        "heldout": "mseel_3h",
+        "threshold_ms": 31.5,
+        "n_train": 1527,
+        "n_train_ge_median": 741,
+        "frac_ge_median": 0.48526522593320237,
+        "train_max_ms": 909.0,
+        "supply_by_site": {
+          "pnr-2": 206,
+          "clearfield_mw6": 172,
+          "forge_19": 145,
+          "mseel_5h": 143,
+          "clearfield_mw4": 66,
+          "aneth": 9
+        },
+        "top_supplier": "pnr-2",
+        "top_supplier_events": 206,
+        "top_supplier_share": 0.27800269905533065,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_5h": 364,
+          "clearfield_mw6": 431,
+          "pnr-2": 207,
+          "clearfield_mw4": 174,
+          "aneth": 206,
+          "forge_19": 145
+        },
+        "wording": "well represented in training"
+      },
+      "mseel_5h": {
+        "heldout": "mseel_5h",
+        "threshold_ms": 27.5,
+        "n_train": 1638,
+        "n_train_ge_median": 976,
+        "frac_ge_median": 0.5958485958485958,
+        "train_max_ms": 909.0,
+        "supply_by_site": {
+          "mseel_3h": 336,
+          "pnr-2": 207,
+          "clearfield_mw6": 201,
+          "forge_19": 145,
+          "clearfield_mw4": 78,
+          "aneth": 9
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 336,
+        "top_supplier_share": 0.3442622950819672,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 475,
+          "clearfield_mw6": 431,
+          "pnr-2": 207,
+          "clearfield_mw4": 174,
+          "aneth": 206,
+          "forge_19": 145
+        },
+        "wording": "well represented in training"
+      },
+      "clearfield_mw6": {
+        "heldout": "clearfield_mw6",
+        "threshold_ms": 24.0,
+        "n_train": 1571,
+        "n_train_ge_median": 1063,
+        "frac_ge_median": 0.6766390833863781,
+        "train_max_ms": 767.0,
+        "supply_by_site": {
+          "mseel_3h": 383,
+          "mseel_5h": 222,
+          "pnr-2": 207,
+          "forge_19": 145,
+          "clearfield_mw4": 97,
+          "aneth": 9
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 383,
+        "top_supplier_share": 0.3603010348071496,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 475,
+          "mseel_5h": 364,
+          "pnr-2": 207,
+          "clearfield_mw4": 174,
+          "aneth": 206,
+          "forge_19": 145
+        },
+        "wording": "well represented in training"
+      },
+      "pnr-2": {
+        "heldout": "pnr-2",
+        "threshold_ms": 35.0,
+        "n_train": 1795,
+        "n_train_ge_median": 645,
+        "frac_ge_median": 0.3593314763231198,
+        "train_max_ms": 909.0,
+        "supply_by_site": {
+          "mseel_3h": 183,
+          "forge_19": 145,
+          "clearfield_mw6": 138,
+          "mseel_5h": 113,
+          "clearfield_mw4": 57,
+          "aneth": 9
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 183,
+        "top_supplier_share": 0.2837209302325581,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 475,
+          "mseel_5h": 364,
+          "clearfield_mw6": 431,
+          "clearfield_mw4": 174,
+          "aneth": 206,
+          "forge_19": 145
+        },
+        "wording": "well represented in training"
+      },
+      "clearfield_mw4": {
+        "heldout": "clearfield_mw4",
+        "threshold_ms": 24.0,
+        "n_train": 1828,
+        "n_train_ge_median": 1206,
+        "frac_ge_median": 0.6597374179431073,
+        "train_max_ms": 909.0,
+        "supply_by_site": {
+          "mseel_3h": 383,
+          "clearfield_mw6": 240,
+          "mseel_5h": 222,
+          "pnr-2": 207,
+          "forge_19": 145,
+          "aneth": 9
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 383,
+        "top_supplier_share": 0.3175787728026534,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 475,
+          "mseel_5h": 364,
+          "clearfield_mw6": 431,
+          "pnr-2": 207,
+          "aneth": 206,
+          "forge_19": 145
+        },
+        "wording": "well represented in training"
+      },
+      "aneth": {
+        "heldout": "aneth",
+        "threshold_ms": 6.0,
+        "n_train": 1796,
+        "n_train_ge_median": 1795,
+        "frac_ge_median": 0.9994432071269488,
+        "train_max_ms": 909.0,
+        "supply_by_site": {
+          "mseel_3h": 475,
+          "clearfield_mw6": 431,
+          "mseel_5h": 363,
+          "pnr-2": 207,
+          "clearfield_mw4": 174,
+          "forge_19": 145
+        },
+        "top_supplier": "mseel_3h",
+        "top_supplier_events": 475,
+        "top_supplier_share": 0.2646239554317549,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 475,
+          "mseel_5h": 364,
+          "clearfield_mw6": 431,
+          "pnr-2": 207,
+          "clearfield_mw4": 174,
+          "forge_19": 145
+        },
+        "wording": "well represented in training"
+      },
+      "forge_19": {
+        "heldout": "forge_19",
+        "threshold_ms": 70.0,
+        "n_train": 1857,
+        "n_train_ge_median": 135,
+        "frac_ge_median": 0.07269789983844911,
+        "train_max_ms": 909.0,
+        "supply_by_site": {
+          "clearfield_mw6": 48,
+          "mseel_3h": 34,
+          "mseel_5h": 23,
+          "clearfield_mw4": 20,
+          "pnr-2": 5,
+          "aneth": 5
+        },
+        "top_supplier": "clearfield_mw6",
+        "top_supplier_events": 48,
+        "top_supplier_share": 0.35555555555555557,
+        "n_by_site": {
+          "pnr-1": 0,
+          "mseel_3h": 475,
+          "mseel_5h": 364,
+          "clearfield_mw6": 431,
+          "pnr-2": 207,
+          "clearfield_mw4": 174,
+          "aneth": 206
+        },
+        "wording": "under-represented in training"
+      }
+    }
+  }
+}
