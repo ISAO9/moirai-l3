@@ -40,6 +40,28 @@ INPUTS
   data/metadata.csv                    optional; for training-set sizes
   (torch, optional: for the exact parameter count of the model)
 
+SECOND-REVISION ADDITION (v0.3.2, v0.3.2b)
+  The 36 seed repeats trained for the second review round (seeds 1-3 of
+  array and per-trace at the four tie sites, and of the shuffle control at
+  the four decisive sites) are picked up by the same glob, so the analysis
+  now covers 80 runs instead of 44.  Each run additionally records how often
+  the EMA development score fell below the raw-weight development score
+  (`ema_below_raw_epochs`, out of `ema_vs_raw_epochs`), because Section 3.3
+  of the paper states that it never did; that statement is now measured
+  here rather than asserted.  Two further per-run fields (v0.3.2b):
+    * `ema_best_minus_raw_best`: the best EMA development score minus the
+      best raw-weight development score of the same run -- the comparison
+      that matters for the reported checkpoints, since the EMA lags the raw
+      weights by construction during the first epochs;
+    * `loss_collapse_epoch` and `best_before_collapse`: script 03 skips a
+      mini-batch whose loss is not finite under mixed precision and divides
+      the epoch loss by the FULL batch count, so an abrupt fall of the logged
+      training loss by more than a factor of five marks an epoch in which
+      most batches were skipped and the weights stopped changing.  The field
+      records the first such epoch (None if none) and whether the best
+      development epoch, the one the reported checkpoint comes from, lies
+      before it.
+
 OUTPUTS
   logs/19_capacity_<ckpt>.json         per-run numbers
   logs/19_capacity.md                  the table to paste
@@ -167,6 +189,30 @@ def analyse(hist: list, ema: bool = True) -> dict:
     # epoch-to-epoch noise of the same segment: a plateau that wanders gives a
     # trend near zero with large noise, a model that is overfitting gives a
     # trend that is clearly negative relative to it.
+    # EMA versus raw weights on the same development split, epoch by epoch.
+    # Section 3.3 claims the EMA score was never below the raw score; count it.
+    raw = np.array([_dev_f1(r, False) for r in hist])
+    emav = np.array([_dev_f1(r, True) for r in hist])
+    both = np.isfinite(raw) & np.isfinite(emav)
+    ema_vs_raw_epochs = int(both.sum())
+    ema_below_raw_epochs = int((emav[both] < raw[both] - 1e-12).sum())
+    ema_minus_raw_min = float((emav[both] - raw[both]).min()) if both.any() else None
+
+    ema_best_minus_raw_best = None
+    if both.any():
+        ema_best_minus_raw_best = float(np.nanmax(emav[both]) - np.nanmax(raw[both]))
+
+    # abrupt fall of the logged loss: first epoch whose loss is below one fifth
+    # of the median of the preceding five epochs (needs >= 5 finite epochs before)
+    collapse = None
+    for i in range(5, len(tl)):
+        prev = tl[i - 5:i]
+        prev = prev[np.isfinite(prev)]
+        if prev.size >= 3 and np.isfinite(tl[i]) and tl[i] < 0.2 * float(np.median(prev)):
+            collapse = ep[i]
+            break
+    best_before_collapse = None if collapse is None else bool(ep[best_i] < collapse)
+
     seg = f1[best_i:][np.isfinite(f1[best_i:])]
     noise = trend = None
     if seg.size >= 6:
@@ -186,7 +232,13 @@ def analyse(hist: list, ema: bool = True) -> dict:
         early_stop_fired=stopped_early,
         dev_epoch_noise=noise, post_peak_trend=trend,
         trend_over_noise=(None if (trend is None or not noise)
-                          else float(trend / noise)))
+                          else float(trend / noise)),
+        ema_vs_raw_epochs=ema_vs_raw_epochs,
+        ema_below_raw_epochs=ema_below_raw_epochs,
+        ema_minus_raw_min=ema_minus_raw_min,
+        ema_best_minus_raw_best=ema_best_minus_raw_best,
+        loss_collapse_epoch=collapse,
+        best_before_collapse=best_before_collapse)
 
 
 def _stations_per_site() -> dict:
@@ -365,6 +417,31 @@ def verdict(rows: dict) -> str:
                 "and must be reported as such.")
     tail = (" Every score reported in the paper is taken from the best "
             "development epoch, not the last." + note)
+    n_ep = sum(r.get("ema_vs_raw_epochs", 0) for r in use)
+    n_below = sum(r.get("ema_below_raw_epochs", 0) for r in use)
+    n_runs_below = sum(1 for r in use if r.get("ema_below_raw_epochs", 0) > 0)
+    mins = [r["ema_minus_raw_min"] for r in use if r.get("ema_minus_raw_min") is not None]
+    if n_ep:
+        tail += (f" [ema-vs-raw] Over {n_ep} run-epochs of {len(use)} runs, the EMA "
+                 f"development score was below the raw-weight score in {n_below} "
+                 f"run-epochs ({n_runs_below} runs); the smallest EMA-minus-raw "
+                 f"margin was {min(mins):+.4f}.")
+    bb = [r["ema_best_minus_raw_best"] for r in use if r.get("ema_best_minus_raw_best") is not None]
+    if bb:
+        bb = np.asarray(bb)
+        tail += (f" [ema-best-vs-raw-best] best EMA score minus best raw score per run: "
+                 f"median {np.median(bb):+.4f}, min {bb.min():+.4f}, max {bb.max():+.4f}; "
+                 f"EMA best >= raw best in {int((bb >= 0).sum())} of {bb.size} runs, "
+                 f"EMA best > raw best in {int((bb > 0).sum())}.")
+    col = [r for r in use if r.get("loss_collapse_epoch") is not None]
+    if use:
+        n_safe = sum(1 for r in col if r.get("best_before_collapse"))
+        tail += (f" [loss-collapse] the logged training loss fell abruptly (below one "
+                 f"fifth of the preceding five-epoch median) in {len(col)} of {len(use)} "
+                 f"runs; in {n_safe} of those the best development epoch precedes the "
+                 f"fall. Script 03 skips non-finite mini-batches and divides the epoch "
+                 f"loss by the full batch count, so such a fall marks skipped batches, "
+                 f"not a lower loss.")
     return head + " " + common + tail
 
 
@@ -398,15 +475,16 @@ def write_report(rows: dict, sizes: dict, n_param, ckpt: str) -> str:
                       "traces. Run script 17 --geometry first.")
     md += ["", "| Site | config | epochs | best epoch | dev F1 best | "
                "dev F1 last | fall from best | post-peak trend | epoch noise | "
-               "trend/noise | train loss first -> best -> last | early stop |",
-           "|---|---|---|---|---|---|---|---|---|---|---|"]
+               "trend/noise | train loss first -> best -> last | early stop | "
+               "EMA < raw (epochs) | EMA best - raw best | loss collapse epoch (best before?) |",
+           "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     keys = [k for s in SITE_ORDER for k in
             ((s, "array"), (s, "pertrace"), (s, "shuffle")) if k in rows]
     keys += [k for k in rows if k not in keys]
     for (s, m) in keys:
         r = rows[(s, m)]
         if not r.get("usable"):
-            md.append(f"| {s} | {m} | {r['n_epochs']} | - | - | - | - | - | - | - |")
+            md.append(f"| {s} | {m} | {r['n_epochs']} | - | - | - | - | - | - | - | - | - | - | - | - |")
             continue
         tls = " -> ".join("-" if r[k] is None else f"{r[k]:.4f}"
                           for k in ("train_loss_first", "train_loss_best",
@@ -417,7 +495,10 @@ def write_report(rows: dict, sizes: dict, n_param, ckpt: str) -> str:
             f"{r['dev_f1_best']:.3f} | {r['dev_f1_last']:.3f} | "
             f"{r['dev_f1_drop_from_best']:+.3f} | {f('post_peak_trend','+.4f')} | "
             f"{f('dev_epoch_noise','.4f')} | {f('trend_over_noise','+.2f')} | "
-            f"{tls} | {'yes' if r['early_stop_fired'] else 'no'} |")
+            f"{tls} | {'yes' if r['early_stop_fired'] else 'no'} | "
+            f"{r.get('ema_below_raw_epochs', '-')} / {r.get('ema_vs_raw_epochs', '-')} | "
+            f"{f('ema_best_minus_raw_best', '+.4f')} | "
+            f"{'-' if r.get('loss_collapse_epoch') is None else str(r['loss_collapse_epoch']) + (' (yes)' if r.get('best_before_collapse') else ' (NO)')} |")
     txt = "\n".join(md)
     (cfg.LOGS_DIR / "19_capacity.md").write_text(txt)
     return txt
@@ -626,6 +707,34 @@ def selftest():
     assert nd == 1 and len(tr) == len(h) - 1
     print(f"  truncated final record discarded (drop stays "
           f"{got['dev_f1_drop_from_best']:+.4f}, not +0.93): PASS")
+
+    # EMA-versus-raw: a run whose EMA score dips below raw at two epochs must
+    # report exactly two, and a run where EMA >= raw everywhere must report zero
+    h2 = _synth(decline=0.0, seed=21)
+    for r in h2:
+        r["dev_ema"] = {"f1_mean": r["dev"]["f1_mean"] + 0.001}
+    assert analyse(h2)["ema_below_raw_epochs"] == 0
+    assert analyse(h2)["ema_vs_raw_epochs"] == len(h2)
+    h2[3]["dev_ema"] = {"f1_mean": h2[3]["dev"]["f1_mean"] - 0.01}
+    h2[9]["dev_ema"] = {"f1_mean": h2[9]["dev"]["f1_mean"] - 0.02}
+    r2 = analyse(h2)
+    assert r2["ema_below_raw_epochs"] == 2 and abs(r2["ema_minus_raw_min"] + 0.02) < 1e-9, r2
+    assert "[ema-vs-raw]" in verdict({("e", "array"): r2})
+    assert "2 run-epochs (1 runs)" in verdict({("e", "array"): r2})
+    print("  EMA-versus-raw count per run (0 and 2 dips): PASS")
+    assert abs(r2["ema_best_minus_raw_best"] - 0.001) < 1e-9, r2["ema_best_minus_raw_best"]
+    # a loss collapse: the loss falls by x100 at epoch 25 after a best epoch at 18
+    h3 = _synth(decline=0.05, seed=31)          # peaks at epoch 18, then declines
+    for r in h3:
+        if r["epoch"] >= 25:
+            r["train_loss"] = r["train_loss"] / 100.0
+    r3 = analyse(h3)
+    assert r3["loss_collapse_epoch"] == 25 and r3["best_before_collapse"] is True, r3
+    assert analyse(_synth(decline=0.0, seed=32))["loss_collapse_epoch"] is None
+    v3 = verdict({("c", "array"): r3})
+    assert "[loss-collapse]" in v3 and "1 of 1 runs; in 1 of those" in v3, v3
+    assert "[ema-best-vs-raw-best]" in v3
+    print("  EMA best-vs-raw best and loss-collapse detection: PASS")
 
     # an unusable history must not crash the report
     bad = analyse([{"epoch": 1, "train_loss": 0.5}])

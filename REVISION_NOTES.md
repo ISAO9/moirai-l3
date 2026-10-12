@@ -61,7 +61,7 @@ pip install remotezip && python src/14_fig4_and_tableS1.py --table-s1
 
 ---
 
-## Second revision round (scripts 15–26)
+## Second revision round (scripts 15–28)
 
 | Script | Purpose | Reviewer point |
 |---|---|---|
@@ -76,6 +76,9 @@ pip install remotezip && python src/14_fig4_and_tableS1.py --table-s1
 | `src/23_fig4_style_supplement.py` | Applies the rebuilt diagnosis-figure treatment to the remaining sites. Asserts that script 14 is the patched (R1-5) version. | R1-5 follow-up |
 | `src/24_moveout_ratio_check.py` | Per-site moveout distributions, the share of events below the ±10 ms tolerance, and the S/P moveout ratio against the catalogued V<sub>p</sub>/V<sub>s</sub>. | R2 (round 2) |
 | `src/25_build_supplement.py` | Assembles the Supporting Information as **one** document (Sections S1–S6, Tables S1–S7, Figures S1–S10) from the logs and figures, and checks every number in its prose against those logs. | GJI §2.8 |
+| `src/27_paired_inference.py` | Inference on the **paired** array-minus-per-trace difference. Script 11 already resamples events jointly but reads the verdict off the non-overlap of two marginal intervals, which is not a test of the difference and is conservative when the two scores are correlated. This script keeps the per-resample difference (B = 2,000), gives a percentile CI on Δ and Pr(Δ > 0), applies a declared equivalence bound of ±0.02 (twice the ±0.01 window-draw spread conceded in Table 3), and adds an exact sign test and a Wilcoxon signed-rank test across the eight sites. One verdict changes: mseel_5h, from "tie" to a small but significant array advantage. | Pre-submission audit C-3 (2026-10-12) |
+| `src/28_seed_statistics.py` | Seed statistics for every (site, configuration) cell. The first revision repeated only the four sites with a significant difference; 39 further models were trained for this round (seeds 1–3 of array and per-trace at the four remaining sites, and of the station-shuffle control at the five sites with a significant difference). Reports mean ± sd and seed-paired differences, reproduces the Section 4.2 values of the first revision as a regression gate, and draws Figures 4 and 9. Two single-run statements of the shuffle analysis did not survive the repeats and were withdrawn (pnr-2: shuffle is not worse than per-trace; forge_19: the separate effect of ordered moveout is not resolved). | Pre-submission audit C-4 / C-5 (2026-10-12) |
+| `src/19_capacity_and_overfitting.py` (v0.3.2b) | Now covers the 83 leave-one-site-out runs and records, per run, the best EMA development score minus the best raw-weight score (the Section 3.3 claim that the EMA score was never below the raw score was unmeasured and is withdrawn: the two best scores differ by a median of +0.0004) and the epoch at which the logged training loss falls abruptly, which marks mini-batches skipped by the non-finite guard of script 03 rather than a lower loss (20 of 83 runs; the reported checkpoints are unaffected). | Pre-submission audit S3 (2026-10-12) |
 | `src/26_train_split_overlap.py` | The Section 5.2 training-support figures recomputed on the population the model was trained on. Script 16 defines its "training set" as every audited earthquake of the other seven sites, **all splits**; the model trains on the **train split** only (supplement S3: 1,527–2,002 earthquakes), and pnr-1 contributes no training record in any fold because AMBER assigns its whole catalogue to the test split. The script reproduces the script-16 figures exactly as a regression gate, then restricts the population. Reads only the script-10 caches, the script-16 audit and `metadata.csv`. | Pre-submission audit A-1 (2026-10-09) |
 
 ### Reproducing
@@ -88,6 +91,9 @@ python src/25_build_supplement.py --build --figdir src/figures
 # logs + AMBER metadata
 python src/22_sampling_rates.py --csv /path/to/metadata.csv
 AMBER_CSV=/path/to/metadata.csv python src/26_train_split_overlap.py --all
+python src/27_paired_inference.py --all          # script-10 caches only
+python src/28_seed_statistics.py --ckpt ema      # script-04 result logs only
+python src/19_capacity_and_overfitting.py --curves   # training histories
 
 # AMBER waveforms + checkpoints (GPU)
 AMBER_H5=$H5 python src/15_phase_confusion.py --all
@@ -120,14 +126,16 @@ AMBER_H5=$H5 python src/20_within_array.py --heldout forge_19
 * `logs/22_sampling_rates.json` / `.md` — native sampling rates
 * `logs/23_event_choice.json` — events shown in the supplementary diagnosis panels
 * `logs/24_moveout_ratio.json` / `.md` — moveout distributions and S/P ratio
-* `logs/26_train_split_overlap_ema.json` — training support per held-out site on three nested populations (script-16 population; train split; train+dev), each after the arrival audit, with the supplier breakdown. The manuscript quotes the train-split values: forge_19 7 / 1,553 (0.45 %), pnr-1 137 / 1,697 (8.07 %, 129 from forge_19)
+* `logs/26_train_split_overlap_ema.json` — training support per held-out site on three nested populations (script-16 population; train split; train+dev), each
+* `logs/27_paired_inference.json` / `.md` — paired Δ, its CI, Pr(Δ > 0) and the equivalence verdict per site under both false-alarm conventions; the across-site sign and Wilcoxon tests (source of the Table 2 and Table 3 verdicts)
+* `logs/28_seed_statistics_ema.json` / `.md` — mean ± sd over three seeds for every (site, configuration) cell, seed-paired differences, and the regression gate (source of Table 4 and of the seed statistics in Section 4.2) after the arrival audit, with the supplier breakdown. The manuscript quotes the train-split values: forge_19 7 / 1,553 (0.45 %), pnr-1 137 / 1,697 (8.07 %, 129 from forge_19)
 
 The Supporting Information document and its machine-readable parts:
 
 * `logs/supplement/25_manifest.json` — what the supplement built, from which file,
   its page count, and the result of the number check
 * `logs/supplement/25_number_check.md` — every prose number in the supplement,
-  with the value the logs give and an OK/NG verdict (90 checks)
+  with the value the logs give and an OK/NG verdict (103 checks)
 * `logs/supplement/TableS1.csv` … `TableS7.csv` — Tables S1–S7 as machine-readable
   CSV, as GJI requires for tabular supporting information
 * `logs/supplement/25_manuscript_index.txt` — the 23-line index of Sections S1–S6,
@@ -146,6 +154,8 @@ The figures these scripts draw, each as PDF and PNG:
 * `PDF/23_a_fig4_style_sites` — the diagnosis treatment on the remaining sites
   (Figures S5–S8)
 * `PDF/24_a_moveout_ratio` — per-site moveout distributions (Figure S6 panel)
+* `PDF/28_a_fig4_seed_all_sites` — array versus per-trace across seeds, all eight sites (Figure 4)
+* `PDF/28_b_fig9_shuffle_seeds` — the station-shuffle control across seeds (Figure 9)
 
 ### Figure assets
 

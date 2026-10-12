@@ -20,8 +20,8 @@
     },
     "4": {
       "built": true,
-      "rows": 44,
-      "columns": 14,
+      "rows": 83,
+      "columns": 16,
       "csv": "TableS4.csv"
     },
     "5": {
@@ -88,9 +88,9 @@
   "missing": [],
   "output": "/content/drive/MyDrive/MOIRAI_L3/PDF/Supplement_MOIRAI_L3.pdf",
   "complete": true,
-  "pages": 23,
+  "pages": 24,
   "number_checks": {
-    "total": 90,
+    "total": 103,
     "failed": 0
   },
   "manuscript_index_lines": 23

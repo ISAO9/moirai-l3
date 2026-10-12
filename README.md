@@ -77,13 +77,13 @@ Do not downgrade NumPy after installing AMBER.
 - `13_station_subset_eval.py` — zero-shot evaluation on decimated arrays (4/6/8 stations)
 - `14_fig4_and_tableS1.py` — rebuilt diagnosis figure and the array-geometry table
 
-### Second revision round (15–26)
+### Second revision round (15–28)
 
 - `15_phase_confusion.py` — every declared pick compared with the catalogued arrivals of **both** phases; phase-confusion matrices and residual distributions
 - `16_arrival_audit.py` — physical audit of the catalogued arrivals (S before P, implausible V<sub>p</sub>/V<sub>s</sub>, arrivals outside the window), plus re-scoring on the surviving events
 - `17_geometry_and_distance.py` — receiver strings and source positions from the AMBER station coordinates; per-site geometry table
 - `18_paired_cache.py` — re-evaluation of both configurations on **identical** inputs
-- `19_capacity_and_overfitting.py` — parameter count, per-run training-set sizes, post-peak trend in the development score across all runs
+- `19_capacity_and_overfitting.py` — parameter count, per-run training-set sizes, post-peak trend in the development score across all runs; since v0.3.2 also the best-EMA-minus-best-raw development score per run and the detection of late falls of the logged training loss (skipped non-finite mini-batches)
 - `20_within_array.py` — the within-array experiment: the held-out site's own events placed in the training splits
 - `21_event_accounting.py` — record/event/trace accounting for every site and split
 - `22_sampling_rates.py` — native sampling rates per site from the AMBER metadata
@@ -91,8 +91,10 @@ Do not downgrade NumPy after installing AMBER.
 - `24_moveout_ratio_check.py` — per-site moveout distributions and the S/P moveout ratio
 - `25_build_supplement.py` — assembles the Supporting Information as one document (Sections S1–S6, Tables S1–S7, Figures S1–S10) from the logs and figures, and checks every number in its prose against those logs
 - `26_train_split_overlap.py` — the Section 5.2 training-support figures (share of training earthquakes reaching the held-out site's median moveout) recomputed on the population the model was trained on: the LOSO **train split** after the arrival audit of script 16. Reproduces the script-16 figures first, then restricts the population. No HDF5, no GPU
+- `27_paired_inference.py` — the array-versus-per-trace verdict as a **paired** joint event bootstrap (B = 2,000) on Δ = F1-mean(array) − F1-mean(per-trace), with a declared ±0.02 equivalence bound and an across-site sign test and Wilcoxon signed-rank test; replaces the marginal-CI-overlap rule of the first revision. Reads the script-10 caches only
+- `28_seed_statistics.py` — training-seed statistics for every held-out site (array, per-trace) and for the station-shuffle control: mean ± sd over three seeds, seed-paired differences, a regression gate against the first-revision values, and the sources of Figures 4 and 9. Reads the script-04 result logs only
 
-Every script in 10–26 accepts `--selftest`, which validates its logic on synthetic inputs
+Every script in 10–28 accepts `--selftest`, which validates its logic on synthetic inputs
 without AMBER, checkpoints or network access.
 
 ## Reproducing the paper
@@ -106,6 +108,11 @@ The Supporting Information document rebuilds from the logs alone — no GPU, no 
 checkpoints:
 
     python src/25_build_supplement.py --build --figdir src/figures
+
+The paired inference and the seed statistics likewise rebuild from the logs alone:
+
+    python src/27_paired_inference.py --all
+    python src/28_seed_statistics.py --ckpt ema
 
 To retrain a fold (example: held-out forge_19, array, seed 1234):
 

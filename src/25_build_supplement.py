@@ -215,11 +215,12 @@ trains on pnr-1. The ratio is larger than the reviewer supposed. The question it
 question is answered here from the training histories rather than argued from
 the ratio.
 
-Forty-six models were trained for this paper. Sixteen cover the eight leave-
-one-site-out folds in the two configurations. Twenty-four cover three
-additional random seeds at the four decisive sites. Four are the station-
-shuffle control, and two the within-array experiment of Section S4. The 44 runs
-analysed here are all but the last two, which use a different protocol.
+Eighty-five models were trained for this paper. Sixteen cover the eight
+leave-one-site-out folds in the two configurations. Forty-eight cover three further
+random seeds of every fold in both configurations. Nineteen are the
+station-shuffle control: a base-seed run at four sites and three seeds at five sites.
+Two are the within-array experiment of Section S4. The 83 runs analysed here
+are all but the last two, which use a different protocol.
 
 Note that the two configurations do not see the same number of training
 samples. The array configuration sees one sample per record, while the per-trace
@@ -228,26 +229,48 @@ The array configuration thus has roughly twelve times fewer independent
 samples, at a larger input dimension. That is consistent with its being the
 configuration that fails where the training distribution is thin.
 
-Across the 44 runs the development score sits near 0.93 and varies by 0.0045
+Across the 83 runs the development score sits near 0.93 and varies by 0.0045
 from one epoch to the next. The gap between its maximum and its final value has
-a median of 0.011. That gap is largely the upward bias of a maximum taken over
-a noisy sequence. It is not by itself evidence of a decline. The quantity
-that bears on the question is the trend after the peak. It is measured as the
-difference between the means of the second and first halves of the post-peak
-segment. Its median is -0.0018 in F1. Measured against each run's own epoch-to-epoch
-variation, the median ratio is -0.36. The trend is negative in 30 of 43 runs. The sign is
-negative more often than chance allows (sign test p = 0.014). A downward drift is therefore present and consistent. In no run does it exceed
-that run's own variation. Fig. S2 shows the curves, and Table S4 gives the
-per-run figures.
+a median of 0.011 and never exceeds 0.022. That gap is largely the upward bias
+of a maximum taken over a noisy sequence. It is not by itself evidence of a
+decline. The quantity that bears on the question is the trend after the peak.
+It is measured as the difference between the means of the second and first
+halves of the post-peak segment. Its median is -0.0011 in F1. Measured against
+each run's own epoch-to-epoch variation, the median ratio is -0.24. The trend
+is negative in 58 of 82 runs. The sign is negative more often than chance
+allows (sign test p = 0.0002). A downward drift is therefore present and
+consistent. In one run (aneth, per-trace, seed 2) it reaches 1.2 times that
+run's own variation; in the other 81 it stays below it. The spread of the best
+development score between seeds of the same fold has a median of 0.006. That
+spread is the scale against which the drift should be read. Fig. S2 shows the curves,
+and Table S4 gives the per-run figures.
 
-Forty-one of the 44 runs were halted by the development split; the other
-three reached the epoch budget first, having last improved 4, 9 and 18 epochs
+Eighty of the 83 runs were halted by the development split; the other three
+reached the epoch budget first, having last improved 4, 9 and 18 epochs
 earlier. Every score reported in this paper is taken from the best development
-epoch. The capacity is used. The training loss falls by a factor of 22 to 41 between
-the first epoch and the best one. The median factor is 29, over the 42 runs
-whose logged loss is usable. Two runs are excluded. Their best logged loss is
-zero or three parts in a million, which is a recording fault rather than a
-value. None of this measurably harms generalization."""),
+epoch. The capacity is used. The training loss falls by a factor of 19 to 42
+between the first epoch and the best one. The median factor is 29, over the 78
+runs whose logged loss is usable. Five runs are excluded because their best
+logged loss is zero or three parts in a million. That value is not a loss.
+Script 03 skips any mini-batch whose loss is not finite under mixed precision.
+It then divides the epoch loss by the full batch count. An abrupt fall of the
+logged loss therefore marks an epoch in which most batches were skipped and
+the weights stopped changing. Such a fall, to below one fifth of the preceding
+five-epoch median, occurs in 20 of the 83 runs. All 20 are per-trace or
+station-shuffle runs, and all but one are seed repeats. In 15 of the 20 the best
+development epoch precedes the fall, so the reported checkpoint was trained
+throughout. In the other five the best epoch follows the fall by 3 to 85
+epochs. Their best development scores, 0.930 to 0.937, lie inside the range of
+the other 78 runs (0.923 to 0.945). These checkpoints are therefore plateau
+models, and their selection among near-identical epochs is noise. Table S4 lists the
+epoch of the fall for every affected run.
+
+Section 3.3 of the main text reports the EMA weights. The best EMA development
+score and the best raw-weight score of the same run differ by a median of
++0.0004. The range is -0.0074 to +0.0097, and the EMA score is the higher of
+the two in 45 of the 83 runs. The two weight sets are therefore interchangeable at
+the best epoch, and the EMA weights are reported because they are the
+released checkpoints. None of this measurably harms generalization."""),
 
 ("S4", "Training with the held-out arrays represented",
  """Reviewer 2 proposed training on about 90 per cent of the data from each array
@@ -336,8 +359,8 @@ represented in training places 91.3 per cent on the catalogued P (mseel_5h).
 The behaviour is therefore specific to the array configuration at forge_19 and
 not a property of that site's catalogue.
 
-The reviewer's reading is confirmed for the P channel. The detector mis-
-assigns rather than merely under-fires. It follows a later apparent-moveout
+The reviewer's reading is confirmed for the P channel. The detector
+mis-assigns rather than merely under-fires. It follows a later apparent-moveout
 ridge that coincides with the S arrival. It is refined for the S channel. The array S channel still places 82.4 per cent of its picks on the catalogued
 S. Only 5.3 per cent land on the catalogued P. The early S-score ridge visible
 in Fig. 6 of the main text is therefore sub-maximal. It does not capture the
@@ -395,10 +418,13 @@ TABLE_CAPTIONS = {
 4: ("Table S4. Per-run training summary: the best development epoch, the score "
     "there and at the last epoch, the fall from the peak, the trend after the "
     "peak, the epoch-to-epoch variation of the same curve, their ratio, the "
-    "training loss at the first, best and last epoch, and whether the run was "
-    "halted by the development split. A large fall from the peak with a small "
-    "trend-to-variation ratio is a noisy plateau rather than overfitting. "
-    "Source: script 19, logs/19_capacity_ema.json."),
+    "training loss at the first, best and last epoch, whether the run was "
+    "halted by the development split, the best EMA development score minus "
+    "the best raw-weight score, and the epoch at which the logged loss fell "
+    "abruptly (Section S3), with whether the best epoch precedes it. A large "
+    "fall from the peak with a small trend-to-variation ratio is a noisy "
+    "plateau rather than overfitting. Source: script 19, "
+    "logs/19_capacity_ema.json."),
 5: ("Table S5. Site-level scores under the two protocols, with the "
     "paired-bootstrap interval on the array-minus-per-trace difference under "
     "within-array training and the verdict under each protocol. Source: "
@@ -423,14 +449,17 @@ TABLE_CAPTIONS = {
 FIGURE_CAPTIONS = {
 1: ("Figure S1. Example per-station P/S/noise score panel for a representative "
     "event."),
-2: ("Figure S2. Training and development curves for all 44 runs (eight "
-    "leave-one-site-out folds in the array, per-trace and station-shuffle "
-    "configurations, with three additional seeds at four sites). (a) Training "
+2: ("Figure S2. Training and development curves for all 83 runs (eight "
+    "leave-one-site-out folds in the array and per-trace configurations, each "
+    "with three further seeds, and the station-shuffle control at five sites). "
+    "(a) Training "
     "loss per epoch on a logarithmic scale. (b) Development F1-mean per epoch, "
     "with the best epoch marked; the reported checkpoint is taken from that "
-    "epoch. (c) The same curves on the vertical scale of the effect under "
-    "discussion, which is a post-peak trend of order 0.002 in F1 against an "
-    "epoch-to-epoch variation of 0.0045."),
+    "epoch. The abrupt late falls of the logged training loss in some "
+    "per-trace and shuffle runs mark epochs in which non-finite mini-batches "
+    "were skipped (Section S3). (c) The same curves on the vertical scale of "
+    "the effect under discussion, which is a post-peak trend of order 0.001 in "
+    "F1 against an epoch-to-epoch variation of 0.0045."),
 3: "Figure S3. Summary of held-out metrics.",
 4: ("Figure S4. Off-the-shelf surface-trained baseline applied to a borehole "
     "site (motivation only; confounded by sampling rate, architecture and "
@@ -613,7 +642,8 @@ def table_s4(logs: Path):
     head = ["Site", "Config", "Epochs", "Best epoch", "Dev F1 best",
             "Dev F1 last", "Fall from best", "Post-peak trend",
             "Epoch variation", "Trend / variation",
-            "Train loss first", "best", "last", "Early stop"]
+            "Train loss first", "best", "last", "Early stop",
+            "EMA best - raw best", "Loss fall epoch (best before?)"]
     keys = [k for k in d if not k.startswith("_")]
     def order(k):
         site = k.split("__")[0]
@@ -625,8 +655,11 @@ def table_s4(logs: Path):
         r = d[k]
         site, _, conf = k.partition("__")
         if not r.get("usable"):
-            rows.append([site, conf, r.get("n_epochs", "-")] + ["-"] * 11)
+            rows.append([site, conf, r.get("n_epochs", "-")] + ["-"] * 13)
             continue
+        fall = r.get("loss_collapse_epoch")
+        fall_txt = ("-" if fall is None else
+                    f"{fall} ({'yes' if r.get('best_before_collapse') else 'no'})")
         rows.append([
             site, conf, r["n_epochs"], r["best_epoch"],
             _f(r.get("dev_f1_best"), ".3f"), _f(r.get("dev_f1_last"), ".3f"),
@@ -642,6 +675,8 @@ def table_s4(logs: Path):
             _f(r.get("train_loss_best"), ".3g"),
             _f(r.get("train_loss_last"), ".3g"),
             "yes" if r.get("early_stop_fired") else "no",
+            _f(r.get("ema_best_minus_raw_best"), "+.4f"),
+            fall_txt,
         ])
     return (head, rows) if rows else None
 
@@ -966,11 +1001,11 @@ def check_numbers(logs: Path) -> list:
     d19 = _json(logs / "19_capacity_ema.json")
     if d19:
         runs = {k: v for k, v in d19.items() if not k.startswith("_")}
-        add("S3 解析対象 = 44 ラン", 44, len(runs), 0.5)
+        add("S3 解析対象 = 83 ラン", 83, len(runs), 0.5)
         add("S3 学習可能パラメータ = 7,991,491", 7991491,
             d19.get("_trainable_parameters"), 0.5)
         es = sum(1 for r in runs.values() if r.get("early_stop_fired"))
-        add("S3 dev split で停止 = 41 ラン", 41, es, 0.5)
+        add("S3 dev split で停止 = 80 ラン", 80, es, 0.5)
         late = sorted(r.get("epochs_after_best") for r in runs.values()
                       if not r.get("early_stop_fired")
                       and r.get("epochs_after_best") is not None)
@@ -997,11 +1032,48 @@ def check_numbers(logs: Path) -> list:
                     max(rw), 0.5)
         tr = [r.get("post_peak_trend") for r in runs.values()]
         trv = [x for x in tr if x is not None]
-        add("S3 trend を持つ = 43 ラン", 43, len(trv), 0.5)
-        add("S3 trend が負 = 30 ラン", 30, sum(1 for x in trv if x < 0), 0.5)
-        add("S3 trend の中央値 = -0.0018", -0.0018, med(trv), 5e-5)
-        add("S3 trend / 変動 の中央値 = -0.36", -0.36,
+        add("S3 trend を持つ = 82 ラン", 82, len(trv), 0.5)
+        add("S3 trend が負 = 58 ラン", 58, sum(1 for x in trv if x < 0), 0.5)
+        add("S3 trend の中央値 = -0.0011", -0.0011, med(trv), 5e-5)
+        add("S3 trend / 変動 の中央値 = -0.24", -0.24,
             med([r.get("trend_over_noise") for r in runs.values()]), 5e-3)
+        ratios = [abs(r["trend_over_noise"]) for r in runs.values()
+                  if r.get("trend_over_noise") is not None]
+        add("S3 |trend / 変動| が 1 を超えるのは 1 ラン", 1,
+            sum(1 for x in ratios if x > 1.0), 0.5)
+        add("S3 その最大値 = 1.2", 1.2, max(ratios), 0.05)
+        add("S3 最大からの落差の最大 = 0.022", 0.022,
+            max(r.get("dev_f1_drop_from_best") for r in runs.values()), 5e-4)
+        bb = [r.get("ema_best_minus_raw_best") for r in runs.values()
+              if r.get("ema_best_minus_raw_best") is not None]
+        add("S3 best EMA - best raw の中央値 = +0.0004", 0.0004, med(bb), 5e-5)
+        add("S3 best EMA - best raw の下限 = -0.0074", -0.0074, min(bb), 5e-5)
+        add("S3 best EMA - best raw の上限 = +0.0097", 0.0097, max(bb), 5e-5)
+        add("S3 EMA が上 = 45 ラン", 45, sum(1 for x in bb if x >= 0), 0.5)
+        col = [r for r in runs.values() if r.get("loss_collapse_epoch") is not None]
+        add("S3 損失の急落 = 20 ラン", 20, len(col), 0.5)
+        add("S3 急落より best が前 = 15 ラン", 15,
+            sum(1 for r in col if r.get("best_before_collapse")), 0.5)
+        after = [r for r in col if not r.get("best_before_collapse")]
+        gaps = sorted(r["best_epoch"] - r["loss_collapse_epoch"] for r in after)
+        flag("S3 急落後の best の遅れは 3 から 85 エポック", "3..85",
+             f"{gaps[0]}..{gaps[-1]}" if gaps else "(なし)",
+             bool(gaps) and gaps[0] == 3 and gaps[-1] == 85)
+        ab = sorted(r["dev_f1_best"] for r in after)
+        flag("S3 急落後 5 ランの best dev = 0.930..0.937", "0.930..0.937",
+             f"{ab[0]:.3f}..{ab[-1]:.3f}" if ab else "(なし)",
+             bool(ab) and round(ab[0], 3) == 0.930 and round(ab[-1], 3) == 0.937)
+        rest = sorted(r["dev_f1_best"] for r in runs.values() if r not in after)
+        flag("S3 残り 78 ランの best dev = 0.923..0.945", "0.923..0.945",
+             f"{rest[0]:.3f}..{rest[-1]:.3f}",
+             len(rest) == 78 and round(rest[0], 3) == 0.923 and round(rest[-1], 3) == 0.945)
+        import re as _re
+        groups = {}
+        for k, r in runs.items():
+            base = _re.sub(r"_seed\d+$", "", k.split("__")[0])
+            groups.setdefault((base, k.split("__")[1]), []).append(r["dev_f1_best"])
+        spreads = [max(v) - min(v) for v in groups.values() if len(v) >= 2]
+        add("S3 seed 間の best dev の幅の中央値 = 0.006", 0.006, med(spreads), 5e-4)
         add("S3 epoch 間変動の中央値 = 0.0045", 0.0045,
             med([r.get("dev_epoch_noise") for r in runs.values()]), 5e-5)
         add("S3 dev スコアの中央値 = 0.93", 0.93,
@@ -1012,10 +1084,10 @@ def check_numbers(logs: Path) -> list:
                for r in runs.values()
                if r.get("train_loss_first") and r.get("train_loss_best")
                and r["train_loss_best"] > 1e-5]
-        add("S3 損失比が使える = 42 ラン", 42, len(rat), 0.5)
+        add("S3 損失比が使える = 78 ラン", 78, len(rat), 0.5)
         if rat:
-            add("S3 損失比の下限 = 22", 22, min(rat), 0.5)
-            add("S3 損失比の上限 = 41", 41, max(rat), 0.5)
+            add("S3 損失比の下限 = 19", 19, min(rat), 0.5)
+            add("S3 損失比の上限 = 42", 42, max(rat), 0.5)
             add("S3 損失比の中央値 = 29", 29, med(rat), 0.5)
 
     # ---- Section S3's benchmark arithmetic, from the event accounting.
@@ -1199,10 +1271,10 @@ INDEX = [
     "Section S6. How much moveout each site actually carries.",
     "Figure S1. Example per-station P/S/noise score panel for a representative "
     "event.",
-    "Figure S2. Training and development curves for the 44 runs that "
+    "Figure S2. Training and development curves for the 83 runs that "
         "record a training history: the sixteen leave-one-site-out runs, "
-        "the twenty-four seed repeats and the four station-shuffle "
-        "controls. The two within-array runs of Section S4 follow a "
+        "the forty-eight seed repeats and the nineteen station-shuffle "
+        "runs. The two within-array runs of Section S4 follow a "
         "different protocol and are not shown.",
     "Figure S3. Summary of held-out metrics.",
     "Figure S4. Off-the-shelf surface-trained baseline applied to a borehole "
@@ -1741,48 +1813,88 @@ def selftest() -> None:
                      reversal_vs_submitted=False)
              for s, v in S2_REAL.items()}))
 
-        # 44 runs. The aggregates the prose quotes are reproduced exactly:
-        # 41 early-stopped, 43 with a trend of which 30 are negative, median
-        # trend -0.0018 at -0.36 of a median variation of 0.0045, median dev
-        # score 0.93, median fall 0.011, and 42 usable loss ratios spanning
-        # 22 to 41 with a median of 29. The per-run spread is synthetic; only
-        # the real logs can settle the per-run numbers, which is why the same
-        # battery runs again on Drive.
+        # 83 runs (second revision). The aggregates the prose quotes are
+        # reproduced exactly: 80 early-stopped (the other three last improved
+        # 4, 9 and 18 epochs before the budget), 82 with a trend of which 58
+        # are negative, median trend -0.0011 at -0.24 of a median variation of
+        # 0.0045 with one run at |ratio| 1.2, median fall 0.011 and maximum
+        # 0.022, 78 usable loss ratios spanning 19 to 42 with a median of 29
+        # (five best losses of zero or 3e-6), best-EMA-minus-best-raw median
+        # +0.0004 in -0.0074..+0.0097 with 45 non-negative, a logged-loss fall
+        # in 20 runs of which 15 peak before it, the other five peaking 3 to 85
+        # epochs after it at 0.930..0.937 against 0.923..0.945 for the rest,
+        # and a median best-score spread of 0.006 between seeds of one fold.
+        # The per-run spread is synthetic; only the real logs settle the
+        # per-run numbers, which is why the same battery runs again on Drive.
         keys = ([(s, m) for s in SITE_ORDER for m in ("array", "pertrace")]
                 + [(s, "shuffle") for s in SITE_ORDER[:4]]
-                + [(s, f"seed{k}") for s in SITE_ORDER[:8] for k in (1, 2, 3)])
-        keys = keys[:44]
-        assert len(keys) == 44, len(keys)
-        # (trend, noise) in four groups. The three medians cannot all come
-        # from one group -- the median trend over the median variation is
-        # -0.40, not the -0.36 the runs actually give -- so the groups are
-        # ordered differently in each field, exactly as real runs are.
-        groups = ([(-0.0018, 0.0045)] * 21 + [(-0.0018, 0.0050)]
-                  + [(-0.0030, 0.0100)] * 8 + [(+0.0005, 0.0010)] * 13)
-        assert len(groups) == 43, len(groups)
-        # 42 usable loss ratios: 22 to 41 with a median of 29
-        ratios = [22.0] * 20 + [29.0] * 2 + [41.0] * 20
-        assert len(ratios) == 42, len(ratios)
+                + [(f"{s}_seed{k}", m) for s in SITE_ORDER for k in (1, 2, 3)
+                   for m in ("array", "pertrace")]
+                + [(f"{s}_seed{k}", "shuffle") for s in SITE_ORDER[:5] for k in (1, 2, 3)])
+        assert len(keys) == 83, len(keys)
+        # (trend, noise): 82 runs with a trend. 58 negative. Medians by
+        # construction: trend -0.0011 and noise 0.0045 sit at the 42nd value of
+        # 82 (41 below, 40 above) and the ratio -0.24 likewise.
+        groups = ([(-0.0030, 0.0100)] * 28          # ratio -0.30
+                  + [(-0.0011, 0.0045)] * 13          # ratio -0.244 (the median block)
+                  + [(-0.0005, 0.0045)] * 16          # ratio -0.11
+                  + [(-0.0054, 0.0045)]               # ratio -1.2 (the one run above 1)
+                  + [(+0.0005, 0.0010)] * 24)          # ratio +0.50
+        assert len(groups) == 82, len(groups)
+        assert sum(1 for t, _ in groups if t < 0) == 58
+        # 78 usable loss ratios: 19 to 42 with a median of 29
+        ratios = [19.0] * 38 + [29.0] * 2 + [42.0] * 38
+        assert len(ratios) == 78, len(ratios)
+        # best EMA - best raw: median +0.0004, range -0.0074..+0.0097, 45 >= 0
+        emas = [-0.0074] + [-0.0020] * 37 + [+0.0004] * 5 + [+0.0030] * 39 + [+0.0097]
+        assert len(emas) == 83 and sum(1 for x in emas if x >= 0) == 45
+        # 20 runs with a loss fall: the first five (indices 0-4) peak AFTER it
+        # by 3, 10, 20, 50 and 85 epochs at 0.930..0.937; 15 peak before it.
+        after_gap = {0: 3, 1: 10, 2: 20, 3: 50, 4: 85}
+        after_best = {0: 0.930, 1: 0.933, 2: 0.934, 3: 0.935, 4: 0.937}
         cap = {}
         for i, (s, m) in enumerate(keys):
-            trend, noise = groups[i] if i < 43 else (None, None)
+            trend, noise = groups[i] if i < 82 else (None, None)
+            best_ep = 20 + i // 2
+            if i in after_gap:
+                fall, before, best = best_ep - after_gap[i], False, after_best[i]
+            elif i < 20:
+                fall, before, best = best_ep + 5, True, 0.93
+            else:
+                fall, before, best = None, None, 0.93
+            # the remaining 78 runs span 0.923..0.945 in best score
+            if i == 20:
+                best = 0.923
+            elif i == 21:
+                best = 0.945
             cap[f"{s}__{m}"] = dict(
-                usable=True, n_epochs=40 + i, best_epoch=20 + i // 2,
-                dev_f1_best=0.93, dev_f1_last=0.919,
-                dev_f1_drop_from_best=0.011,
+                usable=True, n_epochs=200 + i, best_epoch=best_ep,
+                dev_f1_best=best, dev_f1_last=best - 0.011,
+                dev_f1_drop_from_best=(0.022 if i == 30 else 0.011),
                 post_peak_trend=trend, dev_epoch_noise=noise,
                 trend_over_noise=(None if trend is None else trend / noise),
                 train_loss_first=0.03,
-                # the first two runs have an unusable best loss, zero and
-                # three parts in a million, so 42 ratios remain
-                train_loss_best=(0.0 if i == 0 else 3e-6 if i == 1
-                                 else 0.03 / ratios[i - 2]),
+                # five runs have an unusable best loss (the five that peak
+                # after the fall), so 78 ratios remain
+                train_loss_best=(0.0 if i in (0, 1, 2, 4) else 3e-6 if i == 3
+                                 else 0.03 / ratios[i - 5]),
                 train_loss_last=0.0007,
-                epochs_after_best=({41: 4, 42: 9, 43: 18}.get(i, 20)),
-                early_stop_fired=(i < 41))
+                epochs_after_best=({80: 4, 81: 9, 82: 18}.get(i, 30)),
+                early_stop_fired=(i < 80),
+                ema_vs_raw_epochs=200 + i, ema_below_raw_epochs=100,
+                ema_minus_raw_min=-0.8, ema_best_minus_raw_best=emas[i],
+                loss_collapse_epoch=fall, best_before_collapse=before)
+        # seed spread 0.006: every seed triple of one fold spans 0.006 except
+        # the triples that carry the range extremes (indices 20, 21 are base runs)
+        for base in SITE_ORDER:
+            for m in ("array", "pertrace"):
+                for k, dv in zip((1, 2, 3), (0.000, 0.003, 0.006)):
+                    key = f"{base}_seed{k}__{m}"
+                    if key in cap and cap[key]["dev_f1_best"] == 0.93:
+                        cap[key]["dev_f1_best"] = 0.930 + dv
         _tr = [r["post_peak_trend"] for r in cap.values()
                if r["post_peak_trend"] is not None]
-        assert len(_tr) == 43 and sum(1 for x in _tr if x < 0) == 30, \
+        assert len(_tr) == 82 and sum(1 for x in _tr if x < 0) == 58, \
             (len(_tr), sum(1 for x in _tr if x < 0))
         (logs / "19_capacity_ema.json").write_text(json.dumps(
             cap | {"_trainable_parameters": 7991491,
