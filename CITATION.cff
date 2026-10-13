@@ -10,8 +10,8 @@ authors:
   - family-names: Kurosawa
     given-names: Isao
     affiliation: "ENEOS Xplora Inc."
-version: 0.3.0
-date-released: "2026-10-08"
+version: 0.3.3
+date-released: "2026-10-13"
 license: MIT
 repository-code: "https://github.com/ISAO9/moirai-l3"
 # Concept DOI: always resolves to the latest version.

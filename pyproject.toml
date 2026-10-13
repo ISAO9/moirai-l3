@@ -1,6 +1,6 @@
 [project]
 name = "moirai-l3"
-version = "0.3.0"
+version = "0.3.3"
 description = "MOIRAI L3 — array-level versus per-trace P/S phase picking on real downhole 3-C arrays (AMBER)."
 readme = "README.md"
 requires-python = ">=3.10,<3.13"
