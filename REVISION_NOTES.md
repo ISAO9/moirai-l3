@@ -80,6 +80,8 @@ pip install remotezip && python src/14_fig4_and_tableS1.py --table-s1
 | `src/28_seed_statistics.py` | Seed statistics for every (site, configuration) cell. The first revision repeated only the four sites with a significant difference; 39 further models were trained for this round (seeds 1–3 of array and per-trace at the four remaining sites, and of the station-shuffle control at the five sites with a significant difference). Reports mean ± sd and seed-paired differences, reproduces the Section 4.2 values of the first revision as a regression gate, and draws Figures 4 and 9. Two single-run statements of the shuffle analysis did not survive the repeats and were withdrawn (pnr-2: shuffle is not worse than per-trace; forge_19: the separate effect of ordered moveout is not resolved). | Pre-submission audit C-4 / C-5 (2026-10-12) |
 | `src/19_capacity_and_overfitting.py` (v0.3.2b) | Now covers the 83 leave-one-site-out runs and records, per run, the best EMA development score minus the best raw-weight score (the Section 3.3 claim that the EMA score was never below the raw score was unmeasured and is withdrawn: the two best scores differ by a median of +0.0004) and the epoch at which the logged training loss falls abruptly, which marks mini-batches skipped by the non-finite guard of script 03 rather than a lower loss (20 of 83 runs; the reported checkpoints are unaffected). | Pre-submission audit S3 (2026-10-12) |
 | `src/26_train_split_overlap.py` | The Section 5.2 training-support figures recomputed on the population the model was trained on. Script 16 defines its "training set" as every audited earthquake of the other seven sites, **all splits**; the model trains on the **train split** only (supplement S3: 1,527–2,002 earthquakes), and pnr-1 contributes no training record in any fold because AMBER assigns its whole catalogue to the test split. The script reproduces the script-16 figures exactly as a regression gate, then restricts the population. Reads only the script-10 caches, the script-16 audit and `metadata.csv`. | Pre-submission audit A-1 (2026-10-09) |
+| `src/29_fig8_paired.py` (v0.3.4) | Figure 8 redrawn from the quantities the tables print. The `05_i` panel of script 05 plotted Δ from the standard-evaluation per-phase means (pnr-2 +0.040) against the pre-audit moveout medians of the script-08 logs (mseel_5h 26.75 ms), whereas Table 2 lists the paired Δ of script 27 (pnr-2 +0.055) and Table 1 the audited medians of script 16 (27.5 ms). The new figure uses the paired Δ with its 95 per cent CI and verdict, and the audited medians; a regression gate refuses to draw if either differs from the tables. Output `PDF/29_a_fig8_paired.{pdf,png}` and `logs/29_fig8_points.json`. No other script, log or figure changes. | Language and consistency pass (2026-10-14) |
+| `src/25_build_supplement.py`, `src/18_paired_cache.py` (v0.3.4) | The supplement text as resubmitted after the editor's request to remove every reference to the review process: the published title ("When does array moveout help borehole phase picking?"), Sections S1/S3/S4/S5 rewritten without reviewer references, the independent-pass evaluation named "unpaired" instead of "submitted" (Section S2, Table S3, Figure S7 and its labels in script 18, which gains `--figure-only`), sentences of at most 25 words and no but/so connectors throughout. Two numbers corrected: the per-trace training traces per run are 12 × the training records (57,228–71,184; the earlier 58,464–72,420 were metadata rows that count aneth's 18 sensors), and the flagged-event range is 0.5–21 per cent (forge_19 1/213). The one run without a post-peak trend (clearfield_mw6 per-trace, stopped 4 epochs after its peak) is named. Checks: 104 (was 103). Outputs regenerated: `logs/supplement/*`, `PDF/18_a_paired_vs_unpaired.{pdf,png}`. No numerical result changes. | Editor request before re-review (2026-10-15) |
 | `model/README.md` (v0.3.3) | Zenodo version v0.3.3 adds the 41 EMA-best checkpoints that v0.3.0–v0.3.2 did not carry (the 39 seed repeats of this round and the two within-array models of script 20), so the record holds all 85 models of Section 3.4. No script or log changes; the layout section of `model/README.md` is corrected to the names `src/03_train_l3.py` actually writes. | Data Availability statement (2026-10-13) |
 
 ### Reproducing
@@ -94,6 +96,7 @@ python src/22_sampling_rates.py --csv /path/to/metadata.csv
 AMBER_CSV=/path/to/metadata.csv python src/26_train_split_overlap.py --all
 python src/27_paired_inference.py --all          # script-10 caches only
 python src/28_seed_statistics.py --ckpt ema      # script-04 result logs only
+python src/29_fig8_paired.py                     # logs/27 + logs/16 only (Figure 8)
 python src/19_capacity_and_overfitting.py --curves   # training histories
 
 # AMBER waveforms + checkpoints (GPU)
@@ -130,6 +133,7 @@ AMBER_H5=$H5 python src/20_within_array.py --heldout forge_19
 * `logs/26_train_split_overlap_ema.json` — training support per held-out site on three nested populations (script-16 population; train split; train+dev), each
 * `logs/27_paired_inference.json` / `.md` — paired Δ, its CI, Pr(Δ > 0) and the equivalence verdict per site under both false-alarm conventions; the across-site sign and Wilcoxon tests (source of the Table 2 and Table 3 verdicts)
 * `logs/28_seed_statistics_ema.json` / `.md` — mean ± sd over three seeds for every (site, configuration) cell, seed-paired differences, and the regression gate (source of Table 4 and of the seed statistics in Section 4.2) after the arrival audit, with the supplier breakdown. The manuscript quotes the train-split values: forge_19 7 / 1,553 (0.45 %), pnr-1 137 / 1,697 (8.07 %, 129 from forge_19)
+* `logs/29_fig8_points.json` — the eight plotted points of Figure 8 (site, audited median P moveout, paired Δ, CI, verdict) with their source logs
 
 The Supporting Information document and its machine-readable parts:
 
@@ -157,6 +161,7 @@ The figures these scripts draw, each as PDF and PNG:
 * `PDF/24_a_moveout_ratio` — per-site moveout distributions (Figure S6 panel)
 * `PDF/28_a_fig4_seed_all_sites` — array versus per-trace across seeds, all eight sites (Figure 4)
 * `PDF/28_b_fig9_shuffle_seeds` — the station-shuffle control across seeds (Figure 9)
+* `PDF/29_a_fig8_paired` — paired array advantage versus audited median P moveout (Figure 8, v0.3.4)
 
 ### Figure assets
 

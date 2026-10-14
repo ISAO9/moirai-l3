@@ -64,6 +64,7 @@ RUN
   python src/18_paired_cache.py --build-all          # GPU, one pass per site
   python src/18_paired_cache.py --build --heldout pnr-1
   python src/18_paired_cache.py --score              # CPU, seconds
+  python src/18_paired_cache.py --figure-only      # redraw the figure from the scores log
   python src/18_paired_cache.py --selftest           # no GPU, no AMBER, no net
 """
 from __future__ import annotations
@@ -361,7 +362,7 @@ def make_figure(out: dict, pdf: Path):
     fig.subplots_adjust(left=0.09, right=0.78, top=0.93, bottom=0.14, hspace=0.45)
 
     ax = axes[0]
-    ax.set_title("Submitted (independent inputs) and paired (identical inputs) "
+    ax.set_title("Unpaired (independent inputs) and paired (identical inputs) "
                  "F1-mean", fontsize=10)
     for dx, key, sub, col, lab in ((-0.18, "array", "submitted_array",
                                     "#1f77b4", "array"),
@@ -370,7 +371,7 @@ def make_figure(out: dict, pdf: Path):
         s_val = [out[s][sub] if out[s][sub] is not None else np.nan for s in sites]
         p_val = [out[s][key] for s in sites]
         ax.plot(x + dx, s_val, "o", mfc="white", mec=col, ms=7,
-                label=f"{lab}, submitted")
+                label=f"{lab}, unpaired")
         ax.plot(x + dx, p_val, "o", color=col, ms=7, label=f"{lab}, paired")
         for xi, a, b in zip(x + dx, s_val, p_val):
             if np.isfinite(a):
@@ -530,11 +531,19 @@ def main():
     ap.add_argument("--batch-size", type=int, default=None)
     ap.add_argument("--force", action="store_true",
                     help="rebuild paired caches even if they already exist")
+    ap.add_argument("--figure-only", action="store_true",
+                    help="redraw PDF/18_a_paired_vs_unpaired from the scores "
+                         "log alone (no caches, no GPU)")
     ap.add_argument("--selftest", action="store_true")
     a = ap.parse_args()
 
     if a.selftest:
         selftest()
+        return
+    if a.figure_only:
+        f = cfg.LOGS_DIR / f"18_paired_scores_{a.ckpt}.json"
+        assert f.is_file(), f"{f} is missing -- run --score first"
+        make_figure(json.loads(f.read_text()), cfg.PDF_DIR / "18_a_paired_vs_unpaired.pdf")
         return
     if not (a.build or a.build_all or a.score):
         ap.print_help()

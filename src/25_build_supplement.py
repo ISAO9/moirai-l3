@@ -89,16 +89,15 @@ cfg = _load("00_config_l3.py")
 SITE_ORDER = ["pnr-1", "mseel_3h", "mseel_5h", "clearfield_mw6",
               "pnr-2", "clearfield_mw4", "aneth", "forge_19"]
 
-TITLE = ("Supporting information for: Does receiver-array moveout help a "
-         "deep-learning phase picker? A leave-one-site-out benchmark on "
-         "downhole arrays")
+TITLE = ("Supporting information for: When does array moveout help borehole "
+         "phase picking?")
 AUTHOR = "Isao Kurosawa"
 
 PREAMBLE = (
     "This document is the Supporting Information for the manuscript named "
     "above. It contains Sections S1 to S6, Tables S1 to S7 and Figures S1 to "
     "S10. Every number here is produced by the released analysis scripts from "
-    "the released result logs; the script and log that produce each table are "
+    "the released result logs. The script and log that produce each table are "
     "named in its caption. Section and item numbers are those used in the "
     "main text.")
 
@@ -108,36 +107,38 @@ PREAMBLE = (
 # ============================================================================
 SECTIONS = [
 ("S1", "Quality of the catalogued arrivals, and whether the results depend on it",
- """Reviewer 2 asked how prevalent unlabelled earthquakes are in the benchmark and
-what the overall quality of its labels is. The question cites Aguilar Suarez &
-Beroza (2025) on pervasive label errors in seismological machine-learning
-datasets. It is answered here in three steps. The catalogued arrivals are tested against physics. The cause of the failures
-is identified. Every site-level verdict in the paper is then recomputed with
-the failing events removed.
+ """Label quality bears on every score in this paper. Aguilar Suarez & Beroza
+(2025) report pervasive label errors in seismological machine-learning
+datasets. Two questions therefore arise: how prevalent unlabelled earthquakes
+are in the benchmark, and what the overall quality of its labels is. They are
+answered here in three steps. The catalogued arrivals are tested against
+physics. The cause of the failures is identified. Every site-level verdict in
+the paper is then recomputed with the failing events removed.
 
 A catalogued arrival sequence must be consistent with a body wave travelling
 along the string. Three conditions follow. The apparent velocity implied by the
 moveout cannot fall below the medium velocity. That velocity is kilometres per
-second in all of these wells, so a floor of 1500 m/s is generous. The arrival
+second in all of these wells. A floor of 1500 m/s is therefore generous. The arrival
 sequence of a point source seen by a near-linear string is monotonic or has a
 single turn; many reversals therefore indicate scattered picks. The S arrival cannot precede the P arrival on the same station. Events
 violating any of these are flagged. Fig. S6 shows the three tests.
 
 The reversal test applies only where the station-to-station step exceeds the
-pick quantization. At aneth the median P moveout is about one sample per gap,
-so integer pick times alone produce reversals in sound data; the test is
-therefore disabled at sites whose median gap step is below three samples, and
+pick quantization. At aneth the median P moveout is about one sample per gap.
+Integer pick times alone then produce reversals in sound data. The test is
+therefore disabled at sites whose median gap step is below three samples.
 Table S2 reports where it applied.
 
-Between 0 and 21 per cent of events are flagged. The two extremes are
+Between 0.5 and 21 per cent of events are flagged. The two extremes are
 forge_19 (1 of 213) and clearfield_mw6 (128 of 612). The flagged arrivals imply apparent velocities of a few hundred metres per
 second. The medium velocities are kilometres per second. The largest raw P moveout reaches 909 ms, and exceeds 350 ms at seven of the
 eight sites. These are not body-wave arrivals.
 
 The cause is the catalogue rather than the analysis window. Truncation at a
 window edge displaces a label by at most the labeller's taper half-width of 30
-samples, not by hundreds. And if the suspect picks were pinned to the edges,
-about half of the extreme arrivals would lie within one taper width of one.
+samples, not by hundreds. If the suspect picks were pinned to the edges,
+about half of the extreme arrivals would lie within one taper width of an
+edge.
 They do not. Across sites, 8 per cent of the flagged extreme arrivals lie within 60 samples
 of an edge. The figures are 1 per cent for the sound
 arrivals and 6 per cent for a random position. The suspect picks are spread
@@ -160,8 +161,8 @@ configurations although their analysis windows were drawn independently. At
 mseel_3h, 91 of the 107 and 109 flagged events are common. A flagged event is
 therefore a property of the catalogue rather than of the window.
 
-The re-scoring itself is checked. The all-events column of Table S2 reproduces
-the archived fixed-threshold scores in all 16 site by configuration
+The re-scoring itself is checked. The all-events columns of Table S2 reproduce
+the archived fixed-threshold scores in all 16 site-by-configuration
 comparisons. The subset indexing therefore cannot be silently wrong."""),
 
 ("S2", "Evaluation of the two configurations on identical inputs",
@@ -171,20 +172,21 @@ strings carrying more than twelve sensors it also selects which contiguous run
 of twelve is used. The two
 passes therefore did not present identical inputs to the two pickers. The event
 set and its order were identical at every site. The selection does not depend
-on which configuration is being evaluated, so neither picker was favoured. The
+on which configuration is being evaluated. Neither picker was therefore
+favoured. The
 comparison was nevertheless unpaired, and the consequence tracks the number of
 sensors. At the six sites carrying exactly twelve sensors the two passes agree
 on 98 to 100 per cent of events. At pnr-1 (24 sensors) and aneth (18 sensors),
 the only two sites with a subset to choose, they agree on 69 and 52 per cent.
 
-To remove this, both checkpoints were re-evaluated in a single pass over the
-data. The array and per-trace probabilities were computed from the same batch.
+To remove the mismatch, both checkpoints were re-evaluated in a single pass
+over the data. The array and per-trace probabilities were computed from the same batch.
 They were scored against the same label tensor. The resulting caches are paired by
 construction, which the analysis asserts before scoring.
 
-No site-level F1-mean moves by more than 0.013 between the submitted and the
-paired evaluation, so the independent draws cost essentially nothing (Table
-S3). Of the eight site-level verdicts, none reverses direction, six are
+No site-level F1-mean moves by more than 0.013 between the unpaired and the
+paired evaluation (Table S3). The independent draws therefore cost essentially
+nothing. Of the eight site-level verdicts, none reverses direction, six are
 identical, and two move from a tie to array-favoured.
 
 Identical inputs also permit a paired bootstrap of the array-minus-per-trace
@@ -192,26 +194,25 @@ difference. Resampling the difference cancels the between-event variance the
 two configurations share. The paired interval is therefore narrower than the
 gap between two marginal intervals, and a difference can be detected where
 those intervals overlap. A tie becoming decided is the expected consequence of pairing, not a
-disagreement with the submitted result. Both interval forms are reported in
+disagreement with the unpaired result. Both interval forms are reported in
 Table S3, and Fig. S7 shows them.
 
 The two observations on which the conclusions rest are unchanged. At forge_19
-the array picker remains far behind the per-trace picker under identical inputs
-(0.524 against 0.856; paired difference -0.332, 95 per cent interval -0.355 to
--0.310), and at aneth the per-trace picker remains ahead (-0.055, -0.065 to
--0.047). At pnr-2 the array picker retains its advantage (+0.036, +0.027 to
+the array picker remains far behind the per-trace picker under identical
+inputs: 0.524 against 0.856. The paired difference is -0.332, with a 95 per
+cent interval of -0.355 to -0.310. At aneth the per-trace picker remains ahead
+(-0.055, -0.065 to -0.047). At pnr-2 the array picker retains its advantage (+0.036, +0.027 to
 +0.046)."""),
 
 ("S3", "Model capacity and overfitting",
- """Reviewer 2 observed that a model with eight million parameters is large for a
-benchmark of about ten thousand events. The count is 7,991,491 trainable
-parameters. The benchmark figure needs one correction, and it makes the
-reviewer's point stronger rather than weaker. The eight usable sites hold 9,803
-records, but 6,382 of those are noise windows; the catalogued earthquakes
-number 3,421. Each leave-one-site-out run therefore trains on 4,769 to 5,932
-records, of which 1,527 to 2,002 are earthquakes. pnr-1 contributes none of
-them: the benchmark assigns its entire catalogue to the test split, so no fold
-trains on pnr-1. The ratio is larger than the reviewer supposed. The question it raises is whether the model overfits. That
+ """A model with eight million parameters may seem large for a benchmark of
+about ten thousand events. The count is 7,991,491 trainable parameters. The
+eight usable sites hold 9,803 records, of which 6,382 are noise windows. The catalogued earthquakes number 3,421. Each
+leave-one-site-out run therefore trains on 4,769 to 5,932 records, of which
+1,527 to 2,002 are earthquakes. pnr-1 contributes none of them: the benchmark
+assigns its entire catalogue to the test split, and no fold trains on pnr-1.
+The ratio of parameters to earthquakes is therefore larger than the headline
+figures suggest. The question it raises is whether the model overfits. That
 question is answered here from the training histories rather than argued from
 the ratio.
 
@@ -220,11 +221,12 @@ leave-one-site-out folds in the two configurations. Forty-eight cover three furt
 random seeds of every fold in both configurations. Nineteen are the
 station-shuffle control: a base-seed run at four sites and three seeds at five sites.
 Two are the within-array experiment of Section S4. The 83 runs analysed here
-are all but the last two, which use a different protocol.
+exclude only those last two, which use a different protocol.
 
 Note that the two configurations do not see the same number of training
 samples. The array configuration sees one sample per record, while the per-trace
-configuration sees one per station trace, which is 58,464 to 72,420 per run.
+configuration sees one per station trace. That is twelve per record, or
+57,228 to 71,184 per run.
 The array configuration thus has roughly twelve times fewer independent
 samples, at a larger input dimension. That is consistent with its being the
 configuration that fails where the training distribution is thin.
@@ -237,19 +239,20 @@ decline. The quantity that bears on the question is the trend after the peak.
 It is measured as the difference between the means of the second and first
 halves of the post-peak segment. Its median is -0.0011 in F1. Measured against
 each run's own epoch-to-epoch variation, the median ratio is -0.24. The trend
-is negative in 58 of 82 runs. The sign is negative more often than chance
-allows (sign test p = 0.0002). A downward drift is therefore present and
+is negative in 58 of 82 runs. The remaining run (clearfield_mw6, per-trace)
+stopped four epochs after its peak, too few for the trend to be measured. The
+sign is negative more often than chance allows (sign test p = 0.0002). A downward drift is therefore present and
 consistent. In one run (aneth, per-trace, seed 2) it reaches 1.2 times that
-run's own variation; in the other 81 it stays below it. The spread of the best
+run's own variation. In the other 81 runs it stays below that variation. The spread of the best
 development score between seeds of the same fold has a median of 0.006. That
 spread is the scale against which the drift should be read. Fig. S2 shows the curves,
 and Table S4 gives the per-run figures.
 
-Eighty of the 83 runs were halted by the development split; the other three
+Eighty of the 83 runs were halted by the development split. The other three
 reached the epoch budget first, having last improved 4, 9 and 18 epochs
 earlier. Every score reported in this paper is taken from the best development
-epoch. The capacity is used. The training loss falls by a factor of 19 to 42
-between the first epoch and the best one. The median factor is 29, over the 78
+epoch. The capacity is exercised rather than idle. The training loss falls by
+a factor of 19 to 42 between the first epoch and the best one. The median factor is 29, over the 78
 runs whose logged loss is usable. Five runs are excluded because their best
 logged loss is zero or three parts in a million. That value is not a loss.
 Script 03 skips any mini-batch whose loss is not finite under mixed precision.
@@ -257,9 +260,9 @@ It then divides the epoch loss by the full batch count. An abrupt fall of the
 logged loss therefore marks an epoch in which most batches were skipped and
 the weights stopped changing. Such a fall, to below one fifth of the preceding
 five-epoch median, occurs in 20 of the 83 runs. All 20 are per-trace or
-station-shuffle runs, and all but one are seed repeats. In 15 of the 20 the best
-development epoch precedes the fall, so the reported checkpoint was trained
-throughout. In the other five the best epoch follows the fall by 3 to 85
+station-shuffle runs, and 19 of them are seed repeats. In 15 of the 20 the best
+development epoch precedes the fall. The reported checkpoint was therefore
+trained throughout. In the other five the best epoch follows the fall by 3 to 85
 epochs. Their best development scores, 0.930 to 0.937, lie inside the range of
 the other 78 runs (0.923 to 0.945). These checkpoints are therefore plateau
 models, and their selection among near-identical epochs is noise. Table S4 lists the
@@ -270,38 +273,40 @@ score and the best raw-weight score of the same run differ by a median of
 +0.0004. The range is -0.0074 to +0.0097, and the EMA score is the higher of
 the two in 45 of the 83 runs. The two weight sets are therefore interchangeable at
 the best epoch, and the EMA weights are reported because they are the
-released checkpoints. None of this measurably harms generalization."""),
+released checkpoints. Neither the drift nor the skipped batches measurably
+harm generalization."""),
 
 ("S4", "Training with the held-out arrays represented",
- """Reviewer 2 proposed training on about 90 per cent of the data from each array
-and testing on the remaining 10 per cent. The aim is to compare a model that
-saw long moveout in training with one that did not. The leave-one-site-out
-protocol of the main text answers a different question: how a picker behaves on
-an array it has never seen. Together the two protocols separate the
-explanations the editor asked to be distinguished.
+ """A second protocol holds out part of each array's data, typically about 10
+per cent, and trains on the rest. It compares a model that saw long moveout
+in training with one that did not. The leave-one-site-out protocol of
+the main text answers a different question: how a picker behaves on an array
+it has never seen. Together the two protocols separate the two explanations of
+the forge_19 collapse set out below.
 
 The benchmark already carries the required partition. Each site has its own
-training, development and test split in the AMBER metadata, so no new partition
-was invented. One site is an exception. Every pnr-1 record is labelled test, so that site
-contributes no training events. It is not represented in training under either
-protocol. It ties under both, so the comparison below is unaffected, but
-its row is not a test of representation. One array model and one per-trace
+training, development and test split in the AMBER metadata. No new partition
+was therefore invented. One site is an exception. Every pnr-1 record is
+labelled test, and that site therefore contributes no training events. It is
+not represented in training under either protocol. It ties under both, and the
+comparison below is unaffected. Its row is not, however, a test of
+representation. One array model and one per-trace
 model were trained on the training splits of all eight sites together. The
 architecture, optimizer, schedule and early stopping are those of every other
 run reported here. Each model was then evaluated on each site's own test split, in a single pass.
 The paired interval of Section S2 therefore applies here as well. Fig. S8
 shows the outcome, and Table S5 gives the per-site figures.
 
-The experiment can fail. Suppose the collapse at forge_19 follows from the
-scarcity of such moveout in training. A model trained with forge_19's own
+The experiment can fail, by design. Suppose the collapse at
+forge_19 follows from the scarcity of its long moveout in training. A model trained with forge_19's own
 events should then pick that site normally, and the array-minus-per-trace gap
 there should close. Suppose instead that forge_19 is intrinsically harder:
 noisier, smaller events, or less reliable picks. The gap should then persist,
 and the mechanism proposed in Section 5.2 would have to be revised.
 
 Both models trained without incident and were halted by the development
-split, as every other run in this paper was. The eight test splits hold 2,530 records in all, from 47 at aneth to 1,258 at
-pnr-1. Of these, 984 are catalogued earthquakes and the rest noise windows. That is 26 per cent of the benchmark rather than the 10 per cent proposed. The
+split. The eight test splits hold 2,530 records in all, from 47 at aneth to 1,258 at
+pnr-1. Of these, 984 are catalogued earthquakes and the rest noise windows. That is 26 per cent of the benchmark rather than the 10 per cent of a 90/10 split. The
 benchmark's own partition was used in place of a new one.
 
 The prediction holds at forge_19. The array F1-mean there rises from 0.516
@@ -316,12 +321,12 @@ collapse is a property of the training distribution rather than of the site.
 The same applies at aneth, the other site whose leave-one-site-out verdict
 favours the per-trace model. Its per-trace advantage of 0.057 disappears:
 the within-array difference is +0.003 in the array's favour, on an interval
-that spans zero. The site contributes only 47 test events, so this result
-carries less weight than the one at forge_19. Both decided verdicts of the
+that spans zero. The site contributes only 47 test records. This result
+therefore carries less weight than the one at forge_19. Both per-trace verdicts of the
 main text none the less track how the training set is composed rather than
 the sites themselves.
 
-The conclusion of the main text survives the reviewer's protocol. Across the
+The conclusion of the main text survives the within-array protocol. Across the
 eight sites the within-array comparison gives two array wins, one per-trace
 win and five ties. Leave-one-site-out gives one, two and five. The median
 verdict is a tie under both. No within-array difference exceeds 0.017 in
@@ -341,12 +346,13 @@ whether a given moveout is represented in training while holding the rest
 fixed."""),
 
 ("S5", "Where the declared picks land: P/S assignment",
- """Reviewer comment R1-6 asks whether the forge_19 collapse is a loss of P
-detection or a confusion between the P and S phases. The cached picking statistics answer the question exactly. A pick is the
+ """The forge_19 collapse admits two readings. The array P channel may have
+stopped detecting P, or it may confuse the P and S phases. The cached picking
+statistics decide between them exactly. A pick is the
 global maximum of its channel. Its sample index can therefore be compared with
 the catalogued arrivals of both phases. Every declared pick on an earthquake event is classified in one of three ways.
-On-phase is within the primary tolerance of its own channel's catalogued
-arrival. Cross-phase is within that tolerance of the other phase's arrival.
+On-phase is within 20 ms, the primary tolerance of the main text, of its own
+channel's catalogued arrival. Cross-phase is within that tolerance of the other phase's arrival.
 Everything else is elsewhere. Table S6 reports the P channel;
 Fig. S9 shows the full residual distributions.
 
@@ -354,14 +360,15 @@ At forge_19 the array P channel declares 2,023 picks. Only 18.1 per cent land on
 lands on the catalogued S. The median offset from the catalogued P is +146 ms,
 and 48.2 per cent of these picks fall between the two arrivals. The per-trace
 model, evaluated on the same site, places 82.4 per cent on the catalogued P
-and 0.5 per cent on the S; the array at a site whose moveout is well
-represented in training places 91.3 per cent on the catalogued P (mseel_5h).
+and 0.5 per cent on the S. At a site whose moveout is well represented in
+training, the array places 91.3 per cent on the catalogued P (mseel_5h).
 The behaviour is therefore specific to the array configuration at forge_19 and
 not a property of that site's catalogue.
 
-The reviewer's reading is confirmed for the P channel. The detector
+The second reading is confirmed for the P channel. The detector
 mis-assigns rather than merely under-fires. It follows a later apparent-moveout
-ridge that coincides with the S arrival. It is refined for the S channel. The array S channel still places 82.4 per cent of its picks on the catalogued
+ridge that coincides with the S arrival. The reading is refined for the S
+channel. The array S channel still places 82.4 per cent of its picks on the catalogued
 S. Only 5.3 per cent land on the catalogued P. The early S-score ridge visible
 in Fig. 6 of the main text is therefore sub-maximal. It does not capture the
 pick. The
@@ -369,8 +376,8 @@ failure is one-sided: P is drawn towards S, not the reverse."""),
 
 ("S6", "How much moveout each site actually carries",
  """Section 5.2 attributes the array's disadvantage at aneth to there being
-too little moveout to exploit. That claim rests on a median, so the full
-distribution is given here. The quantity is the across-station spread of
+too little moveout to exploit. That claim rests on a median. The full
+distribution is therefore given here. The quantity is the across-station spread of
 the catalogued P arrivals per event, the definition used in Table 1. It
 needs no velocity model and no assumption about the ray geometry.
 
@@ -397,9 +404,10 @@ it."""),
 # ============================================================================
 TABLE_CAPTIONS = {
 1: ("Table S1. Per-site array geometry computed from the station coordinates "
-    "distributed with AMBER (per-dataset Array.csv files): number of stations "
-    "on the full instrument string, vertical extent, three-dimensional "
-    "aperture, and median station spacing. Source: script 14, "
+    "distributed with AMBER (per-dataset Array.csv files). The columns give "
+    "the number of stations on the full instrument string, the vertical "
+    "extent, the three-dimensional aperture, and the median station spacing. "
+    "Source: script 14, "
     "logs/14_table_s1.csv."),
 2: ("Table S2. Catalogued-arrival audit and re-scoring on the surviving "
     "events. Flagged events fail at least one of the three physical tests of "
@@ -409,19 +417,21 @@ TABLE_CAPTIONS = {
     "the union of the events flagged in either configuration. The all-events "
     "columns reproduce the archived scores of Table 3. Source: script 16, "
     "logs/16_arrival_audit_ema.json and logs/16_clean_rescore_ema.json."),
-3: ("Table S3. Site-level scores under the submitted and the paired "
-    "evaluation, with the paired-bootstrap interval on the "
+3: ("Table S3. Site-level scores under the unpaired and the paired "
+    "evaluation. The columns give the paired-bootstrap interval on the "
     "array-minus-per-trace difference and the verdict under each interval "
     "form. \"Reversed\" marks a change between array-favoured and "
     "per-trace-favoured; a move between a tie and a decided verdict is not a "
     "reversal. Source: script 18, logs/18_paired_scores_ema.json."),
-4: ("Table S4. Per-run training summary: the best development epoch, the score "
-    "there and at the last epoch, the fall from the peak, the trend after the "
-    "peak, the epoch-to-epoch variation of the same curve, their ratio, the "
-    "training loss at the first, best and last epoch, whether the run was "
-    "halted by the development split, the best EMA development score minus "
-    "the best raw-weight score, and the epoch at which the logged loss fell "
-    "abruptly (Section S3), with whether the best epoch precedes it. A large "
+4: ("Table S4. Per-run training summary. For each run the table lists the "
+    "best development epoch, the score there and at the last epoch, and the "
+    "fall from the peak. It then lists the trend after the peak, the "
+    "epoch-to-epoch variation of the same curve, and their ratio. It gives "
+    "the training loss at the first, best and last epoch, and whether the run "
+    "was halted by the development split. It gives the best EMA development "
+    "score minus the best raw-weight score. The last columns give the epoch "
+    "at which the logged loss fell abruptly (Section S3), and whether the "
+    "best epoch precedes it. A large "
     "fall from the peak with a small trend-to-variation ratio is a noisy "
     "plateau rather than overfitting. Source: script 19, "
     "logs/19_capacity_ema.json."),
@@ -430,15 +440,15 @@ TABLE_CAPTIONS = {
     "within-array training and the verdict under each protocol. Source: "
     "script 20, logs/20_within_array_ema.json."),
 6: ("Table S6. Where the declared P-channel picks land, by site and "
-    "configuration (EMA weights, primary tolerance). On-phase: within "
+    "configuration (EMA weights, 20 ms tolerance). On-phase: within "
     "tolerance of the catalogued P. Cross-phase: within tolerance of the "
     "catalogued S. Between: strictly between the two catalogued arrivals. "
     "Median offset is measured from the catalogued P. Source: script 15, "
     "logs/15_phase_confusion_ema.json."),
 7: ("Table S7. Distribution of the catalogued P moveout across events, by "
     "site. Moveout is the across-station spread of the catalogued P arrivals "
-    "of one event, over events carrying at least two P picks and at least two "
-    "S picks and a P moveout of at least 1 ms. Source: script 24, "
+    "of one event. Events enter if they carry at least two P picks, at least "
+    "two S picks and a P moveout of at least 1 ms. Source: script 24, "
     "logs/24_moveout_ratio.json."),
 }
 
@@ -449,46 +459,48 @@ TABLE_CAPTIONS = {
 FIGURE_CAPTIONS = {
 1: ("Figure S1. Example per-station P/S/noise score panel for a representative "
     "event."),
-2: ("Figure S2. Training and development curves for all 83 runs (eight "
-    "leave-one-site-out folds in the array and per-trace configurations, each "
-    "with three further seeds, and the station-shuffle control at five sites). "
-    "(a) Training "
+2: ("Figure S2. Training and development curves for all 83 runs. These are "
+    "the eight leave-one-site-out folds in the array and per-trace "
+    "configurations, each with three further seeds, and the station-shuffle "
+    "control at five sites. (a) Training "
     "loss per epoch on a logarithmic scale. (b) Development F1-mean per epoch, "
     "with the best epoch marked; the reported checkpoint is taken from that "
     "epoch. The abrupt late falls of the logged training loss in some "
     "per-trace and shuffle runs mark epochs in which non-finite mini-batches "
     "were skipped (Section S3). (c) The same curves on the vertical scale of "
-    "the effect under discussion, which is a post-peak trend of order 0.001 in "
-    "F1 against an epoch-to-epoch variation of 0.0045."),
+    "the effect under discussion. That effect is a post-peak trend of order "
+    "0.001 in F1 against an epoch-to-epoch variation of 0.0045."),
 3: "Figure S3. Summary of held-out metrics.",
 4: ("Figure S4. Off-the-shelf surface-trained baseline applied to a borehole "
     "site (motivation only; confounded by sampling rate, architecture and "
     "training domain)."),
 5: ("Figure S5. Zero-shot transfer of the trained array picker to decimated "
-    "arrays (4, 6, 8 stations; mean plus or minus one standard deviation over "
-    "five draws) under contiguous-window and random decimation, with the "
-    "per-trace model as control."),
+    "arrays of 4, 6 and 8 stations, under contiguous-window and random "
+    "decimation. Symbols give the mean plus or minus one standard deviation "
+    "over five draws. The per-trace model is the control."),
 6: ("Figure S6. Physical audit of the catalogued arrivals. (a) Apparent "
-    "velocity implied by the P moveout at each site (dot: median, bar: 5th to "
-    "95th percentile) against the 1500 m/s floor below which an arrival cannot "
-    "be a body wave. (b) Fraction of extreme arrivals lying within 60 samples "
-    "of a window edge, for flagged and for sound events, against the fraction "
-    "expected if their position were random (dotted); a windowing artefact "
-    "would pile the flagged arrivals at the edges and does not. (c) "
+    "velocity implied by the P moveout at each site, against the 1500 m/s "
+    "floor below which an arrival cannot be a body wave. Dots mark the median "
+    "and bars the 5th to 95th percentile. (b) Fraction of extreme arrivals "
+    "lying within 60 samples of a window edge, for flagged and for sound "
+    "events. The dotted line is the fraction expected if their position were "
+    "random. A windowing artefact would pile the flagged arrivals at the "
+    "edges, and they are not piled there. (c) "
     "Distribution of catalogued S-P times per site; mass below zero (shaded) "
     "is a label error."),
 7: ("Figure S7. The two configurations evaluated on identical inputs. (a) "
-    "F1-mean per site under the submitted evaluation, in which the analysis "
-    "window and the sensor subset were drawn independently for each "
-    "configuration (open symbols), and under a single pass in which both "
-    "configurations saw the same batches (filled symbols). (b) Array minus "
+    "F1-mean per site under the unpaired evaluation (open symbols) and under "
+    "a single pass in which both configurations saw the same batches (filled "
+    "symbols). In the unpaired evaluation the analysis window and the sensor "
+    "subset were drawn independently for each configuration. (b) Array minus "
     "per-trace on those identical inputs, with paired-bootstrap 95 per cent "
     "intervals; the pairing is legitimate only because the inputs are "
     "shared."),
 8: ("Figure S8. Picking performance when the held-out arrays are represented "
     "in training. (a) F1-mean per site under leave-one-site-out (open symbols) "
-    "and when the model is trained on the training splits of the eight sites "
-    "and evaluated on each site's own test split (filled symbols). (b) Array "
+    "and under within-array training (filled symbols). In the latter the model "
+    "is trained on the training splits of the eight sites and evaluated on "
+    "each site's own test split. (b) Array "
     "minus per-trace on the within-array test splits, with paired-bootstrap 95 "
     "per cent intervals."),
 9: ("Figure S9. Where the declared picks land, against both catalogued phases, "
@@ -496,7 +508,7 @@ FIGURE_CAPTIONS = {
     "contrast (mseel_5h), array and per-trace. Blue: pick time minus the "
     "channel's own catalogued arrival. Red: pick time minus the other phase's "
     "catalogued arrival. A detector that merely fails to fire gives few picks "
-    "and a flat residual; one that mis-assigns gives a residual peaking at "
+    "and a flat residual. One that mis-assigns gives a residual peaking at "
     "zero against the other phase. The forge_19 array P panel shows the "
     "latter."),
 10: ("Figure S10. Waveforms and predicted scores at the remaining held-out "
@@ -611,10 +623,10 @@ def table_s3(logs: Path):
     d = _json(logs / "18_paired_scores_ema.json")
     if not d:
         return None
-    head = ["Site", "Events", "Submitted: array", "Submitted: per-trace",
+    head = ["Site", "Events", "Unpaired: array", "Unpaired: per-trace",
             "Paired: array", "Paired: per-trace", "Difference",
             "Paired 95% CI", "Marginal verdict", "Paired verdict",
-            "Submitted verdict", "Reversed"]
+            "Unpaired verdict", "Reversed"]
     rows = []
     for s in SITE_ORDER:
         r = d.get(s)
@@ -901,9 +913,10 @@ def check_numbers(logs: Path) -> list:
             flag("S1 両極端は forge_19 と clearfield_mw6",
                  "forge_19 / clearfield_mw6", f"{lo_s} / {hi_s}",
                  (lo_s, hi_s) == ("forge_19", "clearfield_mw6"))
-            flag("S1 flagged は 0〜21 %", "0-21 %",
+            flag("S1 flagged は 0.5〜21 %", "0.5-21 %",
                  f"{100*min(fr.values()):.1f}-{100*max(fr.values()):.1f} %",
-                 max(fr.values()) <= 0.21)
+                 0.0045 <= min(fr.values()) <= 0.0055
+                 and 0.205 <= max(fr.values()) <= 0.21)
         for s, n, tot in (("forge_19", 1, 213), ("clearfield_mw6", 128, 612)):
             if s in aud:
                 add(f"S1 {s} flagged = {n}", n, aud[s]["flagged_events"], 0.5)
@@ -1024,12 +1037,21 @@ def check_numbers(logs: Path) -> list:
             if ev:
                 add("S3 1ランの訓練記録数 下限 = 4,769", 4769, min(ev), 0.5)
                 add("S3 1ランの訓練記録数 上限 = 5,932", 5932, max(ev), 0.5)
-            rw = list((sz.get("_train_rows_per_run") or {}).values())
-            if rw:
-                add("S3 1ランの訓練トレース数 下限 = 58,464", 58464,
-                    min(rw), 0.5)
-                add("S3 1ランの訓練トレース数 上限 = 72,420", 72420,
-                    max(rw), 0.5)
+            # the per-trace model sees exactly 12 traces per record (the
+            # loader subsets every string to N_STATION = 12 before
+            # pertrace_split), so traces per run = 12 x records, not the
+            # metadata rows (_train_rows_per_run counts aneth's 18 sensors)
+            if ev:
+                add("S3 1ランの訓練トレース数 下限 = 57,228 (12 x 記録数)",
+                    57228, 12 * min(ev), 0.5)
+                add("S3 1ランの訓練トレース数 上限 = 71,184 (12 x 記録数)",
+                    71184, 12 * max(ev), 0.5)
+            one = [k for k, r in runs.items() if r.get("post_peak_trend") is None]
+            flag("S3 trend の無い 1 ランは clearfield_mw6 per-trace, 4 epochs after peak",
+                 "clearfield_mw6__pertrace / 4",
+                 f"{one} / {[runs[k].get('epochs_after_best') for k in one]}",
+                 one == ["clearfield_mw6__pertrace"]
+                 and runs[one[0]].get("epochs_after_best") == 4)
         tr = [r.get("post_peak_trend") for r in runs.values()]
         trv = [x for x in tr if x is not None]
         add("S3 trend を持つ = 82 ラン", 82, len(trv), 0.5)
@@ -1290,7 +1312,7 @@ INDEX = [
     "sites.",
     "Table S1. Per-site array geometry.",
     "Table S2. Catalogued-arrival audit and re-scoring on the surviving events.",
-    "Table S3. Site-level scores under the submitted and the paired evaluation.",
+    "Table S3. Site-level scores under the unpaired and the paired evaluation.",
     "Table S4. Per-run training summary.",
     "Table S5. Site-level scores under the leave-one-site-out and within-array "
     "protocols.",
@@ -1892,6 +1914,15 @@ def selftest() -> None:
                     key = f"{base}_seed{k}__{m}"
                     if key in cap and cap[key]["dev_f1_best"] == 0.93:
                         cap[key]["dev_f1_best"] = 0.930 + dv
+        # the one run without a trend is clearfield_mw6 per-trace, which
+        # stopped four epochs after its peak (the measure needs six); move the
+        # trend-less slot there and give its trend to the last key instead
+        _cm6, _last = "clearfield_mw6__pertrace", "__".join(keys[82])
+        _t, _n = cap[_cm6]["post_peak_trend"], cap[_cm6]["dev_epoch_noise"]
+        cap[_cm6].update(post_peak_trend=None, dev_epoch_noise=None,
+                         trend_over_noise=None, epochs_after_best=4)
+        cap[_last].update(post_peak_trend=_t, dev_epoch_noise=_n,
+                          trend_over_noise=_t / _n)
         _tr = [r["post_peak_trend"] for r in cap.values()
                if r["post_peak_trend"] is not None]
         assert len(_tr) == 82 and sum(1 for x in _tr if x < 0) == 58, \

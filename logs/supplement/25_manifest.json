@@ -46,19 +46,19 @@
   "figures": {
     "1": {
       "built": true,
-      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/05_a_probability_example.pdf"
+      "source": "src/figures/05_a_probability_example.png"
     },
     "2": {
       "built": true,
-      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/19_a_training_curves.pdf"
+      "source": "/content/moirai-l3/PDF/19_a_training_curves.pdf"
     },
     "3": {
       "built": true,
-      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/05_c_metrics_summary.pdf"
+      "source": "src/figures/05_c_metrics_summary.png"
     },
     "4": {
       "built": true,
-      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/05_f_baseline_phasenet.pdf"
+      "source": "src/figures/05_f_baseline_phasenet.png"
     },
     "5": {
       "built": true,
@@ -66,31 +66,31 @@
     },
     "6": {
       "built": true,
-      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/16_a_arrival_audit.pdf"
+      "source": "/content/moirai-l3/PDF/16_a_arrival_audit.pdf"
     },
     "7": {
       "built": true,
-      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/18_a_paired_vs_unpaired.pdf"
+      "source": "/content/moirai-l3/PDF/18_a_paired_vs_unpaired.pdf"
     },
     "8": {
       "built": true,
-      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/20_a_within_vs_loso.pdf"
+      "source": "/content/moirai-l3/PDF/20_a_within_vs_loso.pdf"
     },
     "9": {
       "built": true,
-      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/15_a_phase_residuals.pdf"
+      "source": "/content/moirai-l3/PDF/15_a_phase_residuals.pdf"
     },
     "10": {
       "built": true,
-      "source": "/content/drive/MyDrive/MOIRAI_L3/PDF/23_a_fig4_style_sites.pdf"
+      "source": "/content/moirai-l3/PDF/23_a_fig4_style_sites.pdf"
     }
   },
   "missing": [],
-  "output": "/content/drive/MyDrive/MOIRAI_L3/PDF/Supplement_MOIRAI_L3.pdf",
+  "output": "/content/moirai-l3/PDF/Supplement_MOIRAI_L3.pdf",
   "complete": true,
   "pages": 24,
   "number_checks": {
-    "total": 103,
+    "total": 104,
     "failed": 0
   },
   "manuscript_index_lines": 23

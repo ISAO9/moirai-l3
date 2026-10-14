@@ -16,7 +16,7 @@ Figure S9. Where the declared picks land, against both catalogued phases.
 Figure S10. Waveforms and predicted scores at the remaining held-out sites.
 Table S1. Per-site array geometry.
 Table S2. Catalogued-arrival audit and re-scoring on the surviving events.
-Table S3. Site-level scores under the submitted and the paired evaluation.
+Table S3. Site-level scores under the unpaired and the paired evaluation.
 Table S4. Per-run training summary.
 Table S5. Site-level scores under the leave-one-site-out and within-array protocols.
 Table S6. Where the declared P-channel picks land, by site and configuration.

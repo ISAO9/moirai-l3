@@ -10,3 +10,6 @@ matplotlib>=3.8
 tqdm>=4.66
 requests>=2.31
 seisbench>=0.7   # off-the-shelf baseline (06) only
+reportlab>=4.0   # supplement builder (25) only
+pillow>=10.0     # supplement builder (25) only
+pypdf>=4.0       # supplement builder (25) only

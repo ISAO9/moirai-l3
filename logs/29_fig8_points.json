@@ -1,0 +1,90 @@
+{
+ "source": {
+  "delta": "27_paired_inference.json",
+  "moveout": "16_arrival_audit_ema.json"
+ },
+ "convention": "fa_incl",
+ "equivalence_bound": 0.02,
+ "points": [
+  {
+   "site": "pnr-1",
+   "moveout_ms": 62.0,
+   "delta": -0.0008625588311168553,
+   "ci": [
+    -0.0061287154211577596,
+    0.005045664512549941
+   ],
+   "verdict": "equivalent"
+  },
+  {
+   "site": "mseel_5h",
+   "moveout_ms": 27.5,
+   "delta": 0.01721216245263002,
+   "ci": [
+    0.004970567441094515,
+    0.029580135815728176
+   ],
+   "verdict": "array"
+  },
+  {
+   "site": "clearfield_mw6",
+   "moveout_ms": 24.0,
+   "delta": 0.00949432647374393,
+   "ci": [
+    -0.002564449820392742,
+    0.021332092980897166
+   ],
+   "verdict": "tie"
+  },
+  {
+   "site": "mseel_3h",
+   "moveout_ms": 31.5,
+   "delta": 0.004584609477425894,
+   "ci": [
+    -0.007669114458681753,
+    0.018226120202006917
+   ],
+   "verdict": "equivalent"
+  },
+  {
+   "site": "pnr-2",
+   "moveout_ms": 35.0,
+   "delta": 0.05456632196922684,
+   "ci": [
+    0.03339526435733672,
+    0.07647306394603308
+   ],
+   "verdict": "array"
+  },
+  {
+   "site": "clearfield_mw4",
+   "moveout_ms": 24.0,
+   "delta": 0.07831168725231141,
+   "ci": [
+    0.05272764375790284,
+    0.10470933887797337
+   ],
+   "verdict": "array"
+  },
+  {
+   "site": "aneth",
+   "moveout_ms": 6.0,
+   "delta": -0.05709810840951812,
+   "ci": [
+    -0.06874471569377599,
+    -0.04688870826477304
+   ],
+   "verdict": "per-trace"
+  },
+  {
+   "site": "forge_19",
+   "moveout_ms": 70.0,
+   "delta": -0.32525544877262325,
+   "ci": [
+    -0.348130284381539,
+    -0.3019556633373738
+   ],
+   "verdict": "per-trace"
+  }
+ ]
+}

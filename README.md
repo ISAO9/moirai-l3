@@ -82,19 +82,20 @@ Do not downgrade NumPy after installing AMBER.
 - `15_phase_confusion.py` — every declared pick compared with the catalogued arrivals of **both** phases; phase-confusion matrices and residual distributions
 - `16_arrival_audit.py` — physical audit of the catalogued arrivals (S before P, implausible V<sub>p</sub>/V<sub>s</sub>, arrivals outside the window), plus re-scoring on the surviving events
 - `17_geometry_and_distance.py` — receiver strings and source positions from the AMBER station coordinates; per-site geometry table
-- `18_paired_cache.py` — re-evaluation of both configurations on **identical** inputs
+- `18_paired_cache.py` — re-evaluation of both configurations on **identical** inputs; `--figure-only` redraws Figure S7 from the scores log (since v0.3.4 the figure labels the independent-pass scores "unpaired")
 - `19_capacity_and_overfitting.py` — parameter count, per-run training-set sizes, post-peak trend in the development score across all runs; since v0.3.2 also the best-EMA-minus-best-raw development score per run and the detection of late falls of the logged training loss (skipped non-finite mini-batches)
 - `20_within_array.py` — the within-array experiment: the held-out site's own events placed in the training splits
 - `21_event_accounting.py` — record/event/trace accounting for every site and split
 - `22_sampling_rates.py` — native sampling rates per site from the AMBER metadata
 - `23_fig4_style_supplement.py` — the diagnosis-figure treatment applied to the remaining sites
 - `24_moveout_ratio_check.py` — per-site moveout distributions and the S/P moveout ratio
-- `25_build_supplement.py` — assembles the Supporting Information as one document (Sections S1–S6, Tables S1–S7, Figures S1–S10) from the logs and figures, and checks every number in its prose against those logs
+- `25_build_supplement.py` — assembles the Supporting Information as one document (Sections S1–S6, Tables S1–S7, Figures S1–S10) from the logs and figures, and checks every number in its prose against those logs (104 checks). v0.3.4 carries the text of the resubmitted supplement: the published title, no references to the review process, the independent-pass evaluation named "unpaired" (Section S2, Table S3, Figure S7), and the per-trace training-trace count corrected to 12 × records per run (57,228–71,184)
 - `26_train_split_overlap.py` — the Section 5.2 training-support figures (share of training earthquakes reaching the held-out site's median moveout) recomputed on the population the model was trained on: the LOSO **train split** after the arrival audit of script 16. Reproduces the script-16 figures first, then restricts the population. No HDF5, no GPU
 - `27_paired_inference.py` — the array-versus-per-trace verdict as a **paired** joint event bootstrap (B = 2,000) on Δ = F1-mean(array) − F1-mean(per-trace), with a declared ±0.02 equivalence bound and an across-site sign test and Wilcoxon signed-rank test; replaces the marginal-CI-overlap rule of the first revision. Reads the script-10 caches only
 - `28_seed_statistics.py` — training-seed statistics for every held-out site (array, per-trace) and for the station-shuffle control: mean ± sd over three seeds, seed-paired differences, a regression gate against the first-revision values, and the sources of Figures 4 and 9. Reads the script-04 result logs only
+- `29_fig8_paired.py` — Figure 8 (array advantage versus site median P moveout) drawn from the **paired** Δ, its 95 per cent CI and the verdict of script 27 (the Table 2 quantities) and from the moveout medians **after** the arrival audit of script 16 (the Table 1 quantities); a regression gate checks both against the tables. Replaces the `05_i` panel of script 05, which used the standard-evaluation per-phase means and the pre-audit medians. Reads two logs only
 
-Every script in 10–28 accepts `--selftest`, which validates its logic on synthetic inputs
+Every script in 10–29 accepts `--selftest`, which validates its logic on synthetic inputs
 without AMBER, checkpoints or network access.
 
 ## Reproducing the paper
@@ -113,6 +114,7 @@ The paired inference and the seed statistics likewise rebuild from the logs alon
 
     python src/27_paired_inference.py --all
     python src/28_seed_statistics.py --ckpt ema
+    python src/29_fig8_paired.py                 # Figure 8 from logs/27 and logs/16
 
 To retrain a fold (example: held-out forge_19, array, seed 1234):
 

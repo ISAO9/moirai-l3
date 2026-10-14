@@ -3,7 +3,7 @@
 | Quantity | In the text | In the log | |
 |---|---|---|---|
 | S1 両極端は forge_19 と clearfield_mw6 | forge_19 / clearfield_mw6 | forge_19 / clearfield_mw6 | OK |
-| S1 flagged は 0〜21 % | 0-21 % | 0.5-20.9 % | OK |
+| S1 flagged は 0.5〜21 % | 0.5-21 % | 0.5-20.9 % | OK |
 | S1 forge_19 flagged = 1 | 1 | 1 | OK |
 | S1 forge_19 earthquakes = 213 | 213 | 213 | OK |
 | S1 clearfield_mw6 flagged = 128 | 128 | 128 | OK |
@@ -41,8 +41,9 @@
 | S3 ベンチマークの記録数 = 9,803 | 9803 | 9803 | OK |
 | S3 1ランの訓練記録数 下限 = 4,769 | 4769 | 4769 | OK |
 | S3 1ランの訓練記録数 上限 = 5,932 | 5932 | 5932 | OK |
-| S3 1ランの訓練トレース数 下限 = 58,464 | 58464 | 58464 | OK |
-| S3 1ランの訓練トレース数 上限 = 72,420 | 72420 | 72420 | OK |
+| S3 1ランの訓練トレース数 下限 = 57,228 (12 x 記録数) | 57228 | 57228 | OK |
+| S3 1ランの訓練トレース数 上限 = 71,184 (12 x 記録数) | 71184 | 71184 | OK |
+| S3 trend の無い 1 ランは clearfield_mw6 per-trace, 4 epochs after peak | clearfield_mw6__pertrace / 4 | ['clearfield_mw6__pertrace'] / [4] | OK |
 | S3 trend を持つ = 82 ラン | 82 | 82 | OK |
 | S3 trend が負 = 58 ラン | 58 | 58 | OK |
 | S3 trend の中央値 = -0.0011 | -0.0011 | -0.001088096262061744 | OK |
